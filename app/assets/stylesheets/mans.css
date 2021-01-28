@@ -154,6 +154,10 @@
   background-color: #fff;
 }
 
+.main-search-box {
+  display: none;
+}
+
 .search-category-title {
   text-align: center;
 }
@@ -498,4 +502,102 @@
 
 .footer-icons i:hover {
   opacity: 0.7;
+}
+
+@media(max-width: 599px) {
+  .header-search-box {
+    display: none;
+  }
+
+  .header-user-box {
+    padding: 0 7px;
+  }
+
+  .header-drop-icon {
+    font-size: 15px;
+  }
+
+  .df-user-icon {
+    height: 25px;
+    width: 25px;
+  }
+
+  .main-catch-copy {
+    font-size: 25px;
+    padding-bottom: 5px;
+  }
+
+  .main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .main-search-box {
+    width: 70%;
+    margin: 10px auto;
+    padding: 5px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    border: 1px solid grey;
+    border-radius: 50px;
+  }
+  
+  .main-search-box:hover {
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.4);
+    cursor: pointer;
+  }
+  
+  .main-search-submit {
+    outline: none;
+    border: none;
+    background-color: red;
+    border-radius: 70px;
+    padding: 5px;
+  }
+  
+  .main-search-icon {
+    color: #fff;
+  }
+  
+  .main-search-input {
+    outline: none;
+    border: none;
+  }
+
+  .main-search-input::placeholder {
+    font-size: 12px;
+  }
+
+  .top-left-contents {
+    height: 100%;
+    width: 95%;
+    margin: 5px auto;
+  }  
+
+  .top-right-contents {
+    height: 100%;
+    width: 95%;
+    margin: 5px auto;
+  }
+
+  .footer-title-text {
+    font-size: 22px;
+    margin-bottom: 22px;
+  }
+
+  .footer-lists h4 {
+    font-size: 16px;
+  }
+
+  .footer-list-item {
+    font-size: 10px;
+  }
+
+  .footer-icons i {
+    font-size: 20px;
+  }
 }
