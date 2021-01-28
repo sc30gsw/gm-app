@@ -16,9 +16,11 @@
         </a>
 
         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">Something else here</a>
+          <a class="dropdown-item" href="#">登録する</a>
+          <div class="dropdown-border"></div>
+          <a class="dropdown-item" href="#">ログインする</a>
+          <div class="dropdown-border"></div>
+          <a class="dropdown-item" href="#">ゲストログイン</a>
         </div>
       </div>
       <%= image_tag 'https://cdn2.aprico-media.com/production/imgs/images/000/008/511/original.jpg?1505866639', class: "df-user-icon" %>
@@ -26,4 +28,41 @@
   </div>
 </header>
 <main class="main"></main>
-<footer class="footer"></footer>
+<footer class="footer">
+  <div class="footer-upper-contents">
+    <%= link_to "GMM", root_path, class: "footer-title-text" %>
+    <div class="footer-list-contents">
+      <ul class="footer-lists">
+        <h4 class="footer-list-title">Product</h4>
+        <li class="footer-list-item"><a href="#">機能</a></li>
+        <li class="footer-list-item"><a href="#">セキュリティ</a></li>
+        <li class="footer-list-item"><a href="#">リソース</a></li>
+        <li class="footer-list-item"><a href="#">ストーリー</a></li>
+      </ul>
+       <ul class="footer-lists">
+        <h4 class="footer-list-title">Support</h4>
+        <li class="footer-list-item"><a href="#">ヘルプ</a></li>
+        <li class="footer-list-item"><a href="#">お知らせ</a></li>
+        <li class="footer-list-item"><a href="#">お問い合わせ</a></li>
+        <li class="footer-list-item"><a href="#">ご意見</a></li>
+      </ul>
+      <ul class="footer-lists">
+        <h4 class="footer-list-title">Company</h4>
+        <li class="footer-list-item"><a href="#">会社概要</a></li>
+        <li class="footer-list-item"><a href="#">ブログ</a></li>
+        <li class="footer-list-item"><a href="#">チーム</a></li>
+        <li class="footer-list-item"><a href="#">ジョブ</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-lower-contents">
+    <div class="footer-small">
+      <small class="small">@2021 GMM.inc</small>
+    </div>
+    <div class="footer-icons">
+      <a href="#"><i class="fab fa-twitter footer-icon"></i></a>
+      <a href="#"><i class="fab fa-facebook-square footer-icon"></i></a>
+      <a href="#"><i class="fab fa-instagram footer-icon"></i></a>
+    </div>
+  </div>
+</footer>
