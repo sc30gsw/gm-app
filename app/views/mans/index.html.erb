@@ -1,30 +1,5 @@
 <header class="header">
-  <div class="header-left">
-    <div class="header-title">
-      <h3 class="header-title-text">GMM</h3>
-    </div>
-    <div class="header-search-box">
-      <input type="search" placeholder="検索を始める" class="header-search-input">
-      <input type="submit" value="&#xf002;" class="fas header-search-icon header-search-submit">
-    </div>
-  </div>
-  <div class="header-right">
-    <div class="header-user-box">
-      <div class="header-dropdown">
-        <a class="btn-header-drop" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fas fa-bars header-drop-icon"></i>
-        </a>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-          <%= link_to '登録する', new_user_registration_path, class:"dropdown-item" %>
-          <div class="dropdown-border"></div>
-          <%= link_to 'ログインする', new_user_session_path, class: "dropdown-item" %>
-          <div class="dropdown-border"></div>
-          <a class="dropdown-item" href="#">ゲストログイン</a>
-        </div>
-      </div>
-      <%= image_tag 'https://cdn2.aprico-media.com/production/imgs/images/000/008/511/original.jpg?1505866639', class: "df-user-icon" %>
-    </div>
-  </div>
+  <%= render 'shared/header' %>
 </header>
 <div class="main-image">
   <div class="main-image-copy">
@@ -261,7 +236,7 @@
     <div class="footer-icons">
       <a href="#"><i class="fab fa-twitter footer-icon"></i></a>
       <a href="#"><i class="fab fa-facebook-square footer-icon"></i></a>
-      <a href="#"><i class="fab fa-instagram footer-icon"></i></a>
+      <a href="#"><i class="fab fa-google footer-icon"></i></a>
     </div>
   </div>
 </footer>
