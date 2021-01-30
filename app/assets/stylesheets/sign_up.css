@@ -174,3 +174,115 @@
   justify-content: center;
   padding: 10px 0;
 }
+
+@media(max-width: 599px) {
+  .regist-title h3 {
+    font-size: 20px;
+  }
+
+  .regist-title p {
+    font-size: 15px;
+  }
+
+  .regist-twitter-icon {
+    width: 80%;
+    font-size: 13px;
+  }
+
+  .regist-facebook-icon {
+    width: 80%;
+    font-size: 13px;
+  }
+
+  .regist-google-icon {
+    width: 80%;
+    font-size: 13px;
+  }
+
+  .regist-select {
+    font-size: 10px;
+  }
+
+  .regist-border {
+    width: 100px;
+  }
+
+  .regist-field input {
+    width: 80%;
+    padding: 1px;
+  }
+
+  .regist-btn {
+    width: 80%;
+  }
+
+  .regist-attention p {
+    width: 80%;
+  }
+
+  .regist-session-box {
+    font-size: 10px;
+  }
+
+  .error-message {
+    font-size: 10px;
+  }
+}
+
+@media(max-width: 320px) {
+  .regist-main {
+    height: 110vh;
+  }
+
+  .regist-title h3 {
+    font-size: 15px;
+  }
+
+  .regist-title p {
+    font-size: 10px;
+  }
+
+  .regist-twitter-icon {
+    font-size: 10px;
+  }
+
+  .regist-facebook-icon {
+    font-size: 10px;
+  }
+
+  .regist-google-icon {
+    font-size: 10px;
+  }
+
+  .regist-border {
+    width: 80px;
+  }
+
+  .regist-field input {
+    padding: 0px;
+  }
+
+  .regist-field input::placeholder {
+    font-size: 10px;
+  }
+
+  .regist-btn {
+    font-size: 10px;
+  }
+
+  .regist-attention p {
+    font-size: 5px;
+  }
+
+  .regist-session-box {
+    font-size: 2px;
+  }
+
+  .error-flash-message {
+    text-align: center;
+  }
+
+  .error-message {
+    font-size: 5px;
+  }
+}
