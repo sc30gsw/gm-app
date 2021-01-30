@@ -19,7 +19,7 @@
           <div class="dropdown-border"></div>
           <%= link_to 'プロフィールを編集する', new_user_session_path, class: "dropdown-item" %>
           <div class="dropdown-border"></div>
-          <a class="dropdown-item" href="#">ログアウト</a>
+          <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "dropdown-item" %>
         </div>
       </div>
       <%= image_tag 'https://cdn2.aprico-media.com/production/imgs/images/000/008/511/original.jpg?1505866639', class: "df-user-icon" %>
