@@ -1,0 +1,176 @@
+.regist-main {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f0f0;
+}
+
+.regist-title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.regist-title h3 {
+  font-size: 30px;
+}
+
+.regist-second-text {
+  font-size: 20px;
+  color: grey;
+  width: 100%;
+}
+
+.regist-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  width: 70%;
+}
+
+.regist-content i {
+  margin-right: 5px;
+}
+
+.regist-twitter-icon {
+  background-color: #1da1f2;
+  text-align: center;
+  width: 50%;
+  padding: 10px;
+  border-radius: 3px;
+  color: #fff;
+  font-weight: bold;
+  margin: 5px 0;
+} 
+
+.regist-twitter-icon:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.regist-facebook-icon {
+  background-color: #1877f2;
+  text-align: center;
+  width: 50%;
+  padding: 10px;
+  border-radius: 3px;
+  color: #fff;
+  font-weight: bold;
+  margin: 5px 0;
+}
+
+.regist-facebook-icon:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.regist-google-icon {
+  background-color: #dd4b39;
+  text-align: center;
+  width: 50%;
+  padding: 10px;
+  border-radius: 3px;
+  color: #fff;
+  font-weight: bold;
+  margin: 5px 0;
+}
+
+.regist-google-icon:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.regist-border-select {
+  display: flex;
+  justify-content: center;
+  margin: 10px 0;
+}
+
+.regist-select {
+  font-weight: bold;
+  color: grey;
+  font-size: 15px;
+  margin: 0 10px;
+}
+
+.regist-border {
+  background-color: #dbdbdb;
+  height: 1px;
+  width: 120px;
+  margin-top: 10px;
+}
+
+.registration {
+  width: 70%;
+  background-color: #fff;
+}
+
+.error-flash-message {
+  display: flex;
+  justify-content: center;
+  color: red;
+}
+
+.regist-field {
+  display: flex;
+  justify-content: center;
+}
+
+.regist-field input {
+  width: 50%;
+  margin: 5px 0;
+  padding: 5px;
+}
+
+.field_with_errors {
+  display: contents;
+}
+
+.regist-submit {
+  display: flex;
+  justify-content: center;
+}
+
+.regist-btn {
+  width: 50%;
+  margin-top: 10px;
+  padding: 5px;
+  background-color: #1da1f2;
+  border-radius: 3px;
+  border: #fff;
+  color: #fff;
+  font-weight: bold;
+}
+
+.regist-btn:hover {
+  opacity: 0.7;
+}
+
+.regist-attention {
+  display: flex;
+  justify-content: center;
+}
+
+.regist-attention p {
+  width: 50%;
+  margin-top: 10px;
+  font-size: 12px;
+  color: grey;
+}
+
+.regist-attention b:hover {
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.regist-session-box {
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+}

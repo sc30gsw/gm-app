@@ -1,29 +1,67 @@
-<h2>Sign up</h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<div class="regist-main">
+  <div class="regist-content">
+    <div class="regist-title">
+      <h3 class="regist-first-text">GMM</h3>
+      <p class="regist-second-text">登録して偉人に会いに行こう</p>
+    </div>
+    <%# <%= link_to user_twitter_omniauth_authorize_path, method: :post, class: "twitter-regist" do %>  
+      <div class="regist-twitter-icon">
+        <i class="fab fa-twitter"></i>
+        Twitterアカウントで登録
+      </div>
+    <%# <% end %>  
+    <%# <%= link_to user_facebook_omniauth_authorize_path, method: :post, class: "facebook-regist" do %>  
+      <div class="regist-facebook-icon">
+        <i class="fab fa-facebook-square"></i>
+        Facebookアカウントで登録
+      </div>
+    <%# <% end %> 
+      <div class="regist-google-icon">
+        <i class="fab fa-google"></i>
+        Googleアカウントで登録
+      </div>
   </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+  <div class="registration">
+    <div class="regist-border-select">
+      <div class="regist-border"></div>
+      <div class="regist-select">または</div>
+      <div class="regist-border"></div>
+    </div>
+    <%= form_with(model: @user, url: user_registration_path, method: :post, local: true) do |f| %>
+      <div class="error-flash-message">
+        <%= render "devise/shared/error_messages", model: @user %>
+      </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+      <div class="regist-field">
+        <%= f.text_field :nickname, autofocus: true, placeholder: "ユーザー名", class: "user-regist" %>
+      </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
+      <div class="regist-field">
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス", class: "user-regist" %>
+      </div>
 
-<%= render "devise/shared/links" %>
+      <% if @sns_id.present? %>
+        <%= hidden_field_tag :sns_auth, true %>
+      <% else %>
+        <div class="regist-field">
+          <%= f.password_field :password, autocomplete: "new-password", placeholder: "パスワード", class: "user-regist" %>
+        </div>
+
+        <div class="regist-field">
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "パスワード(確認)", class: "user-regist" %>
+        </div>
+      <% end %>
+
+      <div class="regist-submit">
+        <%= f.submit "登録する" , class: "regist-btn" %>
+      </div>
+      <div class="regist-attention">
+        <p>登録することで、GMMの<b>利用規約</b>、<b>データに関するポリシー</b>、<b>Cookieポリシー</b>に同意するものとします。</p>
+      </div>
+    <% end %>
+    <div class="regist-session-box">
+      アカウントをお持ちですか? <%= link_to 'ログインする', new_user_session_path, class: "regist-session" %>
+    </div>
+  </div>
+</div>
