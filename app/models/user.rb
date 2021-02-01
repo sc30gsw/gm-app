@@ -8,4 +8,10 @@ class User < ApplicationRecord
     validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{6,100}+\z/i, message: 'は英数字6文字以上で入力してください' }
     validates :nickname
   end
+
+  def self.guest
+    find_or_create_by!(email: 'guest@example.com', nickname: 'guest') do |user|
+      user.password = ENV['USER_PASSWORD']
+    end
+  end
 end

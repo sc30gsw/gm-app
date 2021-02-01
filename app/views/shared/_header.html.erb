@@ -46,7 +46,7 @@
           <div class="dropdown-border"></div>
           <%= link_to 'ログインする', new_user_session_path, class: "dropdown-item" %>
           <div class="dropdown-border"></div>
-          <a class="dropdown-item" href="#">ゲストログイン</a>
+          <%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post, class: "dropdown-item" %>
         </div>
       </div>
       <%= image_tag 'https://cdn2.aprico-media.com/production/imgs/images/000/008/511/original.jpg?1505866639', class: "df-user-icon" %>
