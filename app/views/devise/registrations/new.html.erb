@@ -1,25 +1,27 @@
 <div class="regist-main">
   <div class="regist-content">
     <div class="regist-title">
-      <h3 class="regist-first-text">GMM</h3>
+      <%= link_to 'GMM', root_path, class: "regist-first-text" %>
       <p class="regist-second-text">登録して偉人に会いに行こう</p>
     </div>
-    <%# <%= link_to user_twitter_omniauth_authorize_path, method: :post, class: "twitter-regist" do %>  
-      <div class="regist-twitter-icon">
+    <div class="regist-twitter-icon">
+      <%= link_to user_twitter_omniauth_authorize_path, method: :post do %>
         <i class="fab fa-twitter"></i>
         Twitterアカウントで登録
-      </div>
-    <%# <% end %>  
-    <%# <%= link_to user_facebook_omniauth_authorize_path, method: :post, class: "facebook-regist" do %>  
-      <div class="regist-facebook-icon">
+      <% end %>
+    </div>
+    <div class="regist-facebook-icon">
+      <%= link_to user_facebook_omniauth_authorize_path, method: :post do %>
         <i class="fab fa-facebook-square"></i>
         Facebookアカウントで登録
-      </div>
-    <%# <% end %> 
-      <div class="regist-google-icon">
+      <% end %>
+    </div>
+    <div class="regist-google-icon">
+      <%= link_to user_google_oauth2_omniauth_authorize_path, method: :post do %>
         <i class="fab fa-google"></i>
         Googleアカウントで登録
-      </div>
+      <% end %>
+    </div>
   </div>
 
   <div class="registration">
