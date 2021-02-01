@@ -4,28 +4,24 @@
       <h3 class="regist-first-text">GMM</h3>
       <p class="regist-second-text">登録して偉人に会いに行こう</p>
     </div>
-    <%# <%= link_to user_twitter_omniauth_authorize_path, method: :post, class: "twitter-regist" do %>  
-      <div class="regist-twitter-icon">
-        <%= link_to user_twitter_omniauth_authorize_path, method: :post do %>
-          <i class="fab fa-twitter"></i>
-          Twitterアカウントで登録
-        <% end %>
-      </div>
-    <%# <% end %>  
-    <%# <%= link_to user_facebook_omniauth_authorize_path, method: :post, class: "facebook-regist" do %>  
-      <div class="regist-facebook-icon">
-        <%= link_to user_facebook_omniauth_authorize_path, method: :post do %>
-          <i class="fab fa-facebook-square"></i>
-          Facebookアカウントで登録
-        <% end %>
-      </div>
-    <%# <% end %> 
-      <div class="regist-google-icon">
-        <%= link_to user_google_oauth2_omniauth_authorize_path, method: :post do %>
-          <i class="fab fa-google"></i>
-          Googleアカウントで登録
-        <% end %>
-      </div>
+    <div class="regist-twitter-icon">
+      <%= link_to user_twitter_omniauth_authorize_path, method: :post do %>
+        <i class="fab fa-twitter"></i>
+        Twitterアカウントで登録
+      <% end %>
+    </div>
+    <div class="regist-facebook-icon">
+      <%= link_to user_facebook_omniauth_authorize_path, method: :post do %>
+        <i class="fab fa-facebook-square"></i>
+        Facebookアカウントで登録
+      <% end %>
+    </div>
+    <div class="regist-google-icon">
+      <%= link_to user_google_oauth2_omniauth_authorize_path, method: :post do %>
+        <i class="fab fa-google"></i>
+        Googleアカウントで登録
+      <% end %>
+    </div>
   </div>
 
   <div class="registration">
