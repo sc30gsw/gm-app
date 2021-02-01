@@ -15,8 +15,16 @@
   align-items: center;
 }
 
-.regist-title h3 {
-  font-size: 30px;
+.regist-first-text {
+  font-size: 24px;
+  color: black;
+  text-decoration: none;
+}
+
+.regist-first-text:hover {
+  text-decoration: none;
+  color: black;
+  opacity: 0.7;
 }
 
 .regist-second-text {
@@ -197,7 +205,7 @@
 }
 
 @media(max-width: 599px) {
-  .regist-title h3 {
+  .regist-first-text {
     font-size: 20px;
   }
 
@@ -255,7 +263,7 @@
     height: 110vh;
   }
 
-  .regist-title h3 {
+  .regist-first-text {
     font-size: 15px;
   }
 
