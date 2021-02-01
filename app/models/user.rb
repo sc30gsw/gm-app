@@ -9,6 +9,8 @@ class User < ApplicationRecord
     validates :nickname
   end
 
+  has_many :sns_credentials
+
   def self.guest
     find_or_create_by!(email: 'guest@example.com', nickname: 'guest') do |user|
       user.password = ENV['USER_PASSWORD']
