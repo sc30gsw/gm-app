@@ -1,7 +1,7 @@
 <% if user_signed_in? %>
   <div class="header-left">
     <div class="header-title">
-      <h3 class="header-title-text">GMM</h3>
+      <%= link_to 'GMM', root_path, class: "header-title-text" %>
     </div>
     <div class="header-search-box">
       <input type="search" placeholder="検索を始める" class="header-search-input">
@@ -17,7 +17,7 @@
         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
           <%= link_to 'マイページへ行く', user_path(current_user.id), class:"dropdown-item" %>
           <div class="dropdown-border"></div>
-          <%= link_to 'プロフィールを編集する', new_user_session_path, class: "dropdown-item" %>
+          <%= link_to '投稿する', new_user_session_path, class: "dropdown-item" %>
           <div class="dropdown-border"></div>
           <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "dropdown-item" %>
         </div>
@@ -28,7 +28,7 @@
 <% else %>
   <div class="header-left">
     <div class="header-title">
-      <h3 class="header-title-text">GMM</h3>
+      <%= link_to 'GMM', root_path, class: "header-title-text" %>
     </div>
     <div class="header-search-box">
       <input type="search" placeholder="検索を始める" class="header-search-input">

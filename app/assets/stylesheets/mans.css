@@ -14,8 +14,16 @@
   align-items: center;
 }
 
-.header-title {
+.header-title-text {
+  font-size: 24px;
+  font-weight: bold;
   color: red;
+}
+
+.header-title-text:hover {
+  color: red;
+  text-decoration: none;
+  opacity: 0.7;
 }
 
 .header-search-box {
