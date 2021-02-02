@@ -1,0 +1,81 @@
+<header class="header">
+  <%= render 'shared/header' %>
+</header>
+<div class="user-main">
+  <div class="user-card">
+    <div class="user-main-icon">
+      <%= image_tag 'https://cdn2.aprico-media.com/production/imgs/images/000/008/511/original.jpg?1505866639', class: "card-user-icon" %>
+    </div>
+    <div class="user-nickname">
+      <%= @user.nickname %>
+    </div>
+    <div class="user-profile">
+      よろしくおねがいします。
+    </div>
+    <div class="user-website">
+      <a href="#">https://www.test.com/</a>
+    </div>
+    <div class="user-follow-contents">
+      <div class="user-follow-counts">
+        10 Following
+      </div>
+      <div class="user-follower-counts">
+        20 Followers
+      </div>
+    </div>
+  </div>
+  <div class="profile-edit-btn">
+    <a href="#" class="profile-btn">プロフィールを編集する</a>
+  </div>
+</div>
+<div class="user-mans-contents">
+  <div class="user-mans-status">
+    <div class="user-status">
+      Tweets
+    </div>
+    <div class="user-status">
+      <a href="#" class="user-status-likes">likes</a>
+    </div>
+    <div class="user-status">
+      <a href="#" class="user-status-comments">Comments</a>
+    </div>
+  </div>
+</div>
+<div class="user-list-mans-contents">
+  <li class="item-list">
+    <div class="user-list-profile-content">
+      <%= link_to user_path(@user.id) do %>
+        <%= image_tag 'https://cdn2.aprico-media.com/production/imgs/images/000/008/511/original.jpg?1505866639', class: "list-avater" %>
+        <span class="list-username"><%= @user.nickname %><span>
+      <% end %>
+    </div>
+    <div class="list-main-content">
+      <div class="list-title-content">
+        <p><a href="#">text</a></p>
+      </div>
+      <div class="list-cate-tag-content">
+        <div class="list-category">
+          幕末
+        </div>
+        <div class="list-tag">
+          <i class="fas fa-tags list-tag-icon"></i><p>#幕末 #新選組</p>
+        </div>
+      </div>
+      <div class="list-detail-content">
+        <div class="list-detail">
+          <div class="list-like-comment">
+            <div class="list-like-count">
+              <i class="far fa-heart list-like-icon"></i>30
+            </div>
+            <div class="list-comment-count">
+              <i class="far fa-comment list-commnet-icon"></i>30
+            </div>
+          </div>
+          <div class="list-created">
+            2ヶ月前
+          </div>
+        </div>
+      </div>
+    </div>
+  </li>
+</div>
