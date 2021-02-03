@@ -5,17 +5,23 @@
   <div class="user-main">
     <div class="user-card">
       <div class="user-main-icon">
-        <%= image_tag 'https://cdn2.aprico-media.com/production/imgs/images/000/008/511/original.jpg?1505866639', class: "card-user-icon" %>
+        <% if @user.intro.present? %>
+          <%= image_tag @user.intro.image, class: "card-user-icon", alt: "ユーザーアイコン" %>
+        <% else %>
+          <%= image_tag 'https://cdn2.aprico-media.com/production/imgs/images/000/008/511/original.jpg?1505866639', class: "card-user-icon", alt: 'ユーザーアイコン' %>
+        <% end %>
       </div>
       <div class="user-nickname">
         <%= @user.nickname %>
       </div>
-      <div class="user-profile">
-        よろしくおねがいします。
-      </div>
-      <div class="user-website">
-        <a href="#">https://www.test.com/</a>
-      </div>
+      <% if @user.intro.present?%>
+        <div class="user-profile">
+          <%= @user.intro.profile %>
+        </div>
+        <div class="user-website">
+          <a href="#"><%= @user.intro.website %></a>
+        </div>
+      <% end %>
       <div class="user-follow-contents">
         <div class="user-follow-counts">
           10 Following
@@ -55,7 +61,11 @@
     <li class="item-list">
       <div class="user-list-profile-content">
         <%= link_to user_path(@user.id) do %>
-          <%= image_tag 'https://cdn2.aprico-media.com/production/imgs/images/000/008/511/original.jpg?1505866639', class: "list-avater" %>
+          <% if @user.intro.present? %>
+            <%= image_tag @user.intro.image, class: "list-avater", alt: "ユーザーアイコン" %>
+          <% else %>
+            <%= image_tag 'https://cdn2.aprico-media.com/production/imgs/images/000/008/511/original.jpg?1505866639', class: "list-avater", alt: 'ユーザーアイコン' %>
+          <% end %>
           <span class="list-username"><%= @user.nickname %></span>
         <% end %>
       </div>
