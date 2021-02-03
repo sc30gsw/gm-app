@@ -139,3 +139,62 @@
   border-radius: 70px;
   border: 1px solid grey;
 }
+
+@media(max-width: 599px) {
+  .profile-form {
+    width: 90vw;
+    margin: 7vh 5vw;
+  }
+
+  .intro-field-parent {
+    width: 80vw;
+  }
+
+  .intro-field-child {
+    width: 80vw;
+  }
+
+  .intro-input {
+    width: 100%;
+  }
+
+  .profile-field-parent {
+    width: 80vw;
+  }
+
+  .profile-field-child {
+    width: 100%;
+  }
+
+  .profile-input {
+    width: 100%;
+  }
+
+  .profile-image-parent {
+    width: 80vw;
+  }
+
+  .profile-image-child {
+    width: 80vw;
+  }
+
+  .image-list {
+    width: 70px;
+    height: 60px;
+  }
+
+  .image-camera {
+    font-size: 20px;
+    left: 18px;
+    top: 18px;
+  }
+
+  .preview-icon {
+    width: 70px;
+    height: 60px;
+  }
+
+  .profile-submit {
+    width: 80vw;
+  }
+}
