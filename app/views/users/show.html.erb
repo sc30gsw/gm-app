@@ -25,9 +25,18 @@
         </div>
       </div>
     </div>
-    <div class="profile-edit-btn">
-      <a href="#" class="profile-btn">プロフィールを編集する</a>
-    </div>
+    <% unless @user.intro.present? %>
+      <% if current_user.id == @user.id %>
+        <div class="profile-edit-btn">
+          <%= link_to 'プロフィールを編集する', new_intro_path, class: "profile-btn" %>
+        </div>
+      <% end %>
+    <% end %>
+    <% if current_user.id == @user.id && @user.intro.present? %>
+      <div class="profile-edit-btn">
+        <%= link_to 'プロフィールを編集する',  edit_intro_path(@user.intro.id), class: "profile-btn" %>
+      </div>
+    <% end %>
   </div>
   <div class="user-mans-contents">
     <div class="user-mans-status">
