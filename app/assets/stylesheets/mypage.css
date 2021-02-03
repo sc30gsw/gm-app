@@ -1,0 +1,165 @@
+.mypage-main {
+  background-color: #f0f0f0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: calc(100vh - 100px);
+}
+
+.user-main {
+  margin-top: 10px;
+  width: 97%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #fff;
+}
+
+.user-card {
+  height: 300px;
+  width: 60vw;
+  margin-top: 5px;
+  border-right: 1px solid #ccc;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card-user-icon {
+  height: 60px;
+  width: 60px;
+  object-fit: cover;
+  border: 1px solid #fff;
+  border-radius: 70px;
+  margin-top: 10px;
+}
+
+.user-nickname {
+  height: 37.5px;
+  width: 90%;
+  margin: 5px;
+  font-size: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-profile {
+  word-break: break-all;
+  height: 37.5px;
+  width: 90%;
+  margin: 5px;
+  font-size: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-website {
+  height: 37.5px;
+  width: 90%;
+  margin: 5px;
+  font-size: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-follow-contents {
+  height: 37.5px;
+  width: 80%;
+  margin: 5px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.user-follow-counts:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.user-follower-counts:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.profile-edit-btn {
+  width: 35vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 5px;
+  margin: 15px 0;
+}
+
+.profile-btn {
+  display: block;
+  padding: 10px 20px;
+  border: 1px solid red;
+  border-radius: 20px;
+  font-weight: bold;
+  color: red;
+}
+
+.profile-btn:hover {
+  text-decoration: none;
+  color: red;
+  background-color: rgb(255, 190, 190);
+  opacity: 0.7;
+}
+
+.user-mans-contents {
+  width: 97%;
+  margin-top: 10px;
+  background-color: #fff;
+}
+
+.user-mans-status {
+  display: flex;
+  justify-content: space-around;
+  padding: 20px 0;
+  font-weight: bold;
+}
+
+.user-status a {
+  text-decoration: none;
+  color: #000;
+}
+
+.user-status a:hover {
+  text-decoration: none;
+  color: #000;
+  opacity: 0.7;
+}
+
+.user-list-mans-contents {
+  width: 97%;
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+.user-list-profile-content a {
+  width: 80px;
+  box-sizing: border-box;
+  padding: 0 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media(max-width: 599px) {
+  .user-main {
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .user-card {
+    border-right: none;
+  }
+
+  .profile-btn {
+    margin-right: 10px;
+    font-size: 10px;
+    padding: 10px 3px;
+  }
+}
