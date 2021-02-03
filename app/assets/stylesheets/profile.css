@@ -115,3 +115,27 @@
 .profile-submit-btn:hover {
   opacity: 0.7;
 }
+
+.image-list {
+  width: 100px;
+  height: 90px;
+  border-radius: 70px;
+  border: 1px solid grey;
+  position: relative;
+}
+
+.image-camera {
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  font-size: 35px;
+  color: lightgray;
+  opacity: 0.2;
+}
+
+.preview-icon {
+  width: 100px;
+  height: 90px;
+  border-radius: 70px;
+  border: 1px solid grey;
+}

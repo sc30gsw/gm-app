@@ -20,7 +20,9 @@
           <span>プロフィール画像</span>
           <%= f.file_field :image, class: "profile-image" %>
         </div>
-        <div id='image-list' class="image-list"></div>
+        <div id='image-list' class="image-list">
+          <i class="fas fa-camera image-camera"></i>
+        </div>  
       </div>
       <div class="profile-submit">
         <%= f.submit 'プロフィールを編集する', class: "profile-submit-btn" %>
