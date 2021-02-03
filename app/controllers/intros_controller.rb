@@ -31,6 +31,10 @@ class IntrosController < ApplicationController
 
   private
 
+  def intro_params
+    params.require(:intro).permit(:profile, :website, :image).merge(user_id: current_user.id)
+  end
+
   def set_intro
     @intro = Intro.find(params[:id])
   end
