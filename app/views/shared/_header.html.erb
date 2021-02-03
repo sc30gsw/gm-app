@@ -1,7 +1,7 @@
 <% if user_signed_in? %>
   <div class="header-left">
     <div class="header-title">
-      <h3 class="header-title-text">GMM</h3>
+      <%= link_to 'GMM', root_path, class: "header-title-text" %>
     </div>
     <div class="header-search-box">
       <input type="search" placeholder="検索を始める" class="header-search-input">
@@ -9,6 +9,13 @@
     </div>
   </div>
   <div class="header-right">
+    <div class="header-opt-box">
+      <%= link_to root_path, class: "header-opt-link" do %>
+        <i class="fas fa-home"></i>
+      <% end %>
+      <i class="fas fa-sort-numeric-down"></i>
+      <i class="far fa-bell"></i>
+    </div>
     <div class="header-user-box">
       <div class="header-dropdown">
         <a class="btn-header-drop" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -17,18 +24,22 @@
         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
           <%= link_to 'マイページへ行く', user_path(current_user.id), class:"dropdown-item" %>
           <div class="dropdown-border"></div>
-          <%= link_to 'プロフィールを編集する', new_user_session_path, class: "dropdown-item" %>
+          <%= link_to '投稿する', new_user_session_path, class: "dropdown-item" %>
           <div class="dropdown-border"></div>
           <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "dropdown-item" %>
         </div>
       </div>
-      <%= image_tag 'https://cdn2.aprico-media.com/production/imgs/images/000/008/511/original.jpg?1505866639', class: "df-user-icon" %>
+      <% if current_user.intro.present? %>
+        <%= image_tag current_user.intro.image, class: "df-user-icon", alt: "ユーザーアイコン" %>
+      <% else %>
+        <%= image_tag 'https://cdn2.aprico-media.com/production/imgs/images/000/008/511/original.jpg?1505866639', class: "df-user-icon", alt: 'ユーザーアイコン' %>
+      <% end %>
     </div>
   </div>
 <% else %>
   <div class="header-left">
     <div class="header-title">
-      <h3 class="header-title-text">GMM</h3>
+      <%= link_to 'GMM', root_path, class: "header-title-text" %>
     </div>
     <div class="header-search-box">
       <input type="search" placeholder="検索を始める" class="header-search-input">

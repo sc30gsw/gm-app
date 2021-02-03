@@ -9,6 +9,7 @@ class User < ApplicationRecord
     validates :nickname
   end
 
+  has_one :intro
   has_many :sns_credentials
 
   def self.guest
