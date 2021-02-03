@@ -1,0 +1,30 @@
+<header class="header">
+  <%= render 'shared/header' %>
+</header>
+<div class="profile-form-main">
+  <div class="profile-form">
+    <span class="profile-form-title"><%= current_user.nickname %></span>
+    <%= form_with(model: @intro, url:  intros_path, method: :post, local: true) do |f| %>
+      <div class="intro-field-parent">
+        <div class="intro-field-child">
+          <%= f.text_area :profile, class: "intro-input", placeholder: '自己紹介(120文字まで)', maxlength: 120 %>
+        </div>
+      </div>
+      <div class="profile-field-parent">
+        <div class="profile-field-child">
+          <%= f.text_field :website, class: "profile-input", placeholder: 'サイト/ブログ' %>
+        </div>
+      </div>
+      <div class="profile-image-parent">
+        <div class="profile-image-child">
+          <span>プロフィール画像</span>
+          <%= f.file_field :image, class: "profile-image" %>
+        </div>
+        <div id='image-list' class="image-list"></div>
+      </div>
+      <div class="profile-submit">
+        <%= f.submit 'プロフィールを編集する', class: "profile-submit-btn" %>
+      </div>
+    <% end %>
+  </div>
+</div>
