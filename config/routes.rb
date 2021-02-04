@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   root to: 'mans#index'
   resources :users, only: [:show]
   resources :intros, only: [:new, :create, :edit, :update]
+  resources :mans, only: [:new, :create]
 end
