@@ -8,7 +8,7 @@ class Man < ApplicationRecord
   with_options presence: true do
     validates :name
     validates :category_id
-    validates :address
+    validates :adress
     validates :latitude
     validates :longtude
   end
