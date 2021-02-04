@@ -11,6 +11,7 @@ class User < ApplicationRecord
 
   has_one :intro
   has_many :sns_credentials
+  has_many :mans
 
   def self.guest
     find_or_create_by!(email: 'guest@example.com', nickname: 'guest') do |user|

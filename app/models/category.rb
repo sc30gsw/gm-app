@@ -29,5 +29,6 @@ class Category < ActiveHash::Base
     {id: 27, name: "現代"}
   ]
 
-  
+  include ActiveHash::Associations
+  has_many :mans
 end
