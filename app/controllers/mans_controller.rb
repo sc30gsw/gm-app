@@ -15,4 +15,10 @@ class MansController < ApplicationController
       render :new
     end
   end
+
+  private
+
+  def man_params
+    params.require(:man).permit(:name, :content, :category_id, :adress, :latitude, :longtude, :image).merge(user_id: current_user.id)
+  end
 end
