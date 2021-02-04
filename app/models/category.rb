@@ -1,7 +1,7 @@
 class Category < ActiveHash::Base
   self.data = [
     {id: 1, name: "--"},
-    {id: 2, name: "縄文時代"}
+    {id: 2, name: "縄文時代"},
     {id: 3, name: "弥生時代"},
     {id: 4, name: "古墳時代"},
     {id: 5, name: "飛鳥時代"},
@@ -14,19 +14,14 @@ class Category < ActiveHash::Base
     {id: 12, name: "明治時代"},
     {id: 13, name: "大正時代"},
     {id: 14, name: "昭和時代"},
-    {id: 15, name: "イタリア"},
-    {id: 16, name: "イギリス"},
-    {id: 17, name: "フランス"},
-    {id: 18, name: "スペイン"},
-    {id: 19, name: "ドイツ"},
-    {id: 20, name: "ロシア"},
-    {id: 21, name: "アメリカ"},
-    {id: 22, name: "トルコ"},
-    {id: 23, name: "エジプト"},
-    {id: 24, name: "インド"},
-    {id: 25, name: "中東"},
-    {id: 26, name: "中国"},
-    {id: 27, name: "現代"}
+    {id: 15, name: "ヨーロッパ"},
+    {id: 16, name: "北アメリカ"},
+    {id: 17, name: "南アメリカ"},
+    {id: 18, name: "中国"},
+    {id: 19, name: "東南アジア"},
+    {id: 20, name: "オセアニア"},
+    {id: 21, name: "アフリカ"},
+    {id: 22, name: "現代"}
   ]
 
   include ActiveHash::Associations
