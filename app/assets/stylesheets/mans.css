@@ -279,6 +279,10 @@
   margin-top: 10px;
 }
 
+.list-avater:hover {
+  opacity: 0.7;
+}
+
 .list-username {
   font-size: 12px;
   line-height: 13px;
@@ -340,6 +344,20 @@
   padding: 1px 5px;
   white-space: nowrap;
   background-color: red;
+}
+
+.list-category:hover {
+  opacity: 0.7;
+}
+
+.list-category a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.list-category a:hover {
+  color: #fff;
+  text-decoration: none;
 }
 
 .list-tag {
