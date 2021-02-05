@@ -1,5 +1,6 @@
 class MansController < ApplicationController
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :set_man, only: [:show]
 
   def index
     @mans = Man.includes(:user)
@@ -32,5 +33,9 @@ class MansController < ApplicationController
 
   def man_params
     params.require(:man).permit(:name, :content, :category_id, :address, :latitude, :longitude, :image).merge(user_id: current_user.id)
+  end
+
+  def set_man
+    @man = Man.find(params[:id])
   end
 end
