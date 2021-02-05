@@ -1,9 +1,9 @@
 FactoryBot.define do
   factory :man do
-    name {Faker::Name.name}
-    content {Faker::Lorem.sentence}
+    name { Faker::Name.name }
+    content { Faker::Lorem.sentence }
     category_id { 2 }
-    address {Faker::Address.name}
+    address { Faker::Address.name }
     latitude { 180 }
     longitude { 180 }
 

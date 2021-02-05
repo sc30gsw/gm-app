@@ -40,7 +40,7 @@ RSpec.describe Man, type: :model do
         @man.valid?
         expect(@man.errors.full_messages).to include('カテゴリーを選択してください')
       end
-      
+
       it 'addressが空だと保存できない' do
         @man.address = nil
         @man.valid?
