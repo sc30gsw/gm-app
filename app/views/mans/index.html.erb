@@ -33,114 +33,52 @@
       <h4>Trend</h4>
     </div>
     <div class="item-lists-box">
-      <li class="item-list">
-        <a href="#">
-          <div class="list-profile-content">
-            <%= image_tag 'https://cdn2.aprico-media.com/production/imgs/images/000/008/511/original.jpg?1505866639', class: "list-avater" %>
-            <span class="list-username">user<span>
-          </div>
-        </a>
-        <div class="list-main-content">
-          <div class="list-title-content">
-            <p><a href="#">text</a></p>
-          </div>
-          <div class="list-cate-tag-content">
-            <div class="list-category">
-              幕末
+      <% @man.each do |man| %>
+        <li class="item-list">
+          <%= link_to user_path(man.user_id) do %>
+            <div class="list-profile-content">
+              <% if man.user.intro.present? %>
+                <%= image_tag man.user.intro.image, class: "df-user-icon", alt: "ユーザーアイコン" %>
+              <% else %>
+                <%= image_tag 'https://cdn2.aprico-media.com/production/imgs/images/000/008/511/original.jpg?1505866639', class: "list-avater", alt: 'ユーザーアイコン' %>
+              <% end %>
+              <span class="list-username"><%= man.user.nickname %><span>
             </div>
-            <div class="list-tag">
-              <i class="fas fa-tags list-tag-icon"></i><p>#幕末 #新選組</p>
+          <% end %>
+          <div class="list-main-content">
+            <div class="list-title-content">
+              <p>
+                <%# <%= link_to man_path(man.id) do %> 
+                  <%= man.name %>
+                <%# <% end %> 
+              </p>
             </div>
-          </div>
-          <div class="list-detail-content">
-            <div class="list-detail">
-              <div class="list-like-comment">
-                <div class="list-like-count">
-                  <i class="far fa-heart list-like-icon"></i>30
-                </div>
-                <div class="list-comment-count">
-                  <i class="far fa-comment list-commnet-icon"></i>30
-                </div>
+            <div class="list-cate-tag-content">
+               <div class="list-category">
+                <%= man.category.name %>
               </div>
-              <div class="list-created">
-                2ヶ月前
+              <div class="list-tag">
+                <i class="fas fa-tags list-tag-icon"></i><p>#幕末 #新選組</p>
               </div>
             </div>
-          </div>
-        </div>
-      </li>
-      <li class="item-list">
-        <a href="#">
-          <div class="list-profile-content">
-            <%= image_tag 'https://cdn2.aprico-media.com/production/imgs/images/000/008/511/original.jpg?1505866639', class: "list-avater" %>
-            <span class="list-username">user<span>
-          </div>
-        </a>
-        <div class="list-main-content">
-          <div class="list-title-content">
-            <p><a href="#">text</a></p>
-          </div>
-          <div class="list-cate-tag-content">
-            <div class="list-category">
-              幕末
-            </div>
-            <div class="list-tag">
-              <i class="fas fa-tags list-tag-icon"></i><p>#幕末 #新選組</p>
-            </div>
-          </div>
-          <div class="list-detail-content">
-            <div class="list-detail">
-              <div class="list-like-comment">
-                <div class="list-like-count">
-                  <i class="far fa-heart list-like-icon"></i>30
+            <div class="list-detail-content">
+              <div class="list-detail">
+                <div class="list-like-comment">
+                  <div class="list-like-count">
+                    <i class="far fa-heart list-like-icon"></i>30
+                  </div>
+                  <div class="list-comment-count">
+                    <i class="far fa-comment list-commnet-icon"></i>30
+                  </div>
                 </div>
-                <div class="list-comment-count">
-                  <i class="far fa-comment list-commnet-icon"></i>30
+                <div class="list-created">
+                  <%= man.created_at.to_s(:datetime_jp) %>
                 </div>
               </div>
-              <div class="list-created">
-                2ヶ月前
-              </div>
             </div>
           </div>
-        </div>
-      </li>
-      <li class="item-list">
-        <a href="#">
-          <div class="list-profile-content">
-            <%= image_tag 'https://cdn2.aprico-media.com/production/imgs/images/000/008/511/original.jpg?1505866639', class: "list-avater" %>
-            <span class="list-username">user<span>
-          </div>
-        </a>
-        <div class="list-main-content">
-          <div class="list-title-content">
-            <p><a href="#">text</a></p>
-          </div>
-          <div class="list-cate-tag-content">
-            <div class="list-category">
-              幕末
-            </div>
-            <div class="list-tag">
-              <i class="fas fa-tags list-tag-icon"></i><p>#幕末 #新選組</p>
-            </div>
-          </div>
-          <div class="list-detail-content">
-            <div class="list-detail">
-              <div class="list-like-comment">
-                <div class="list-like-count">
-                  <i class="far fa-heart list-like-icon"></i>30
-                </div>
-                <div class="list-comment-count">
-                  <i class="far fa-comment list-commnet-icon"></i>30
-                </div>
-              </div>
-              <div class="list-created">
-                2ヶ月前
-              </div>
-            </div>
-          </div>
-        </div>
-      </li>
+        </li>
+      <% end %>
     </div>
   </div>
   <div class="top-right-contents">

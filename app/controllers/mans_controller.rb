@@ -2,6 +2,7 @@ class MansController < ApplicationController
   before_action :authenticate_user!, except: [:index]
 
   def index
+    @man = Man.includes(:user)
   end
 
   def new
