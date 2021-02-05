@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 2021_02_04_031758) do
     t.integer "category_id", null: false
     t.string "address", null: false
     t.float "latitude", null: false
-    t.float "longtude", null: false
+    t.float "longitude", null: false
     t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

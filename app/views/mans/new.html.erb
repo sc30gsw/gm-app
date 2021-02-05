@@ -12,34 +12,6 @@
           <%= f.text_field :name, placeholder: '偉人の名前・場所など', maxlength: 40, class: "new-capstion-input" %>
         </div>
         <div class="new-second-box">
-          <div class="second-box-first">
-            <ul class="new-category-lists">
-              <li>
-                <%= f.radio_button :category_id, '10', class: 'category-radio-btn' %>
-                <label>安土桃山</label>
-              </li>
-              <li>
-                <%= f.radio_button :category_id, '11', class: 'category-radio-btn' %>
-                <label>江戸</label>
-              </li>
-              <li>
-                <%= f.radio_button :category_id, '13', class: 'category-radio-btn' %>
-                <label>幕末</label>
-              </li>
-              <li>
-                <%= f.radio_button :category_id, '16', class: 'category-radio-btn' %>
-                <label>ヨーロッパ</label>
-              </li>
-              <li>
-                <%= f.radio_button :category_id, '17', class: 'category-radio-btn' %>
-                <label>北アメリカ</label>
-              </li>
-              <li>
-                <%= f.radio_button :category_id, '19', class: 'category-radio-btn' %>
-                <label>中国</label>
-              </li>
-            </ul>
-          </div>
           <div class="second-box-second">
             <div>カテゴリー一覧</div>
             <%= f.collection_select(:category_id, Category.all, :id, :name, {}, {class: 'category-select'}) %>
@@ -57,9 +29,9 @@
           <%= f.text_field :address, id: :address %>
           <input type="button" value="検索" onclick="codeAddress()">
           <div class="form">
-            <%= f.label :latitude %>
+            <%= f.label :latitude, "緯度" %>
             <%= f.hidden_field :latitude,:value =>"緯度", id: :latitude %>
-            <%= f.label :longitude %>
+            <%= f.label :longitude, "経度" %>
             <%= f.hidden_field :longitude,:value =>"経度", id: :longitude %>
           </div>
           <div id='map'></div>
@@ -110,6 +82,10 @@
         </div>
       </div>
       <div class="new-input-area">
+        <%= f.text_area :content, class: "new-content-input", placeholder: "テキストを入力", maxlength: 1000 %>
+      </div>
+      <div class="command-area">
+        <%= f.submit "投稿する", class: "output-btn" %>
       </div>
     </div>
   </div>

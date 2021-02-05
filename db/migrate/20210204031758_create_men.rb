@@ -6,7 +6,7 @@ class CreateMen < ActiveRecord::Migration[6.0]
       t.integer :category_id, null: false
       t.string :address, null: false
       t.float :latitude, null: false
-      t.float :longtude, null: false
+      t.float :longitude, null: false
       t.references :user, foreign_key: true
       t.timestamps
     end

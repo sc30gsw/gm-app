@@ -13,6 +13,6 @@ class Man < ApplicationRecord
     validates :category_id
     validates :address
     validates :latitude
-    validates :longtude
+    validates :longitude
   end
 end

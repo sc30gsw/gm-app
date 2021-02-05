@@ -12,7 +12,7 @@ class MansController < ApplicationController
     @man = Man.new(man_params)
     if @man.valid?
       @man.save
-      redirect_to :root_path
+      redirect_to root_path
     else
       render :new
     end
@@ -21,6 +21,6 @@ class MansController < ApplicationController
   private
 
   def man_params
-    params.require(:man).permit(:name, :content, :category_id, :adress, :latitude, :longtude, :image).merge(user_id: current_user.id)
+    params.require(:man).permit(:name, :content, :category_id, :address, :latitude, :longitude, :image).merge(user_id: current_user.id)
   end
 end
