@@ -1,0 +1,90 @@
+<header class="header">
+  <%= render 'shared/header' %>
+</header>
+<%= form_with(model: @man, url: mans_path, method: :post, local: true) do |f| %>
+  <div class="new-main">
+    <div class="new-content">
+      <div class="error-flash-message">
+        <%= render 'shared/error_messages', model: @man %>
+      </div>
+      <div class="new-caption-area">
+        <div class="new-first-box">
+          <%= f.text_field :name, placeholder: '偉人の名前・場所など', maxlength: 40, class: "new-caption-input" %>
+        </div>
+        <div class="new-second-box">
+          <div class="second-box-left">
+            <label>カテゴリー一覧</label>
+            <%= f.collection_select(:category_id, Category.all, :id, :name, {}, {class: 'category-select'}) %>
+          </div>
+          <div class="second-box-right">
+            <input type="text" class="new-caption-input" placeholder="#ハッシュタグ">
+          </div>
+        </div>
+        <div class="new-third-box">
+          <div class="map-form">
+            <div class="map-search-box">
+              <%= f.label :address, "検索" %>
+              <%= f.text_field :address, id: :address, class: "input-map-search" %>
+              <input type="button" value="&#xf002;" class="fas header-search-icon map-search-btn" onclick="codeAddress()" >
+            </div>
+            <div class="map-opt">
+              <%= f.label :latitude, "緯度" %>
+              <%= f.hidden_field :latitude,:value =>"緯度", id: :latitude %>
+              <%= f.label :longitude, "経度" %>
+              <%= f.hidden_field :longitude,:value =>"経度", id: :longitude %>
+            </div>
+          </div>
+          <div id='map' class="map"></div>
+          <script>
+            let map
+            let geocoder
+            let marker
+
+            function initMap() {
+              geocoder = new google.maps.Geocoder()
+              // デフォルト位置は東京
+              map = new google.maps.Map(document.getElementById('map'), {
+                center: {
+                  lat: 35.681,
+                  lng: 139.767
+                },
+                zoom: 12,
+              }); 
+            }
+            function codeAddress() {
+              let inputAddress = document.getElementById('address').value;
+            geocoder.geocode({
+                'address': inputAddress
+
+              }, function (results, status) {
+                if (status == 'OK') {
+                  map.setCenter(results[0].geometry.location);
+
+                  var marker = new google.maps.Marker({
+                    map: map,
+                    position: results[0].geometry.location
+                  });
+                }
+                else {
+                  alert('Geocode was not successful for the following reason: ' + status);
+                }
+              });
+            }
+          </script>
+          <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API'] %>&callback=initMap" async defer>
+          </script>
+        </div>
+      </div>
+      <div class="new-four-box">
+        <span>画像</span>
+        <%= f.file_field :image %>
+      </div>
+      <div class="new-input-area">
+        <%= f.text_area :content, class: "new-content-input", placeholder: "テキストを入力", maxlength: 1000 %>
+      </div>
+      <div class="command-area">
+        <%= f.submit "投稿する", class: "output-btn" %>
+      </div>
+    </div>
+  </div>
+<% end %>

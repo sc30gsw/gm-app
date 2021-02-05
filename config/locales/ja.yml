@@ -3,6 +3,12 @@ ja:
     attributes:
       user:
         nickname: ユーザー名
+      man:
+        name: 偉人の名前等
+        address: マップ検索
+        category_id: カテゴリー
+        latitude: 緯度
+        longitude: 経度
     errors:
       messages:
         record_invalid: "バリデーションに失敗しました: %{errors}"

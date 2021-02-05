@@ -17,9 +17,7 @@ class IntrosController < ApplicationController
   end
 
   def edit
-    unless current_user.id == @intro.user_id
-      redirect_to user_path(current_user.id)
-    end
+    redirect_to user_path(current_user.id) unless current_user.id == @intro.user_id
   end
 
   def update
@@ -39,5 +37,4 @@ class IntrosController < ApplicationController
   def set_intro
     @intro = Intro.find(params[:id])
   end
-
 end
