@@ -102,6 +102,11 @@
   border-radius: 70px;
 }
 
+.map {
+  width: 800px;
+  height: 700px;
+}
+
 .new-four-box {
   height: 50px;
   display: flex;
@@ -152,4 +157,49 @@
 
 .output-btn:hover {
   opacity: 0.7;
+}
+
+@media(max-width: 1024px) {
+  .map {
+    width: 600px;
+    height: 500px;
+  }
+}
+
+@media(max-width: 599px) {
+  .new-second-box {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .second-box-left {
+    width: 100%;
+  }
+
+  .second-box-right {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .map-search-box {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0;
+  }
+
+  .input-map-search {
+    width: 250px;
+  }
+
+  .map-opt label {
+    display: none;
+  }
+
+  .map {
+    width: 350px;
+    height: 350px;
+  }
 }

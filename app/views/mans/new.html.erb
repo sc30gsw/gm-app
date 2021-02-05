@@ -34,13 +34,7 @@
               <%= f.hidden_field :longitude,:value =>"経度", id: :longitude %>
             </div>
           </div>
-          <div id='map'></div>
-          <style>
-            #map {
-              height: 700px;
-              width: 800px;
-            }
-          </style>
+          <div id='map' class="map"></div>
           <script>
             let map
             let geocoder
