@@ -1,0 +1,155 @@
+.new-main {
+  background-color: #f0f0f0;
+  display: flex;
+  justify-content: center;
+  min-height: calc(100vh - 100px);
+}
+
+.new-content {
+  width: 100%;
+  margin: 10px 15px;
+  box-sizing: border-box;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+.new-caption-area {
+  width: 100%;
+}
+
+.new-first-box {
+  height: 40px;
+}
+
+.new-caption-input {
+  width: 100%;
+  height: 90%;
+  box-sizing: border-box;
+  padding: 5px 10px;
+  font-size: 14px;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+}
+
+.new-second-box {
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.second-box-left {
+  height: 100%;
+  width: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.second-box-left label {
+  margin-right: 10px;
+}
+
+.category-select {
+  padding: 5px;
+}
+
+.second-box-right {
+  height: 100%;
+  width: 70%;
+  display: flex;
+  align-items: center;
+}
+
+.new-third-box {
+  margin: 20px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.map-form {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.map-search-box {
+  margin-bottom: 10px;
+}
+
+.input-map-search {
+  padding: 3px;
+  width: 300px;
+}
+
+.map-search-btn {
+  outline-style: none;
+  background-color: red;
+  border: 1px solid #fff;
+  padding: 8px;
+  border-radius: 70px;
+}
+
+.map-search-btn:hover {
+  opacity: 0.7;
+}
+
+.map-search-btn:active {
+  border: 1px solid blue;
+  border-radius: 70px;
+}
+
+.new-four-box {
+  height: 50px;
+  display: flex;
+  align-items: flex-end;
+  font-size: 12px;
+}
+
+.new-four-box span {
+  margin: 0 20px;
+  font-size: 15px;
+  color: #fff;
+  padding: 1px 8px;
+  background-color: #4a4a4a;
+}
+
+.new-input-area {
+  width: 100%;
+  height: 20vh;
+  margin-top: 5px;
+}
+
+.new-content-input {
+  height: 100%;
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+}
+
+.command-area {
+  height: 70px;
+  width: 100%;
+  padding: 10px 0;
+  display: flex;
+  justify-content: flex-end;
+  background-color: #f0f0f0;
+}
+
+.output-btn {
+  color: #fff;
+  background-color: red;
+  border: 1px solid red;
+  border-radius: 3px;
+  margin-left: 10px;
+  margin-right: 5px;
+  padding: 3px 17px;
+}
+
+.output-btn:hover {
+  opacity: 0.7;
+}
