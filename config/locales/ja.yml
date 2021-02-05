@@ -3,6 +3,10 @@ ja:
     attributes:
       user:
         nickname: ユーザー名
+      man:
+        name: 偉人の名前等
+        address: マップ検索
+        category_id: カテゴリー
     errors:
       messages:
         record_invalid: "バリデーションに失敗しました: %{errors}"
@@ -207,6 +211,3 @@ ja:
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
     pm: 午後
-  place:
-    latitude: 緯度
-    longitude: 経度 
