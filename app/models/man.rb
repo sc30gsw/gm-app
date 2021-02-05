@@ -1,4 +1,7 @@
 class Man < ApplicationRecord
+  geocoded_by :address
+  after_validation :geocode
+
   extend ActiveHash::Associations::ActiveRecordExtensions
   has_one_attached :image
   belongs_to :user
@@ -8,7 +11,7 @@ class Man < ApplicationRecord
   with_options presence: true do
     validates :name
     validates :category_id
-    validates :adress
+    validates :address
     validates :latitude
     validates :longtude
   end
