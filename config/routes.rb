@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   resources :users, only: [:show]
   resources :intros, only: [:new, :create, :edit, :update]
   resources :mans, only: [:new, :create]
+  get '/mans/category/:id', to: 'mans#category'
 end
