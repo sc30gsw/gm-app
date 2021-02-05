@@ -44,56 +44,7 @@
     <div class="item-list-nav">
       <h4>Trend</h4>
     </div>
-    <div class="item-lists-box">
-      <% @man.each do |man| %>
-        <li class="item-list">
-          <%= link_to user_path(man.user_id) do %>
-            <div class="list-profile-content">
-              <% if man.user.intro.present? %>
-                <%= image_tag man.user.intro.image, class: "list-avater", alt: "ユーザーアイコン" %>
-              <% else %>
-                <%= image_tag 'https://cdn2.aprico-media.com/production/imgs/images/000/008/511/original.jpg?1505866639', class: "list-avater", alt: 'ユーザーアイコン' %>
-              <% end %>
-              <span class="list-username"><%= man.user.nickname %><span>
-            </div>
-          <% end %>
-          <div class="list-main-content">
-            <div class="list-title-content">
-              <p>
-                <%# <%= link_to man_path(man.id) do %> 
-                  <%= man.name %>
-                <%# <% end %> 
-              </p>
-            </div>
-            <div class="list-cate-tag-content">
-               <div class="list-category">
-                <%= link_to "/mans/category/#{man.category_id}" do %>
-                  <%= man.category.name %>
-                <% end %>
-              </div>
-              <div class="list-tag">
-                <i class="fas fa-tags list-tag-icon"></i><p>#幕末 #新選組</p>
-              </div>
-            </div>
-            <div class="list-detail-content">
-              <div class="list-detail">
-                <div class="list-like-comment">
-                  <div class="list-like-count">
-                    <i class="far fa-heart list-like-icon"></i>30
-                  </div>
-                  <div class="list-comment-count">
-                    <i class="far fa-comment list-commnet-icon"></i>30
-                  </div>
-                </div>
-                <div class="list-created">
-                  <%= man.created_at.to_s(:datetime_jp) %>
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-      <% end %>
-    </div>
+    <%= render 'shared/mans' %>
   </div>
   <div class="top-right-contents">
     <div class="city-name">
@@ -155,40 +106,5 @@
   </div>
 </main>
 <footer class="footer">
-  <div class="footer-upper-contents">
-    <%= link_to "GMM", root_path, class: "footer-title-text" %>
-    <div class="footer-list-contents">
-      <ul class="footer-lists">
-        <h4 class="footer-list-title">Product</h4>
-        <li class="footer-list-item"><a href="#">機能</a></li>
-        <li class="footer-list-item"><a href="#">セキュリティ</a></li>
-        <li class="footer-list-item"><a href="#">リソース</a></li>
-        <li class="footer-list-item"><a href="#">ストーリー</a></li>
-      </ul>
-       <ul class="footer-lists">
-        <h4 class="footer-list-title">Support</h4>
-        <li class="footer-list-item"><a href="#">ヘルプ</a></li>
-        <li class="footer-list-item"><a href="#">お知らせ</a></li>
-        <li class="footer-list-item"><a href="#">お問い合わせ</a></li>
-        <li class="footer-list-item"><a href="#">ご意見</a></li>
-      </ul>
-      <ul class="footer-lists">
-        <h4 class="footer-list-title">Company</h4>
-        <li class="footer-list-item"><a href="#">会社概要</a></li>
-        <li class="footer-list-item"><a href="#">ブログ</a></li>
-        <li class="footer-list-item"><a href="#">チーム</a></li>
-        <li class="footer-list-item"><a href="#">ジョブ</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-lower-contents">
-    <div class="footer-small">
-      <small class="small">@2021 GMM.inc</small>
-    </div>
-    <div class="footer-icons">
-      <a href="#"><i class="fab fa-twitter footer-icon"></i></a>
-      <a href="#"><i class="fab fa-facebook-square footer-icon"></i></a>
-      <a href="#"><i class="fab fa-google footer-icon"></i></a>
-    </div>
-  </div>
+  <%= render 'shared/footer' %>
 </footer>
