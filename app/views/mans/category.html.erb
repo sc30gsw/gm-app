@@ -1,0 +1,110 @@
+<header class="header">
+  <%= render 'shared/header' %>
+</header>
+<div class="main-image">
+  <div class="main-image-copy">
+    <h2 class="main-catch-copy">あの偉人に会いに行こう。</h2>
+  </div>
+</div>
+<main class="main">
+  <div class="top-left-contents">
+    <div class="main-search-box">
+      <input type="search" placeholder="検索を始める" class="main-search-input">
+      <input type="submit" value="&#xf002;" class="fas main-search-icon main-search-submit">
+    </div>
+    <div class="search-category-title">
+      <h3 class="search-category-text">偉人のカテゴリーを選択</h3>
+    </div>
+    <div class="upper-search-category">
+      <ul class="search-category-lists">
+        <%= link_to "/mans/category/10" do %>
+          <li class="search-category-btn">安土桃山</li>
+        <% end %>
+        <%= link_to "/mans/category/11" do %>
+          <li class="search-category-btn">江戸</li>
+        <% end %>
+        <%= link_to "/mans/category/13" do %>
+          <li class="search-category-btn">幕末</li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="lower-search-category">
+      <ul class="search-category-lists">
+        <%= link_to "/mans/category/16" do %>
+          <li class="search-category-btn">ヨーロッパ</li>
+        <% end %>
+        <%= link_to "/mans/category/17" do %>
+          <li class="search-category-btn">北アメリカ</li>
+        <% end %>
+        <%= link_to "/mans/category/19" do %>
+          <li class="search-category-btn">中国</li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="item-list-nav">
+      <h4><%= @category.name %></h4>
+    </div>
+    <%= render 'shared/mans' %>
+  </div>
+  <div class="top-right-contents">
+    <div class="city-name">
+      <h2>東京の天気</h2>
+    </div>
+    <div class="weather">
+      <div class="weather-report">
+        <%= image_tag 'https://illalet.com/wp-content/uploads/2017/05/16_2_20.png', class: "weather-icon" %>
+        <div class="weather-date">1月28日(水)12:00</div>
+        <div class="weather-main">晴れのち曇り</div>
+        <div class="weather-temp">10°C</div>
+      </div>
+    </div>
+    <div class="city-name">
+      <h2>北京の天気</h2>
+    </div>
+    <div class="weather-report">
+      <%= image_tag 'https://illalet.com/wp-content/uploads/2017/05/16_2_20.png', class: "weather-icon" %>
+      <div class="weather-date">1月28日(水)12:00</div>
+      <div class="weather-main">晴れのち曇り</div>
+      <div class="weather-temp">10°C</div>
+    </div>
+    <div class="city-name">
+      <h2>ロサンゼルスの天気</h2>
+    </div>
+    <div class="weather-report">
+      <%= image_tag 'https://illalet.com/wp-content/uploads/2017/05/16_2_20.png', class: "weather-icon" %>
+      <div class="weather-date">1月28日(水)12:00</div>
+      <div class="weather-main">晴れのち曇り</div>
+      <div class="weather-temp">10°C</div>
+    </div>
+    <div class="city-name">
+      <h2>ニューヨークの天気</h2>
+    </div>
+    <div class="weather-report">
+      <%= image_tag 'https://illalet.com/wp-content/uploads/2017/05/16_2_20.png', class: "weather-icon" %>
+      <div class="weather-date">1月28日(水)12:00</div>
+      <div class="weather-main">晴れのち曇り</div>
+      <div class="weather-temp">10°C</div>
+    </div>
+    <div class="city-name">
+      <h2>ロンドンの天気</h2>
+    </div>
+    <div class="weather-report">
+      <%= image_tag 'https://illalet.com/wp-content/uploads/2017/05/16_2_20.png', class: "weather-icon" %>
+      <div class="weather-date">1月28日(水)12:00</div>
+      <div class="weather-main">晴れのち曇り</div>
+      <div class="weather-temp">10°C</div>
+    </div>
+    <div class="city-name">
+      <h2>パリの天気</h2>
+    </div>
+    <div class="weather-report">
+      <%= image_tag 'https://illalet.com/wp-content/uploads/2017/05/16_2_20.png', class: "weather-icon" %>
+      <div class="weather-date">1月28日(水)12:00</div>
+      <div class="weather-main">晴れのち曇り</div>
+      <div class="weather-temp">10°C</div>
+    </div>
+  </div>
+</main>
+<footer class="footer">
+  <%= render 'shared/footer' %>
+</footer>

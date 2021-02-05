@@ -2,7 +2,7 @@ class MansController < ApplicationController
   before_action :authenticate_user!, except: [:index]
 
   def index
-    @man = Man.includes(:user)
+    @mans = Man.includes(:user)
   end
 
   def new
@@ -22,10 +22,7 @@ class MansController < ApplicationController
   def category
     @man = Man.find_by(category_id: params[:id])
     @mans = Man.where(category_id: params[:id]).order('created_at DESC')
-    if user_signed_in?
-      @user = User.find(current_user.id)
-      @my_mans = Man.where(user_id: current_user.id).order('created_at DESC')
-    end
+    @category = Category.find(params[:id])
   end
 
   private
