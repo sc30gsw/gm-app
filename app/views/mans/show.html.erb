@@ -104,27 +104,30 @@
       <div class="comment-info">
         <i class="far fa-comment info-comment-icon"><b>コメント</b></i>
       </div>
-      <div class="comment-input">
-        <div class="comment-btn-box">
-          <div class="comment-btn-box-left">  
-            <%= link_to user_path(current_user.id) do %>
-              <% if current_user.intro.present? %>
-                <%= image_tag current_user.intro.image, class: "show-top-avater", alt: "ユーザーアイコン" %>
-              <% else %>
-                <%= image_tag 'https://cdn2.aprico-media.com/production/imgs/images/000/008/511/original.jpg?1505866639', class: "show-top-avater", alt: 'ユーザーアイコン' %>
+      <% if user_signed_in? %>
+        <div class="comment-input">
+          <div class="comment-btn-box">
+            <div class="comment-btn-box-left">  
+              <%= link_to user_path(current_user.id) do %>
+                <% if current_user.intro.present? %>
+                  <%= image_tag current_user.intro.image, class: "show-top-avater", alt: "ユーザーアイコン" %>
+                <% else %>
+                  <%= image_tag 'https://cdn2.aprico-media.com/production/imgs/images/000/008/511/original.jpg?1505866639', class: "show-top-avater", alt: 'ユーザーアイコン' %>
+                <% end %>
+                <span class="show-top-username"><%= current_user.nickname %><span>
               <% end %>
-              <span class="show-top-username"><%= current_user.nickname %><span>
-            <% end %>
+            </div>
+            <input type="submit" value="コメントする" class="comment-btn">
           </div>
-          <input type="submit" value="コメントする" class="comment-btn">
+          <div class="comment-text-box">
+            <textarea class="comment-text" placeholder="テキストを入力" maxlength="1000"></textarea>
+          </div>
         </div>
-        <div class="comment-text-box">
-          <textarea class="comment-text" placeholder="テキストを入力" maxlength="1000"></textarea>
-        </div>
-      </div>
+      <% end %>
       <div class="comment-content">
         <div class="comment-btn-box">
           <div class="comment-btn-box-left">
+          <% if user_signed_in? %>
             <%= link_to user_path(current_user.id) do %>
               <% if current_user.intro.present? %>
                 <%= image_tag current_user.intro.image, class: "show-top-avater", alt: "ユーザーアイコン" %>
@@ -133,6 +136,7 @@
               <% end %>
               <span class="show-top-username"><%= current_user.nickname %><span>
             <% end %>
+          <% end %>
           </div>
           <div class="comment-btn-box-right">
             <a href="#" class="comment-delete-btn">削除</a>
