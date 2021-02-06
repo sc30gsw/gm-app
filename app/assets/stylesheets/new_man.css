@@ -159,6 +159,54 @@
   opacity: 0.7;
 }
 
+.edit-command-area {
+  height: 50px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  background-color: #f0f0f0;
+}
+
+.edit-command-area-left {
+  display: flex;
+  align-items: center;
+}
+
+.edit-delete-btn {
+  color: #fff;
+  background-color: grey;
+  border: 1px solid grey;
+  border-radius: 3px;
+  margin-left: 10px;
+  margin-right: 5px;
+  padding: 3px 17px;
+}
+
+.edit-delete-btn:hover {
+  text-decoration: none;
+  color: #fff;
+  opacity: 0.7;
+}
+
+.edit-command-area-right {
+  display: flex;
+  align-items: center;
+}
+
+.edit-output-btn {
+  color: #fff;
+  background-color: red;
+  border: 1px solid red;
+  border-radius: 3px;
+  margin-left: 10px;
+  margin-right: 5px;
+  padding: 3px 17px;
+}
+
+.edit-output-btn:hover {
+  opacity: 0.7;
+}
+
 @media(max-width: 1024px) {
   .map {
     width: 600px;
