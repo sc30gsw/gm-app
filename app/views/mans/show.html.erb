@@ -1,0 +1,151 @@
+<header class="header">
+  <%= render 'shared/header' %>
+</header>
+<div class="show-main">
+  <div class="show-contents">
+    <div class="show-top-content">
+      <div class="show-top-info">
+        <div class="show-top-profile">
+          <%= link_to user_path(@man.user_id) do %>
+            <% if @man.user.intro.present? %>
+              <%= image_tag @man.user.intro.image, class: "show-top-avater", alt: "ユーザーアイコン" %>
+            <% else %>
+              <%= image_tag 'https://cdn2.aprico-media.com/production/imgs/images/000/008/511/original.jpg?1505866639', class: "show-top-avater", alt: 'ユーザーアイコン' %>
+            <% end %>
+            <span class="show-top-username"><%= @man.user.nickname %><span>
+          <% end %>
+          <div class="show-top-command">
+            <input tyep="submit" class="show-follow-btn" value="フォロー">
+          </div>
+        </div>
+        <span class="sohw-top-updated"><%= @man.updated_at.strftime('%Y年%m月%d日') %>更新</span>
+        <div class="show-top-caption">
+          <div class="show-top-title">
+            <%= @man.name %>
+          </div>
+          <div class="show-top-cate-tag">
+            <div class="show-top-category">
+              <%= link_to "/mans/category/#{@man.category_id}" do %>
+                <%= @man.category.name %>
+              <% end %>
+            </div>
+            <div class="show-top-tag">
+              <i class="fas fa-tags show-tag-icon"></i><p>#幕末 #新選組</p>
+            </div>
+          </div>
+        </div>
+        <div class="show-top-communication">
+          <div class="show-top-communication-left">
+            <a href="#">
+              <div class="show-top-like-btn">
+                <span>LIKE 3</span>
+              </div>
+            </a>
+          </div>
+          <div class="show-top-communication-right">
+            <%= link_to  "https://twitter.com/intent/tweet?text=タイトル:#{@man.name}#{request.url}", title: 'Twitter', target: '_blank', class: "show-top-sns-btn" do %>
+              <i class="fab fa-twitter show-top-twitter"></i>Twitter
+            <% end %>
+            <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore show-top-sns-btn"><i class="fab fa-facebook share-facebook"></i></a>
+          </div>
+          <div class="show-top-communication-after">
+            <a href="#">LIKEしたユーザーを見る</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="show-body">
+      <% if @man.content.present? %>
+        <p><%= @man.content %></p>
+      <% end %>
+      <div id='map' class="show-map"></div>
+        <script type="text/javascript">
+          function initMap() {
+
+          var test ={lat: <%= @man.latitude %>, lng: <%= @man.longitude %>};
+          var map = new google.maps.Map(document.getElementById('map'), {
+              zoom: 12,
+              center: test
+          });
+          var transitLayer = new google.maps.TransitLayer();
+          transitLayer.setMap(map);
+
+          var contentString = '住所：<%= @man.address %>';
+          var infowindow = new google.maps.InfoWindow({
+              content: contentString
+          });
+
+          var marker = new google.maps.Marker({
+              position:test,
+              map: map,
+              title: contentString
+          });
+
+          marker.addListener('click', function() {
+              infowindow.open(map, marker);
+          });
+      }
+      </script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API'] %>&callback=initMap" async defer>
+      </script>
+    </div>
+    <div class="show-bottom">
+      <div class="show-bottom-first">
+        <%= link_to  "https://twitter.com/intent/tweet?text=タイトル:#{@man.name}#{request.url}", title: 'Twitter', target: '_blank', class: "share-twitter" do %>
+          <i class="fab fa-twitter share-twitter"></i>
+        <% end %>
+        <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore"><i class="fab fa-facebook share-facebook"></i></a>
+        <a href="http://line.me/R/msg/text/?{message}"><i class="fab fa-line share-line"></i></a>
+      </div>
+      <div class="show-bottom-second">
+      </div>
+    </div>
+    <div class="comment-area">
+      <div class="comment-info">
+        <i class="far fa-comment info-commnet-icon">コメント</i>
+      </div>
+      <div class="comment-input">
+        <div class="comment-btn-box">
+          <div class="comment-btn-box-left">  
+            <%= link_to user_path(current_user.id) do %>
+              <% if current_user.intro.present? %>
+                <%= image_tag current_user.intro.image, class: "show-top-avater", alt: "ユーザーアイコン" %>
+              <% else %>
+                <%= image_tag 'https://cdn2.aprico-media.com/production/imgs/images/000/008/511/original.jpg?1505866639', class: "show-top-avater", alt: 'ユーザーアイコン' %>
+              <% end %>
+              <span class="show-top-username"><%= current_user.nickname %><span>
+            <% end %>
+          </div>
+          <input type="submit" value="コメントする" class="comment-btn">
+        </div>
+        <div class="comment-text-box">
+          <textarea class="comment-text" placeholder="テキストを入力" maxlength="1000"></textarea>
+        </div>
+      </div>
+      <div class="comment-content">
+        <div class="comment-btn-box">
+          <div class="comment-btn-box-left">
+            <%= link_to user_path(current_user.id) do %>
+              <% if current_user.intro.present? %>
+                <%= image_tag current_user.intro.image, class: "show-top-avater", alt: "ユーザーアイコン" %>
+              <% else %>
+                <%= image_tag 'https://cdn2.aprico-media.com/production/imgs/images/000/008/511/original.jpg?1505866639', class: "show-top-avater", alt: 'ユーザーアイコン' %>
+              <% end %>
+              <span class="show-top-username"><%= current_user.nickname %><span>
+            <% end %>
+          </div>
+          <div class="comment-btn-box-right">
+            <a href="#" class="comment-delete-btn">削除</a>
+            1分前
+          </div>
+        </div>
+        <div class="comment-message">
+          <p>コメント</p>
+        </div>
+        <div class="comment-bottom-border-box">
+          <div class="comment-bottom-border"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
