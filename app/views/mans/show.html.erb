@@ -14,44 +14,44 @@
             <% end %>
             <span class="show-top-username"><%= @man.user.nickname %><span>
           <% end %>
-          <div class="show-top-command">
-            <input tyep="submit" class="show-follow-btn" value="フォロー">
-          </div>
         </div>
-        <span class="sohw-top-updated"><%= @man.updated_at.strftime('%Y年%m月%d日') %>更新</span>
-        <div class="show-top-caption">
-          <div class="show-top-title">
-            <%= @man.name %>
-          </div>
-          <div class="show-top-cate-tag">
-            <div class="show-top-category">
-              <%= link_to "/mans/category/#{@man.category_id}" do %>
-                <%= @man.category.name %>
-              <% end %>
-            </div>
-            <div class="show-top-tag">
-              <i class="fas fa-tags show-tag-icon"></i><p>#幕末 #新選組</p>
-            </div>
-          </div>
+        <div class="show-top-command">
+          <input tyep="submit" class="show-follow-btn" value="フォロー">
         </div>
-        <div class="show-top-communication">
-          <div class="show-top-communication-left">
-            <a href="#">
-              <div class="show-top-like-btn">
-                <span>LIKE 3</span>
-              </div>
-            </a>
-          </div>
-          <div class="show-top-communication-right">
-            <%= link_to  "https://twitter.com/intent/tweet?text=タイトル:#{@man.name}#{request.url}", title: 'Twitter', target: '_blank', class: "show-top-sns-btn" do %>
-              <i class="fab fa-twitter show-top-twitter"></i>Twitter
+      </div>
+      <span class="sohw-top-updated"><%= @man.updated_at.strftime('%Y年%m月%d日') %>更新</span>
+      <div class="show-top-caption">
+        <div class="show-top-title">
+          <%= @man.name %>
+        </div>
+        <div class="show-top-cate-tag">
+          <div class="show-top-category">
+            <%= link_to "/mans/category/#{@man.category_id}" do %>
+              <%= @man.category.name %>
             <% end %>
-            <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore show-top-sns-btn"><i class="fab fa-facebook share-facebook"></i></a>
           </div>
-          <div class="show-top-communication-after">
-            <a href="#">LIKEしたユーザーを見る</a>
+          <div class="show-top-tag">
+            <i class="fas fa-tags show-tag-icon"></i><p>#幕末 #新選組</p>
           </div>
         </div>
+      </div>
+      <div class="show-top-communication">
+        <div class="show-top-communication-left">
+          <a href="#">
+            <div class="show-top-like-btn">
+              <span>LIKE 3</span>
+            </div>
+          </a>
+        </div>
+        <div class="show-top-communication-right">
+          <%= link_to  "https://twitter.com/intent/tweet?text=タイトル:#{@man.name}#{request.url}", title: 'Twitter', target: '_blank', class: "show-top-twitter-btn" do %>
+            <i class="fab fa-twitter show-top-twitter"></i>Twitter
+          <% end %>
+          <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore show-top-facebook-btn"><i class="fab fa-facebook show-top-facebook"></i>facebook</a>
+        </div>
+      </div>
+      <div class="show-top-communication-after">
+        <a href="#">LIKEしたユーザーを見る</a>
       </div>
     </div>
     <div class="show-body">
@@ -102,7 +102,7 @@
     </div>
     <div class="comment-area">
       <div class="comment-info">
-        <i class="far fa-comment info-commnet-icon">コメント</i>
+        <i class="far fa-comment info-comment-icon"><b>コメント</b></i>
       </div>
       <div class="comment-input">
         <div class="comment-btn-box">
