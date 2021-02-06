@@ -137,32 +137,34 @@
       <% else %>
         <span><%= link_to 'ユーザー登録', new_user_registration_path %>をしてコメントを書こう！</span>
       <% end %>
-      <div class="comment-content">
-        <div class="comment-btn-box">
-          <div class="comment-btn-box-left">
-          <% if user_signed_in? %>
-            <%= link_to user_path(current_user.id) do %>
-              <% if current_user.intro.present? %>
-                <%= image_tag current_user.intro.image, class: "show-top-avater", alt: "ユーザーアイコン" %>
-              <% else %>
-                <%= image_tag 'https://cdn2.aprico-media.com/production/imgs/images/000/008/511/original.jpg?1505866639', class: "show-top-avater", alt: 'ユーザーアイコン' %>
+      <% @comments.each do |comment| %>
+        <div class="comment-content">
+          <div class="comment-btn-box">
+            <div class="comment-btn-box-left">
+              <%= link_to user_path(comment.user_id) do %>
+                <% if comment.user.intro.present? %>
+                  <%= image_tag comment.user.intro.image, class: "show-top-avater", alt: "ユーザーアイコン" %>
+                <% else %>
+                  <%= image_tag 'https://cdn2.aprico-media.com/production/imgs/images/000/008/511/original.jpg?1505866639', class: "show-top-avater", alt: 'ユーザーアイコン' %>
+                <% end %>
+                <span class="show-top-username"><%= comment.user.nickname %><span>
               <% end %>
-              <span class="show-top-username"><%= current_user.nickname %><span>
-            <% end %>
-          <% end %>
+            </div>
+            <div class="comment-btn-box-right">
+              <a href="#" class="comment-delete-btn">削除</a>
+              <time datetime="<%= comment.created_at %>">
+                <%= time_ago_in_words(comment.created_at) %>前
+              </time>
+            </div>
           </div>
-          <div class="comment-btn-box-right">
-            <a href="#" class="comment-delete-btn">削除</a>
-            1分前
+          <div class="comment-message">
+            <p><%= comment.text %></p>
+          </div>
+          <div class="comment-bottom-border-box">
+            <div class="comment-bottom-border"></div>
           </div>
         </div>
-        <div class="comment-message">
-          <p>コメント</p>
-        </div>
-        <div class="comment-bottom-border-box">
-          <div class="comment-bottom-border"></div>
-        </div>
-      </div>
+      <% end %>
     </div>
   </div>
 </div>
