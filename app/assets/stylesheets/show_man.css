@@ -262,6 +262,12 @@
   margin-bottom: 25px;
 }
 
+.show-body img {
+  width: 70%;
+  height: 250px;
+  margin-bottom: 25px;
+}
+
 .show-map {
   width: 100%;
   height: 500px;

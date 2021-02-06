@@ -21,6 +21,8 @@ class MansController < ApplicationController
   end
 
   def show
+    @comment = Comment.new
+    @comments = @man.comments.includes(:user).order('created_at DESC')
   end
 
   def edit
