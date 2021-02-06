@@ -8,11 +8,17 @@ class CommentsController < ApplicationController
     else
       @man = @comment.man
       @comments = @man.comments
-      render 'man/show'
+      render 'mans/show'
     end
   end
 
   def destroy
+    @comment = Comment.find(params[:id])
+    if @comment.destroy
+      redirect_to man_path(@comment.man_id)
+    else
+      render 'mans/show'
+    end
   end
 
   private
