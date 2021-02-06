@@ -26,9 +26,7 @@ class MansController < ApplicationController
   end
 
   def edit
-    unless current_user.id == @man.user_id
-      redirect_to man_path(@man.id)
-    end
+    redirect_to man_path(@man.id) unless current_user.id == @man.user_id
   end
 
   def update
