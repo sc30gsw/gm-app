@@ -65,6 +65,7 @@
     <div class="show-body">
       <% if @man.content.present? %>
         <p><%= @man.content %></p>
+        <%= image_tag @man.image, class: "show-doby-image", alt: "投稿画像" %>
       <% end %>
       <div id='map' class="show-map"></div>
         <script type="text/javascript">
