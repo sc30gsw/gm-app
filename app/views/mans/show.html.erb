@@ -115,23 +115,27 @@
       </div>
       <% if user_signed_in? %>
         <div class="comment-input">
-          <div class="comment-btn-box">
-            <div class="comment-btn-box-left">  
-              <%= link_to user_path(current_user.id) do %>
-                <% if current_user.intro.present? %>
-                  <%= image_tag current_user.intro.image, class: "show-top-avater", alt: "ユーザーアイコン" %>
-                <% else %>
-                  <%= image_tag 'https://cdn2.aprico-media.com/production/imgs/images/000/008/511/original.jpg?1505866639', class: "show-top-avater", alt: 'ユーザーアイコン' %>
+          <%= form_with model: @comment, url: man_comments_path(@man.id), local: true do |f| %>
+            <div class="comment-btn-box">
+              <div class="comment-btn-box-left">  
+                <%= link_to user_path(current_user.id) do %>
+                  <% if current_user.intro.present? %>
+                    <%= image_tag current_user.intro.image, class: "show-top-avater", alt: "ユーザーアイコン" %>
+                  <% else %>
+                    <%= image_tag 'https://cdn2.aprico-media.com/production/imgs/images/000/008/511/original.jpg?1505866639', class: "show-top-avater", alt: 'ユーザーアイコン' %>
+                  <% end %>
+                  <span class="show-top-username"><%= current_user.nickname %><span>
                 <% end %>
-                <span class="show-top-username"><%= current_user.nickname %><span>
-              <% end %>
+              </div>
+              <%= f.submit "コメントする", class: "comment-btn" %>
             </div>
-            <input type="submit" value="コメントする" class="comment-btn">
+            <div class="comment-text-box">
+              <%= f.text_area :text, class: "comment-text", placeholder: "テキストを入力", maxlength: 1000 %>
+            </div>
           </div>
-          <div class="comment-text-box">
-            <textarea class="comment-text" placeholder="テキストを入力" maxlength="1000"></textarea>
-          </div>
-        </div>
+        <% end %>
+      <% else %>
+        <span><%= link_to 'ユーザー登録', new_user_registration_path %>をしてコメントを書こう！</span>
       <% end %>
       <div class="comment-content">
         <div class="comment-btn-box">
