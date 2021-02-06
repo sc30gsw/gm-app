@@ -398,3 +398,52 @@
   width: 90%;
   border-bottom: 1px solid #ccc;
 }
+
+@media(max-width: 599px){
+  .show-main {
+    background-color: #fff;
+  }
+
+  .show-contents {
+    width: 100%;
+    margin: 0;
+  }
+
+  .show-top-contents {
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+
+  .show-top-info {
+    height: 60px;
+  }
+
+  .show-top-updated {
+    display: block;
+  }
+
+  .show-top-communication-left {
+    width: 30%;
+  }
+
+  .show-top-communication-right {
+    width: 70%;
+  }
+
+  .share-twitter {
+    font-size: 20px;
+  }
+
+  .share-facebook {
+    font-size: 20px;
+  }
+
+  .share-line {
+    font-size: 20px;
+  }
+
+  .info-comment-icon {
+    font-size: 15px;
+  }
+}
