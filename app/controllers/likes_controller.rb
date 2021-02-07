@@ -7,6 +7,7 @@ class LikesController < ApplicationController
       redirect_to man_path(@man.id)
     else
       render "mans/show"
+    end
   end
   
   def destroy
@@ -15,6 +16,7 @@ class LikesController < ApplicationController
       redirect_to man_path(@man.id)
     else
       render "mans/show"
+    end
   end
 
   private 

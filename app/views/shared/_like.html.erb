@@ -1,0 +1,13 @@
+<% if current_user.already_liked?(@man) %>
+  <%= link_to man_like_path(@man.id), method: :delete do %>
+    <div class="show-top-like-btn">
+      <span>LIKE 3</span>
+    </div>
+  <% end %>
+<% else %>
+  <%= link_to man_likes_path(@man.id), method: :post do %>
+    <div class="show-top-like-btn">
+      <span>LIKE 3</span>
+    </div>
+  <% end %>
+<% end %>
