@@ -34,4 +34,9 @@ class User < ApplicationRecord
     end
     { user: user, sns: sns }
   end
+
+  def already_liked?(man)
+    likes.exists?(man_id: man.id)
+  end
+
 end

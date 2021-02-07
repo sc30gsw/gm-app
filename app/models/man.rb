@@ -18,9 +18,4 @@ class Man < ApplicationRecord
     validates :latitude
     validates :longitude
   end
-
-  def already_liked?(user)
-    likes.exists?(user_id: user.id)
-  end
-  
 end
