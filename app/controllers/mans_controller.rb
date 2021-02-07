@@ -23,7 +23,7 @@ class MansController < ApplicationController
   def show
     @comment = Comment.new
     @comments = @man.comments.includes(:user).order('created_at DESC')
-    @like = Like.new
+    @likes = Like.where(man_id: @man.id).count
   end
 
   def edit

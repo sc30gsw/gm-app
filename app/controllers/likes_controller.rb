@@ -2,21 +2,16 @@ class LikesController < ApplicationController
   before_action :set_man
 
   def create
-    @like = Like.create(user_id: current_user.id, man_id: params[:man_id])
-    if @like.save
-      redirect_to man_path(@man.id)
-    else
-      render "mans/show"
-    end
+    @like = Like.new(user_id: current_user.id, man_id: params[:man_id])
+    @like.save
+    @likes = Like.where(man_id: @man.id).count
+    redirect_to man_path(@man.id)
   end
   
   def destroy
     @like = Like.find_by(user_id: current_user.id, man_id: params[:man_id])
-    if @like.destroy
-      redirect_to man_path(@man.id)
-    else
-      render "mans/show"
-    end
+    @like.destroy
+    @likes = Like.where(man_id: @man.id).count
   end
 
   private 

@@ -4,12 +4,16 @@
 // that code so it'll be compiled.
 
 require("@rails/ujs").start()
-//require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 require('jquery')
 require("./icon_preview")
 require("./map")
+
+require('jquery')
+document.addEventListener("turbolinks:load", () => {
+  console.log($.fn.jquery)
+})
 //= require underscore
 //= require gmaps/google
 // Uncomment to copy all static images under ../images to the output folder and reference

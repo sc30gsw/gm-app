@@ -44,8 +44,8 @@
         </div>
       </div>
       <div class="show-top-communication">
-        <div class="show-top-communication-left">
-          <%= render 'shared/like' %>
+        <div class="show-top-communication-left" id="like-btn-<%= @man.id %>">
+          <%= render partial: 'shared/like', locals: {man: @man} %>
         </div>
         <div class="show-top-communication-right">
           <%= link_to  "https://twitter.com/intent/tweet?text=タイトル:#{@man.name}#{request.url}", title: 'Twitter', target: '_blank', class: "show-top-twitter-btn" do %>
