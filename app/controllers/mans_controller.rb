@@ -23,6 +23,7 @@ class MansController < ApplicationController
   def show
     @comment = Comment.new
     @comments = @man.comments.includes(:user).order('created_at DESC')
+    @like = Like.new
   end
 
   def edit
