@@ -13,6 +13,8 @@ class User < ApplicationRecord
   has_many :sns_credentials
   has_many :mans
   has_many :comments
+  has_many :likes, dependent: :destroy
+  has_many :liked_mans, through: :likes, source: :man
 
   def self.guest
     find_or_create_by!(email: 'guest@example.com', nickname: 'guest') do |user|
@@ -32,4 +34,9 @@ class User < ApplicationRecord
     end
     { user: user, sns: sns }
   end
+
+  def already_liked?(man)
+    likes.exists?(man_id: man.id)
+  end
+
 end
