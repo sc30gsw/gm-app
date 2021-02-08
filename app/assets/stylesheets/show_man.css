@@ -183,6 +183,16 @@
   cursor: pointer;
 }
 
+.show-top-like-onlydisplay {
+  width: 100%;
+  border: 2px solid lightcoral;
+  box-sizing: border-box;
+  text-align: center;
+  padding: 5px;
+  color: lightcoral;
+  font-weight: bold;
+}
+
 .show-top-communication-right {
   width: 50%;
   padding: 0 10px;
