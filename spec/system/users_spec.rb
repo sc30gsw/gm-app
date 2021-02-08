@@ -100,7 +100,23 @@ RSpec.describe 'ログイン', type: :system do
   
   context 'ログインできないとき' do
     it '保存されているユーザーの情報と合致しなければログインできない' do
-      
+      # トップページに移動する
+      visit root_path
+      # トップページにユーザーのドロップダウンメニューがあることを確認する
+      expect(page).to have_selector('.btn-header-drop')
+      # ドロップダウンメニューをクリックする
+      find('.btn-header-drop').click
+      # ログインページへ遷移するボタンがあることを確認する
+      expect(page).to have_content('ログインする')
+      # ログインページへ遷移する
+      visit new_user_session_path
+      # 誤ったユーザー情報を入力する
+      fill_in 'user_email', with: ""
+      fill_in 'user_password', with: ""
+      # ログインボタンを押す
+      find('input[name="commit"]').click
+      # ログインページへ戻されることを確認する
+      expect(current_path).to eq new_user_session_path
     end
   end
 end
