@@ -95,3 +95,78 @@ RSpec.describe "投稿詳細", type: :system do
     expect(page).to have_content('ユーザー登録をしてコメントを書こう！')
   end
 end
+
+RSpec.describe '投稿編集', type: :system do
+  before do
+    @man1 = FactoryBot.create(:man)
+    @man2 = FactoryBot.create(:man)
+  end
+
+  context '投稿編集ができるとき' do
+    it 'ログインしたユーザーは自分が投稿したmanの編集ができる' do
+      # man1を投稿したユーザーでログインする
+      sign_in(@man1.user)
+      # トップページに投稿詳細ページへのリンクがある
+      expect(page).to have_link(@man1.name), href: man_path(@man1)
+      # 詳細ページに遷移する
+      visit man_path(@man1)
+      # man1に「編集」ボタンがあることを確認する
+      expect(page).to have_link '編集する', href: edit_man_path(@man1)
+      # 編集ページに遷移する
+      visit edit_man_path(@man1)
+      # 編集ページにはすでに投稿済みの内容が含まれていることを確認する
+      expect(find('#man_name').value).to eq @man1.name
+      expect(find('#address').value).to eq @man1.address
+      expect(find('#man_content').value).to eq @man1.content
+      # 投稿内容を編集する
+      fill_in 'man_name', with: "#{@man1.name}name"
+      find("#man_category_id").find("option[value='3']").select_option
+      fill_in 'address', with: "マンハッタン"
+      fill_in 'man_content', with: "#{@man1.content}content"
+      # 添付する画像を定義する
+      image_path = Rails.root.join('public/images/test_image.png')
+      # 画像選択フォームに画像を添付する
+      attach_file('man[image]', image_path, make_visible: true)
+      # 送信するとManモデルのカウントが上がらないことを確認する
+      expect{
+        find('input[name="commit"]').click
+      }.to change { Man.count }.by(0)
+      # man1の詳細ページに遷移することを確認する
+      expect(current_path).to eq man_path(@man1)
+      # 詳細ページには先ほど編集した内容の投稿が存在する
+      expect(page).to have_content(@man1.name)
+      expect(page).to have_content(@man1.category_id)
+      expect(page).to have_content(@man1.content)
+      expect(page).to have_selector("img[src$='test_image.png']")
+    end
+  end
+
+  context '投稿編集ができないとき' do
+    it 'ログインしたユーザーは自分以外が投稿したmanの編集画面には遷移できない' do
+      # man1を投稿したユーザーでログインする
+      sign_in(@man1.user)
+      # man2の詳細ページに遷移する
+      visit man_path(@man2)
+      # man2に編集ボタンがないことを確認する
+      expect(page).to have_no_link '編集する', href: edit_man_path(@man2)
+    end
+
+    it 'ログインしていないと投稿編集画面には遷移できない(man1)' do
+      # トップページにいる
+      visit root_path
+      # man1の詳細ページに遷移する
+      visit man_path(@man1)
+      # man1に編集ボタンがないことを確認する
+      expect(page).to have_no_link '編集する', href: edit_man_path(@man1) 
+    end
+
+    it 'ログインしていないと投稿編集画面には遷移できない(man2)' do
+      # トップページにいる
+      visit root_path
+      # man1の詳細ページに遷移する
+      visit man_path(@man2)
+      # man1に編集ボタンがないことを確認する
+      expect(page).to have_no_link '編集する', href: edit_man_path(@man2) 
+    end
+  end
+end
