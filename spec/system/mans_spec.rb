@@ -170,3 +170,64 @@ RSpec.describe '投稿編集', type: :system do
     end
   end
 end
+
+RSpec.describe '投稿削除', type: :system do
+  before do
+    @man1 = FactoryBot.create(:man)
+    @man2 = FactoryBot.create(:man)
+  end
+
+  context '投稿削除ができるとき' do
+    it 'ログインしたユーザーは自らが投稿したmanを削除できる' do
+      # man1を投稿したユーザーでログインする
+      sign_in(@man1.user)
+      # トップページに投稿詳細ページへのリンクがある
+      expect(page).to have_link(@man1.name), href: man_path(@man1)
+      # 詳細ページに遷移する
+      visit man_path(@man1)
+      # man1に「編集」ボタンがあることを確認する
+      expect(page).to have_link '編集する', href: edit_man_path(@man1)
+      # 編集ページに遷移する
+      visit edit_man_path(@man1)
+      # 「削除」ボタンがあることを確認する
+      expect(page).to have_link '削除する', href: man_path(@man1)
+      # 投稿を削除するとレコードの数が1減ることを確認する
+      expect {
+        find('.edit-delete-btn').click
+      }.to change{ Man.count }.by(-1)
+      # トップページに遷移することを確認する
+      expect(current_path).to eq root_path
+      # トップページにはman1内容が存在しないことを確認する
+      expect(page).to have_no_content @man1.name
+    end
+  end
+
+  context '投稿削除ができないとき' do
+    it 'ログインしたユーザーは自分以外が投稿したmanを削除できない' do
+      # man1を投稿したユーザーでログインする
+      sign_in(@man1.user)
+      # man2の詳細ページに遷移する
+      visit man_path(@man2)
+      # man2に編集ボタンがないことを確認する
+      expect(page).to have_no_link '編集する', href: edit_man_path(@man2)
+    end
+
+    it 'ログインしていないと編集ページに遷移することができない(削除ボタンを押すことができない)(man1)' do
+      # トップページにいる
+      visit root_path
+      # man1の詳細ページに遷移する
+      visit man_path(@man1)
+      # man1に編集ボタンがないことを確認する
+      expect(page).to have_no_link '編集する', href: edit_man_path(@man1) 
+    end
+
+    it 'ログインしていないと編集ページに遷移することができない(削除ボタンを押すことができない)(man2)' do
+      # トップページにいる
+      visit root_path
+      # man1の詳細ページに遷移する
+      visit man_path(@man2)
+      # man1に編集ボタンがないことを確認する
+      expect(page).to have_no_link '編集する', href: edit_man_path(@man2) 
+    end
+  end
+end
