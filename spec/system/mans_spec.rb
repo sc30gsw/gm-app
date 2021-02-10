@@ -51,3 +51,47 @@ RSpec.describe "新規投稿", type: :system do
     end
   end
 end
+
+RSpec.describe "投稿詳細", type: :system do
+  before do
+    @man = FactoryBot.create(:man)
+  end
+
+  it 'ログインしたユーザーは投稿詳細ページに遷移してコメント投稿欄が表示される' do
+    # ログインする
+    sign_in(@man.user)
+    # トップページに投稿詳細ページへのリンクがある
+    expect(page).to have_link(@man.name), href: man_path(@man)
+    # 詳細ページに遷移する
+    visit man_path(@man)
+    # 詳細ページには投稿内容が含まれている
+    expect(page).to have_content(@man.name)
+    expect(page).to have_content(@man.category_id)
+    expect(page).to have_content(@man.content)
+    expect(page).to have_selector("img[src$='test_image2.png']")
+    # 投稿したGoogleMapが存在する
+    expect(page).to have_selector('#map')
+    # コメント用のフォームが存在する
+    expect(page).to have_selector('#comment_text')
+  end
+
+  it 'ログインしていない状態で投稿詳細ページに遷移できるもののコメント投稿欄が表示せれない' do
+    # トップページにいる
+    visit root_path
+    # トップページに投稿詳細ページへのリンクがある
+    expect(page).to have_link(@man.name), href: man_path(@man)
+    # 詳細ページに遷移する
+    visit man_path(@man)
+    # 詳細ページには投稿内容が含まれている
+    expect(page).to have_content(@man.name)
+    expect(page).to have_content(@man.category_id)
+    expect(page).to have_content(@man.content)
+    expect(page).to have_selector("img[src$='test_image2.png']")
+    # 投稿したGoogleMapが存在する
+    expect(page).to have_selector('#map')
+    # コメント用のフォームが存在しない
+    expect(page).to have_no_selector('#comment_text')
+    # 「ユーザー登録をしてコメントを書こう!」が表示されていることを確認する
+    expect(page).to have_content('ユーザー登録をしてコメントを書こう！')
+  end
+end
