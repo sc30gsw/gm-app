@@ -42,3 +42,42 @@ RSpec.describe "コメント投稿", type: :system do
     end
   end
 end
+
+RSpec.describe "コメント削除", type: :system do
+  before do
+    @comment1 = FactoryBot.create(:comment)
+    @comment2 = FactoryBot.create(:comment)
+  end
+
+  context 'コメント削除ができるとき' do
+    it 'ログインしたユーザーは自身が投稿したコメントを削除できる' do
+      # コメント1を投稿したログインする
+      sign_in(@comment1.user)
+      # トップページに投稿詳細ページへのリンクがある
+      expect(page).to have_link(@comment1.man.name), href: man_path(@comment1.man)
+      # 詳細ページに遷移する
+      visit man_path(@comment1.man)
+      # 詳細ページ上にコメントの削除リンクがあることを確認する
+      expect(page).to have_link('削除'), href: man_comment_path(@comment1.man, @comment1)
+      # コメントを削除すると、Commentモデルのカウントが1減ることを確認する
+      expect {
+        find('.comment-delete-btn').click
+      }.to change{ Comment.count }.by(-1)
+      # 詳細ページにリダイレクトされることを確認する
+      expect(current_path).to eq man_path(@comment1.man)
+      # 詳細ページ上に先ほどのコメント内容が含まれていないことを確認する
+      expect(page).to have_no_content @comment1.text
+    end
+  end
+
+  context 'コメント削除できないとき' do
+    it 'ログインしたユーザーは自身が投稿したコメント以外は削除できない' do
+      # コメント2を投稿したユーザーでログインする
+      sign_in(@comment2.user)
+      # コメント1が投稿されている詳細ページに遷移する
+      visit man_path(@comment1.man)
+      # コメント1のコメントには削除リンクがないことを確認する
+      expect(page).to have_no_link('削除'), href: man_comment_path(@comment1.man, @comment1)
+    end
+  end
+end
