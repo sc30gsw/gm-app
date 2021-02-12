@@ -24,10 +24,10 @@
       <% end %>
       <div class="user-follow-contents">
         <div class="user-follow-counts">
-          10 Following
+          <%= @user.followings.count %> Following
         </div>
         <div class="user-follower-counts">
-          20 Followers
+          <%= @user.followers.count %> Followers
         </div>
       </div>
     </div>
