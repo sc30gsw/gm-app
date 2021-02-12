@@ -7,17 +7,16 @@ class LikesController < ApplicationController
     @likes = Like.where(man_id: @man.id).count
     redirect_to man_path(@man.id)
   end
-  
+
   def destroy
     @like = Like.find_by(user_id: current_user.id, man_id: params[:man_id])
     @like.destroy
     @likes = Like.where(man_id: @man.id).count
   end
 
-  private 
+  private
 
   def set_man
     @man = Man.find(params[:man_id])
   end
-
 end

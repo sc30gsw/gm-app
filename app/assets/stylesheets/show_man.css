@@ -72,17 +72,6 @@
   opacity: 0.7;
 }
 
-.show-follow-btn {
-  border: 1px solid grey;
-  border-radius: 3px;
-  color: grey;
-  background-color: #fff;
-  font-size: 14px;
-  padding: 3px 15px;
-  margin-right: 5px;
-  box-sizing: border-box;
-}
-
 .show-top-updated {
   margin-left: 15px;
   font-size: 13px;
@@ -181,6 +170,17 @@
 
 .show-top-like-btn:hover {
   cursor: pointer;
+}
+
+.show-top-liked-btn {
+  width: 100%;
+  border: 2px solid lightcoral;
+  box-sizing: border-box;
+  text-align: center;
+  padding: 5px;
+  color: #fff;
+  background-color: lightcoral;
+  font-weight: bold;
 }
 
 .show-top-like-onlydisplay {

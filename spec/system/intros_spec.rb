@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "プロフィール新規投稿", type: :system do
+RSpec.describe 'プロフィール新規投稿', type: :system do
   before do
     @user1 = FactoryBot.create(:user)
     @user2 = FactoryBot.create(:user)
@@ -67,7 +67,7 @@ RSpec.describe "プロフィール新規投稿", type: :system do
   end
 end
 
-RSpec.describe "プロフィール編集", type: :system do
+RSpec.describe 'プロフィール編集', type: :system do
   before do
     @intro1 = FactoryBot.create(:intro)
     @intro2 = FactoryBot.create(:intro)

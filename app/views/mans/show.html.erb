@@ -15,16 +15,10 @@
             <span class="show-top-username"><%= @man.user.nickname %><span>
           <% end %>
         </div>
-        <% if user_signed_in? %>
-          <% if current_user.id == @man.user_id %>
-            <div class="show-top-command">
-              <%= link_to "編集する", edit_man_path(@man.id), class: "show-edit-btn" %>
-            </div>
-          <% else %>
-            <div class="show-top-command">
-              <input tyep="submit" class="show-follow-btn" value="フォロー">
-            </div>
-          <% end %>
+        <% if current_user.id == @man.user_id && user_signed_in? %>
+          <div class="show-top-command">
+            <%= link_to "編集する", edit_man_path(@man.id), class: "show-edit-btn" %>
+          </div>  
         <% end %>
       </div>
       <span class="sohw-top-updated"><%= @man.updated_at.strftime('%Y年%m月%d日') %>更新</span>

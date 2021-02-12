@@ -15,6 +15,10 @@ class User < ApplicationRecord
   has_many :comments
   has_many :likes, dependent: :destroy
   has_many :liked_mans, through: :likes, source: :man
+  has_many :relationships, dependent: :destroy
+  has_many :followings, through: :relationships, source: :follow
+  has_many :reverse_of_relationsihps, class_name: 'Relationship', foreign_key: 'follow_id'
+  has_many :followers, through: :reverse_of_relationsihps, source: :user
 
   def self.guest
     find_or_create_by!(email: 'guest@example.com', nickname: 'guest') do |user|
@@ -39,4 +43,19 @@ class User < ApplicationRecord
     likes.exists?(man_id: man.id)
   end
 
+  def follow(other_user)
+    unless self == other_user
+      self.relationships.find_or_create_by(follow_id: other_user.id)
+    end
+  end
+
+  def unfollow(other_user)
+    relationship = self.relationships.find_by(follow_id: other_user.id)
+    relationship.destroy if relationship
+  end
+
+  def following?(other_user)
+    self.followings.include?(other_user)
+  end
+  
 end
