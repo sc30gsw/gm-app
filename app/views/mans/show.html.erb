@@ -15,7 +15,7 @@
             <span class="show-top-username"><%= @man.user.nickname %><span>
           <% end %>
         </div>
-        <% if current_user.id == @man.user_id && user_sigend_in? %>
+        <% if current_user.id == @man.user_id && user_signed_in? %>
           <div class="show-top-command">
             <%= link_to "編集する", edit_man_path(@man.id), class: "show-edit-btn" %>
           </div>  
