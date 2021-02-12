@@ -172,6 +172,17 @@
   cursor: pointer;
 }
 
+.show-top-liked-btn {
+  width: 100%;
+  border: 2px solid lightcoral;
+  box-sizing: border-box;
+  text-align: center;
+  padding: 5px;
+  color: #fff;
+  background-color: lightcoral;
+  font-weight: bold;
+}
+
 .show-top-like-onlydisplay {
   width: 100%;
   border: 2px solid lightcoral;
