@@ -45,8 +45,8 @@
         </div>
       <% end %>
     <% else %>
-      <div class="profile-edit-btn">
-        <input tyep="submit" class="show-follow-btn" value="フォロー">
+      <div class="profile-edit-btn" id="follow-btn-userpage" >
+        <%= render 'follow', user: @user %>
       </div>
     <% end %>
   </div>
