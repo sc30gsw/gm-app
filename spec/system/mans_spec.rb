@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "新規投稿", type: :system do
+RSpec.describe '新規投稿', type: :system do
   before do
     @user = FactoryBot.create(:user)
     @man = FactoryBot.build(:man)
@@ -20,7 +20,7 @@ RSpec.describe "新規投稿", type: :system do
       visit new_man_path
       # フォームに情報を入力する
       fill_in 'man_name', with: @man.name
-      find("#man_category_id").find("option[value='2']").select_option
+      find('#man_category_id').find("option[value='2']").select_option
       fill_in 'address', with: @man.address
       fill_in 'man_content', with: @man.content
       # 添付する画像を定義する
@@ -28,9 +28,9 @@ RSpec.describe "新規投稿", type: :system do
       # 画像選択フォームに画像を添付する
       attach_file('man[image]', image_path, make_visible: true)
       # 送信するとManモデルのカウントが1上がることを確認する
-      expect{
+      expect do
         find('input[name="commit"]').click
-      }.to change { Man.count }.by(1)
+      end.to change { Man.count }.by(1)
       # トップページに遷移することを確認する
       expect(current_path).to eq root_path
       # トップページは先ほど投稿した内容(name)が存在する
@@ -52,7 +52,7 @@ RSpec.describe "新規投稿", type: :system do
   end
 end
 
-RSpec.describe "投稿詳細", type: :system do
+RSpec.describe '投稿詳細', type: :system do
   before do
     @man = FactoryBot.create(:man)
   end
@@ -120,17 +120,17 @@ RSpec.describe '投稿編集', type: :system do
       expect(find('#man_content').value).to eq @man1.content
       # 投稿内容を編集する
       fill_in 'man_name', with: "#{@man1.name}name"
-      find("#man_category_id").find("option[value='3']").select_option
-      fill_in 'address', with: "マンハッタン"
+      find('#man_category_id').find("option[value='3']").select_option
+      fill_in 'address', with: 'マンハッタン'
       fill_in 'man_content', with: "#{@man1.content}content"
       # 添付する画像を定義する
       image_path = Rails.root.join('public/images/test_image.png')
       # 画像選択フォームに画像を添付する
       attach_file('man[image]', image_path, make_visible: true)
       # 送信するとManモデルのカウントが上がらないことを確認する
-      expect{
+      expect do
         find('input[name="commit"]').click
-      }.to change { Man.count }.by(0)
+      end.to change { Man.count }.by(0)
       # man1の詳細ページに遷移することを確認する
       expect(current_path).to eq man_path(@man1)
       # 詳細ページには先ほど編集した内容の投稿が存在する
@@ -157,7 +157,7 @@ RSpec.describe '投稿編集', type: :system do
       # man1の詳細ページに遷移する
       visit man_path(@man1)
       # man1に編集ボタンがないことを確認する
-      expect(page).to have_no_link '編集する', href: edit_man_path(@man1) 
+      expect(page).to have_no_link '編集する', href: edit_man_path(@man1)
     end
 
     it 'ログインしていないと投稿編集画面には遷移できない(man2)' do
@@ -166,7 +166,7 @@ RSpec.describe '投稿編集', type: :system do
       # man1の詳細ページに遷移する
       visit man_path(@man2)
       # man1に編集ボタンがないことを確認する
-      expect(page).to have_no_link '編集する', href: edit_man_path(@man2) 
+      expect(page).to have_no_link '編集する', href: edit_man_path(@man2)
     end
   end
 end
@@ -192,9 +192,9 @@ RSpec.describe '投稿削除', type: :system do
       # 「削除」ボタンがあることを確認する
       expect(page).to have_link '削除する', href: man_path(@man1)
       # 投稿を削除するとレコードの数が1減ることを確認する
-      expect {
+      expect do
         find('.edit-delete-btn').click
-      }.to change{ Man.count }.by(-1)
+      end.to change { Man.count }.by(-1)
       # トップページに遷移することを確認する
       expect(current_path).to eq root_path
       # トップページにはman1内容が存在しないことを確認する
@@ -218,7 +218,7 @@ RSpec.describe '投稿削除', type: :system do
       # man1の詳細ページに遷移する
       visit man_path(@man1)
       # man1に編集ボタンがないことを確認する
-      expect(page).to have_no_link '編集する', href: edit_man_path(@man1) 
+      expect(page).to have_no_link '編集する', href: edit_man_path(@man1)
     end
 
     it 'ログインしていないと編集ページに遷移することができない(削除ボタンを押すことができない)(man2)' do
@@ -227,7 +227,7 @@ RSpec.describe '投稿削除', type: :system do
       # man1の詳細ページに遷移する
       visit man_path(@man2)
       # man1に編集ボタンがないことを確認する
-      expect(page).to have_no_link '編集する', href: edit_man_path(@man2) 
+      expect(page).to have_no_link '編集する', href: edit_man_path(@man2)
     end
   end
 end
