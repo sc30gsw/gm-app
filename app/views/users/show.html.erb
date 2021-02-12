@@ -38,9 +38,15 @@
         </div>
       <% end %>
     <% end %>
-    <% if current_user.id == @user.id && @user.intro.present? %>
+    <% if current_user.id == @user.id %>
+      <% if @user.intro.present? %>
+        <div class="profile-edit-btn">
+          <%= link_to 'プロフィールを編集する',  edit_intro_path(@user.intro.id), class: "profile-btn" %>
+        </div>
+      <% end %>
+    <% else %>
       <div class="profile-edit-btn">
-        <%= link_to 'プロフィールを編集する',  edit_intro_path(@user.intro.id), class: "profile-btn" %>
+        <input tyep="submit" class="show-follow-btn" value="フォロー">
       </div>
     <% end %>
   </div>
