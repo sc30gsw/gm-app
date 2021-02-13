@@ -1,8 +1,11 @@
 class CommentsController < ApplicationController
+
   def create
     @comment = Comment.new(comment_params)
+    @man = @comment.man
     if @comment.valid?
       @comment.save
+      @man.create_notification_comment(current_user, @comment.id)
       redirect_to man_path(@comment.man)
     else
       @man = @comment.man
@@ -25,4 +28,5 @@ class CommentsController < ApplicationController
   def comment_params
     params.require(:comment).permit(:text).merge(user_id: current_user.id, man_id: params[:man_id])
   end
+
 end

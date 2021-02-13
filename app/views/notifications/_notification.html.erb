@@ -1,0 +1,39 @@
+<% @notifications.each do |notification| %>
+  <li class='notice-list'>
+    <%= link_to user_path(notification.visitor.id) do %>
+      <div class='notice-profile-content'>
+        <% if notification.visitor.intro.present? %>
+          <%= image_tag notification.visitor.intro.image, class:'notice-avatar', alt: 'ユーザーアイコン' %>
+        <% else %>
+          <%= image_tag 'https://cdn2.aprico-media.com/production/imgs/images/000/008/511/original.jpg?1505866639', class: "card-user-icon", alt: 'ユーザーアイコン' %>
+        <% end %>
+      </div>
+    <% end %>
+
+    <div class='list-main-content-notice'>
+      <div class='list-notice-message'>
+        <%= link_to notification.visitor.nickname, user_path(notification.visitor.id) %>
+        <% case notification.action %>
+          <% when "follow" then %>
+            があなたをフォローしました
+          <% when "like" then %>
+            があなたの投稿<%= link_to "「#{notification.man.name.truncate(20)}」", notification.man %>をLIKEしました
+          <% when "comment" then %>
+            <% if notification.man.user_id == notification.visited_id %>
+              があなたの投稿<%= link_to "「#{notification.man.name.truncate(20)}」", notification.man %>にコメントしました
+            <% else %>
+              があなたもコメントした
+              <%= link_to "#{notification.man.user.nickname}", user_path(notification.man.user.id) %>
+              の投稿
+              <%= link_to "「#{notification.man.name.truncate(20)}」", notification.man %>にコメントしました
+            <% end %>
+        <% end %>
+      </div>
+      <div class='list-notice-date'>
+        <time datetime="<%= notification.created_at %>">
+          <%= time_ago_in_words(notification.created_at) %>前
+        </time>
+      </div>
+    </div>
+  </li>
+<% end %>
