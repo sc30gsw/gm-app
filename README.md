@@ -16,6 +16,10 @@
 - has_many :comments
 - has_many :likes, dependent: :destroy
 - has_many :liked_mans, through: :likes, source: :man
+- has_many :relationships, dependent: :destroy
+- has_many :followings, through: :relationships, source: :follow
+- has_many :reverse_of_relationsihps, class_name: 'Relationship', foreign_key: 'follow_id'
+- has_many :followers, through: :reverse_of_relationsihps, source: :user
 
 ## sns_credentials テーブル
 
@@ -42,7 +46,7 @@
 
 - belongs_to :user
 
-## mans テーブル
+## mens テーブル
 
 | Column      | Type       | Options           |
 | ----------- | ---------- | ----------------- |
@@ -87,3 +91,16 @@
 
 - belongs_to :user
 - belongs_to :man
+
+## relationships テーブル
+
+| Column               | Type       | Options                       |
+| -------------------- | ---------- | ----------------------------- |
+| user                 | references | foreign_key: true             |
+| follow               | references | foreign_key: to_table: :users |
+| [user_id, follow_id] | index      | unique: true                  |
+
+### Associations
+
+- belongs_to :user
+- belongs_to :follow, class_name: 'User'
