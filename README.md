@@ -14,6 +14,8 @@
 - has_many :sns_credentials
 - has_many :mans
 - has_many :comments
+- has_many :likes, dependent: :destroy
+- has_many :liked_mans, through: :likes, source: :man
 
 ## sns_credentials テーブル
 
@@ -55,6 +57,8 @@
 ### Associations
 
 - has_many :comments
+- has_many :likes, dependent: :destroy
+- has_many :liked_users, through: :likes, source: :user
 - belongs_to :user
 - belongs_to :category
 
@@ -66,6 +70,18 @@
 | text    | text       | null: false       |
 | user    | references | foreign_key: true |
 | man     | references | foreign_key: true |
+
+### Associations
+
+- belongs_to :user
+- belongs_to :man
+
+## likes テーブル
+
+| Column | Type       | Options           |
+| ------ | ---------- | ----------------- |
+| user   | references | foreign_key: true |
+| man    | references | foreign_key: true |
 
 ### Associations
 
