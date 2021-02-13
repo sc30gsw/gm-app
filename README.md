@@ -20,6 +20,8 @@
 - has_many :followings, through: :relationships, source: :follow
 - has_many :reverse_of_relationsihps, class_name: 'Relationship', foreign_key: 'follow_id'
 - has_many :followers, through: :reverse_of_relationsihps, source: :user
+- has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
+- has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
 
 ## sns_credentials テーブル
 
@@ -63,6 +65,7 @@
 - has_many :comments
 - has_many :likes, dependent: :destroy
 - has_many :liked_users, through: :likes, source: :user
+- has_many :notifications, dependent: :destroy
 - belongs_to :user
 - belongs_to :category
 
@@ -77,6 +80,7 @@
 
 ### Associations
 
+- has_many :notifications, dependent: :destroy
 - belongs_to :user
 - belongs_to :man
 
@@ -104,3 +108,20 @@
 
 - belongs_to :user
 - belongs_to :follow, class_name: 'User'
+
+## notifications テーブル
+
+| Column     | Type    | Options                     |
+| ---------- | ------- | --------------------------- |
+| visitor_id | integer | null: false                 |
+| visited_id | integer | null: false                 |
+| man_id     | integer |                             |
+| comment_id | integer |                             |
+| action     | string  | default: '', null: false    |
+| checked    | boolean | default: false, null: false |
+
+### Associations
+
+- belongs_to :man, optional: true
+- belongs_to :comment, optional: true
+- belongs_to :visitor, class_name: 'User', foreign_key: 'visitor_id', optional: true
