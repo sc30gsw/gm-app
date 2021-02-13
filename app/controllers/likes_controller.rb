@@ -4,6 +4,7 @@ class LikesController < ApplicationController
   def create
     @like = Like.new(user_id: current_user.id, man_id: params[:man_id])
     @like.save
+    @man.create_notification_like(current_user)
     @likes = Like.where(man_id: @man.id).count
     redirect_to man_path(@man.id)
   end
