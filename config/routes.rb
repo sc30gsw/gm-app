@@ -21,5 +21,7 @@ Rails.application.routes.draw do
 
   resources :relationships, only: [:create, :destroy]
 
+  resources :notifications, only: [:index, :destroy]
+
   get '/mans/category/:id', to: 'mans#category'
 end
