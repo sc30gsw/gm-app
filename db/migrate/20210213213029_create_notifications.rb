@@ -6,7 +6,7 @@ class CreateNotifications < ActiveRecord::Migration[6.0]
       t.integer :man_id
       t.integer :comment_id
       t.string :action, default: '', null: false
-      t.boolean :cheked, default: false, null: false
+      t.boolean :checked, default: false, null: false
       t.timestamps
     end
   end

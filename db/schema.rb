@@ -80,7 +80,7 @@ ActiveRecord::Schema.define(version: 2021_02_13_213029) do
     t.integer "man_id"
     t.integer "comment_id"
     t.string "action", default: "", null: false
-    t.boolean "cheked", default: false, null: false
+    t.boolean "checked", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
