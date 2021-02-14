@@ -1,5 +1,4 @@
 class NotificationsController < ApplicationController
-
   def index
     @notifications = current_user.passive_notifications.where.not(visitor_id: current_user.id).order(created_at: :DESC)
     @notifications.where(checked: false).each do |notification|
@@ -11,5 +10,4 @@ class NotificationsController < ApplicationController
     @notifications = current_user.passive_notifications.destroy_all
     redirect_to root_path
   end
-
 end
