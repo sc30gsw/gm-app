@@ -13,17 +13,19 @@
       <%= link_to root_path, class: "header-opt-link" do %>
         <i class="fas fa-home"></i>
       <% end %>
-      <i class="fas fa-sort-numeric-down"></i>
-      <% if unchecked_notifications.any? %>
-      <%= link_to notifications_path, class: "header-opt-link" do %>
-        <div class="notice-on-bell">
-          <i class="far fa-bell notice-bell"></i><span></span>
-        </div>
+      <%= link_to "/timeline/#{current_user.id}", class: "header-opt-link" do %>
+        <i class="fas fa-clock"></i>
       <% end %>
+      <% if unchecked_notifications.any? %>
+        <%= link_to notifications_path, class: "header-opt-link" do %>
+          <div class="notice-on-bell">
+            <i class="far fa-bell notice-bell"></i><span></span>
+          </div>
+        <% end %>
       <% else %>
         <%= link_to notifications_path, class: "header-opt-link" do %>
-        <i class="far fa-bell"></i>
-      <% end %>
+          <i class="far fa-bell"></i>
+        <% end %>
       <% end %>
     </div>
     <div class="header-user-box">
