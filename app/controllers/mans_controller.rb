@@ -52,6 +52,10 @@ class MansController < ApplicationController
     @category = Category.find(params[:id])
   end
 
+  def timeline
+    @mans = Man.includes(:user).order('created_at DESC')
+  end
+
   private
 
   def man_params
