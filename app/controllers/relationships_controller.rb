@@ -6,10 +6,10 @@ class RelationshipsController < ApplicationController
     if following.save
       flash[:success] = 'ユーザーをフォローしました'
       @user.create_notification_follow(current_user)
-      redirect_back(fallback_location: user_path(@user))
+      redirect_to user_path(@user.id)
     else
       flash.now[:alert] = 'ユーザーのフォローに失敗しました'
-      redirect_back(fallback_location: user_path(@user))
+      render 'mans/show'
     end
   end
 
@@ -17,10 +17,10 @@ class RelationshipsController < ApplicationController
     following = current_user.unfollow(@user)
     if following.destroy
       flash[:success] = 'ユーザーのフォローを解除しました'
-      redirect_back(fallback_location: user_path(@user))
+      redirect_to user_path(@user.id)
     else
       flash.now[:alert] = 'ユーザーのフォロー解除に失敗しました'
-      redirect_back(fallback_location: user_path(@user))
+      render 'mans/show'
     end
   end
 

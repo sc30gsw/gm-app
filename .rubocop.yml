@@ -54,7 +54,7 @@ Metrics/BlockNesting:
 Metrics/ClassLength:
  Enabled: false
 
-# 空メソッドの場合に、1行のスタイルにしない　NG例：def style1; end
+# 空メソッドの場合に、1行のスタイルにしない NG例：def style1; end
 Style/EmptyMethod:
  EnforcedStyle: expanded
 
