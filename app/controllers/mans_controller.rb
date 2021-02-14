@@ -53,7 +53,8 @@ class MansController < ApplicationController
   end
 
   def timeline
-    @mans = Man.includes(:user).order('created_at DESC')
+    @followings = current_user.followings
+    @mans = Man.where(user_id: @followings).or(Man.where(user_id: current_user.id)).order('created_at DESC')
   end
 
   private
