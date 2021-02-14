@@ -3,7 +3,7 @@ class MansController < ApplicationController
   before_action :set_man, only: [:show, :edit, :update, :destroy]
 
   def index
-    @mans = Man.includes(:user)
+    @mans = Man.includes(:user).sort { |a, b| b.liked_users.count <=> a.liked_users.count }
   end
 
   def new
