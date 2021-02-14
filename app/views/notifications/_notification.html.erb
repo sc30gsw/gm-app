@@ -2,7 +2,7 @@
   <li class='notice-list'>
     <%= link_to user_path(notification.visitor.id) do %>
       <div class='notice-profile-content'>
-        <% if notification.visitor.intro.present? %>
+        <% if notification.visitor.intro.present? && notification.visitor.intro.image.attached?%>
           <%= image_tag notification.visitor.intro.image, class:'notice-avatar', alt: 'ユーザーアイコン' %>
         <% else %>
           <%= image_tag 'https://cdn2.aprico-media.com/production/imgs/images/000/008/511/original.jpg?1505866639', class: "card-user-icon", alt: 'ユーザーアイコン' %>

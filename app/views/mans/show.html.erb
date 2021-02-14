@@ -7,7 +7,7 @@
       <div class="show-top-info">
         <div class="show-top-profile">
           <%= link_to user_path(@man.user_id) do %>
-            <% if @man.user.intro.present? %>
+            <% if @man.user.intro.present? && @man.user.intro.image.attached? %>
               <%= image_tag @man.user.intro.image, class: "show-top-avater", alt: "ユーザーアイコン" %>
             <% else %>
               <%= image_tag 'https://cdn2.aprico-media.com/production/imgs/images/000/008/511/original.jpg?1505866639', class: "show-top-avater", alt: 'ユーザーアイコン' %>
@@ -107,7 +107,7 @@
             <div class="comment-btn-box">
               <div class="comment-btn-box-left">  
                 <%= link_to user_path(current_user.id) do %>
-                  <% if current_user.intro.present? %>
+                  <% if current_user.intro.present? && current_user.intro.image.attached? %>
                     <%= image_tag current_user.intro.image, class: "show-top-avater", alt: "ユーザーアイコン" %>
                   <% else %>
                     <%= image_tag 'https://cdn2.aprico-media.com/production/imgs/images/000/008/511/original.jpg?1505866639', class: "show-top-avater", alt: 'ユーザーアイコン' %>
@@ -130,7 +130,7 @@
           <div class="comment-btn-box">
             <div class="comment-btn-box-left">
               <%= link_to user_path(comment.user_id) do %>
-                <% if comment.user.intro.present? %>
+                <% if comment.user.intro.present? && comment.user.intro.image.attached? %>
                   <%= image_tag comment.user.intro.image, class: "show-top-avater", alt: "ユーザーアイコン" %>
                 <% else %>
                   <%= image_tag 'https://cdn2.aprico-media.com/production/imgs/images/000/008/511/original.jpg?1505866639', class: "show-top-avater", alt: 'ユーザーアイコン' %>

@@ -3,7 +3,7 @@
     <li class="item-list">
       <%= link_to user_path(man.user_id) do %>
         <div class="list-profile-content">
-          <% if man.user.intro.present? %>
+          <% if man.user.intro.present? && man.user.intro.image.attached? %>
             <%= image_tag man.user.intro.image, class: "list-avater", alt: "ユーザーアイコン" %>
           <% else %>
             <%= image_tag 'https://cdn2.aprico-media.com/production/imgs/images/000/008/511/original.jpg?1505866639', class: "list-avater", alt: 'ユーザーアイコン' %>
