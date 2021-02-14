@@ -52,6 +52,11 @@ class MansController < ApplicationController
     @category = Category.find(params[:id])
   end
 
+  def timeline
+    @followings = current_user.followings
+    @mans = Man.where(user_id: @followings).or(Man.where(user_id: current_user.id)).order('created_at DESC')
+  end
+
   private
 
   def man_params

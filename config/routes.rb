@@ -24,4 +24,6 @@ Rails.application.routes.draw do
   resources :notifications, only: [:index, :destroy]
 
   get '/mans/category/:id', to: 'mans#category'
+
+  get '/timeline/:id', to: 'mans#timeline'
 end
