@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_13_213029) do
+ActiveRecord::Schema.define(version: 2021_02_15_233808) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -61,6 +61,15 @@ ActiveRecord::Schema.define(version: 2021_02_13_213029) do
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
+  create_table "man_tags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "man_id"
+    t.bigint "tag_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["man_id"], name: "index_man_tags_on_man_id"
+    t.index ["tag_id"], name: "index_man_tags_on_tag_id"
+  end
+
   create_table "men", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.text "content"
@@ -104,6 +113,12 @@ ActiveRecord::Schema.define(version: 2021_02_13_213029) do
     t.index ["user_id"], name: "index_sns_credentials_on_user_id"
   end
 
+  create_table "tags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -123,6 +138,8 @@ ActiveRecord::Schema.define(version: 2021_02_13_213029) do
   add_foreign_key "intros", "users"
   add_foreign_key "likes", "men"
   add_foreign_key "likes", "users"
+  add_foreign_key "man_tags", "men"
+  add_foreign_key "man_tags", "tags"
   add_foreign_key "men", "users"
   add_foreign_key "relationships", "users"
   add_foreign_key "relationships", "users", column: "follow_id"
