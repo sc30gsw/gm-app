@@ -24,7 +24,7 @@ class Man < ApplicationRecord
 
   after_create do
     man = Man.find_by(id: id)
-    tags = tagbody.scan(/[#＃][Ａ-Ｚａ-ｚA-Za-z一-鿆0-9０-９ぁ-ヶｦ-ﾟー]+/).map(&:strip)
+    tags = tagbody.scan(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/)
     tags.uniq.map do |tag|
       t = Tag.find_or_create_by(name: tag.downcase.delete('#'))
       man.tags << t
