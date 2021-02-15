@@ -26,4 +26,6 @@ Rails.application.routes.draw do
   get '/mans/category/:id', to: 'mans#category'
 
   get '/timeline/:id', to: 'mans#timeline'
+
+  get '/mans/tag/:name', to: "mans#tag"
 end
