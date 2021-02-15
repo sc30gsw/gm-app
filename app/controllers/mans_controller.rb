@@ -57,6 +57,11 @@ class MansController < ApplicationController
     @mans = Man.where(user_id: @followings).or(Man.where(user_id: current_user.id)).order('created_at DESC')
   end
 
+  def tag
+    @tag = Tag.find_by(name: params[:name])
+    @tags = Tag.all.to_a.gourp_by{ |tag| tag.mans.count }
+  end
+
   private
 
   def man_params
