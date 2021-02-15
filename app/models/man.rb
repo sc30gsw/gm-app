@@ -22,6 +22,25 @@ class Man < ApplicationRecord
     validates :longitude
   end
 
+  after_create do
+    man = Man.find_by(id: id)
+    tags = tagbody.scan(/[#＃][Ａ-Ｚａ-ｚA-Za-z一-鿆0-9０-９ぁ-ヶｦ-ﾟー]+/).map(&:strip)
+    tags.uniq.map do |tag|
+      t = Tag.find_or_create_by(name: tag.downcase.delete('#'))
+      man.tags << t
+    end
+  end
+
+  before_update do
+    man = Man.find_by(id: id)
+    man.tags.clear
+    tags = tagbody.scan(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/)
+    tags.uniq.map do |tag|
+      t = Tag.find_or_create_by(name: tag.downcase.delete('#'))
+      man.tags << t
+    end
+  end
+
   def create_notification_like(current_user)
     temp = Notification.where(['visitor_id = ? and visited_id = ? and man_id = ? and action = ? ', current_user.id, user_id, id, 'like'])
     if temp.blank?
