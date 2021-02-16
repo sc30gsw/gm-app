@@ -8,8 +8,8 @@ class Man < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :liked_users, through: :likes, source: :user
   has_many :notifications, dependent: :destroy
-  has_many :man_tags
-  has_many :tags, through: :man_tags
+  has_many :man_tags, dependent: :destroy
+  has_many :tags, through: :man_tags, dependent: :destroy
   belongs_to :user
   belongs_to :category
 
