@@ -5,7 +5,7 @@
   <div class="user-main">
     <div class="user-card">
       <div class="user-main-icon">
-        <% if @user.intro.present? %>
+        <% if @user.intro.present? && @user.intro.image.attached? %>
           <%= image_tag @user.intro.image, class: "card-user-icon", alt: "ユーザーアイコン" %>
         <% else %>
           <%= image_tag 'https://cdn2.aprico-media.com/production/imgs/images/000/008/511/original.jpg?1505866639', class: "card-user-icon", alt: 'ユーザーアイコン' %>
@@ -67,7 +67,7 @@
     <li class="item-list">
       <div class="user-list-profile-content">
         <%= link_to user_path(@user.id) do %>
-          <% if @user.intro.present? %>
+          <% if @user.intro.present? && @user.intro.image.attached? %>
             <%= image_tag @user.intro.image, class: "list-avater", alt: "ユーザーアイコン" %>
           <% else %>
             <%= image_tag 'https://cdn2.aprico-media.com/production/imgs/images/000/008/511/original.jpg?1505866639', class: "list-avater", alt: 'ユーザーアイコン' %>
@@ -91,7 +91,7 @@
               <% end %>
             </div>
             <div class="list-tag">
-              <i class="fas fa-tags list-tag-icon"></i><p>#幕末 #新選組</p>
+              <i class="fas fa-tags list-tag-icon"></i><p><%= render_with_tags(man.tagbody) %></p>
             </div>
           </div>
           <div class="list-detail-content">

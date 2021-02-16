@@ -57,10 +57,19 @@ class MansController < ApplicationController
     @mans = Man.where(user_id: @followings).or(Man.where(user_id: current_user.id)).order('created_at DESC')
   end
 
+  def tag
+    @tag = Tag.find_by(name: params[:name])
+    @mans = @tag.mans
+    if user_signed_in?
+      @user = User.find(current_user.id)
+      @my_mans = Man.where(user_id: current_user.id).order('created_at DESC')
+    end
+  end
+
   private
 
   def man_params
-    params.require(:man).permit(:name, :content, :category_id, :address, :latitude, :longitude, :image).merge(user_id: current_user.id)
+    params.require(:man).permit(:name, :content, :tagbody, :category_id, :address, :latitude, :longitude, :image).merge(user_id: current_user.id)
   end
 
   def set_man

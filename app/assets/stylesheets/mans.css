@@ -391,10 +391,18 @@
 .list-tag p {
   margin-top: 8px;
   font-size: 13px;
-  color: grey;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.list-tag a {
+  color: grey;
+  text-decoration: none;
+}
+
+.list-tag a:hover {
+  color: grey;
 }
 
 .list-detail-content {

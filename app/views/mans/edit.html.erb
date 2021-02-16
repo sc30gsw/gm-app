@@ -17,7 +17,7 @@
             <%= f.collection_select(:category_id, Category.all, :id, :name, {}, {class: 'category-select'}) %>
           </div>
           <div class="second-box-right">
-            <input type="text" class="new-caption-input" placeholder="#ハッシュタグ">
+            <%= f.text_field :tagbody, placeholder: "#ハッシュタグ", class: "new-caption-input" %>
           </div>
         </div>
         <div class="new-third-box">

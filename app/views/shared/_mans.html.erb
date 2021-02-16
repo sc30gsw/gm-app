@@ -3,7 +3,7 @@
     <li class="item-list">
       <%= link_to user_path(man.user_id) do %>
         <div class="list-profile-content">
-          <% if man.user.intro.present? %>
+          <% if man.user.intro.present? && man.user.intro.image.attached? %>
             <%= image_tag man.user.intro.image, class: "list-avater", alt: "ユーザーアイコン" %>
           <% else %>
             <%= image_tag 'https://cdn2.aprico-media.com/production/imgs/images/000/008/511/original.jpg?1505866639', class: "list-avater", alt: 'ユーザーアイコン' %>
@@ -26,7 +26,7 @@
             <% end %>
           </div>
           <div class="list-tag">
-            <i class="fas fa-tags list-tag-icon"></i><p>#幕末 #新選組</p>
+            <i class="fas fa-tags list-tag-icon"></i><p><%= render_with_tags(man.tagbody) %></p>
           </div>
         </div>
         <div class="list-detail-content">
