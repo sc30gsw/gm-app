@@ -60,10 +60,6 @@ class MansController < ApplicationController
   def tag
     @tag = Tag.find_by(name: params[:name])
     @mans = @tag.mans
-    if user_signed_in?
-      @user = User.find(current_user.id)
-      @my_mans = Man.where(user_id: current_user.id).order('created_at DESC')
-    end
   end
 
   private
