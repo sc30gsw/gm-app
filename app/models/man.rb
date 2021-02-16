@@ -14,6 +14,7 @@ class Man < ApplicationRecord
   belongs_to :category
 
   validates :category_id, numericality: { other_than: 1, message: 'を選択してください' }
+  validates :tagbody, length: { maximum: 60 }
   with_options presence: true do
     validates :name
     validates :category_id
