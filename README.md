@@ -55,6 +55,7 @@
 | name        | string     | null: false       |
 | content     | text       |                   |
 | category_id | integer    | null: false       |
+| tagbody     | string     |                   |
 | address     | string     | null: false       |
 | latitude    | float      | null: false       |
 | longitude   | float      | null: false       |
@@ -66,6 +67,8 @@
 - has_many :likes, dependent: :destroy
 - has_many :liked_users, through: :likes, source: :user
 - has_many :notifications, dependent: :destroy
+- has_many :man_tags
+- has_many :tags, through: :man_tags
 - belongs_to :user
 - belongs_to :category
 
@@ -125,3 +128,26 @@
 - belongs_to :man, optional: true
 - belongs_to :comment, optional: true
 - belongs_to :visitor, class_name: 'User', foreign_key: 'visitor_id', optional: true
+
+## tags テーブル
+
+| Column | Type   | Options      |
+| ------ | ------ | ------------ |
+| name   | string | unique: true |
+
+### Associations
+
+- has_many :man_tags
+- has_many :mans, through: :man_tags
+
+## man_tags テーブル
+
+| Column | Type       | Options           |
+| ------ | ---------- | ----------------- |
+| man    | references | foreign_key: true |
+| tag    | references | foreign_key: true |
+
+### Associations
+
+- belongs_to :man
+- belongs_to :tag
