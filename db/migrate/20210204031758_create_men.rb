@@ -4,6 +4,7 @@ class CreateMen < ActiveRecord::Migration[6.0]
       t.string :name, null: false
       t.text :content
       t.integer :category_id, null: false
+      t.string :tagbody
       t.string :address, null: false
       t.float :latitude, null: false
       t.float :longitude, null: false
