@@ -62,6 +62,10 @@ class MansController < ApplicationController
     @mans = @tag.mans
   end
 
+  def search
+    @mans = Man.search(params[:keyword])
+  end
+
   private
 
   def man_params

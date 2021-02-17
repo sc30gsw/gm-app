@@ -73,4 +73,12 @@ class Man < ApplicationRecord
     notification.checked = true if notification.visitor_id == notification.visited_id
     notification.save if notification.valid?
   end
+
+  def self.search(search)
+    if search != ""
+      Man.where('name LIKE(?)', "%#{search}%")
+    else
+      Man.all
+    end
+  end
 end
