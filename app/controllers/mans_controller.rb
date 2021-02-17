@@ -62,6 +62,9 @@ class MansController < ApplicationController
     @mans = @tag.mans
   end
 
+  def search
+  end
+
   private
 
   def man_params

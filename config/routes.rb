@@ -17,6 +17,9 @@ Rails.application.routes.draw do
   resources :mans, only: [:new, :create, :show, :edit, :update, :destroy] do
     resources :comments, only: [:create, :destroy]
     resources :likes, only: [:create, :destroy]
+    collection do
+      get 'search'
+    end
   end
 
   resources :relationships, only: [:create, :destroy]
