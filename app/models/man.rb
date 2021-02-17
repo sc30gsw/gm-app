@@ -75,7 +75,7 @@ class Man < ApplicationRecord
   end
 
   def self.search(search)
-    if search != ""
+    if search != ''
       Man.where('name LIKE(?)', "%#{search}%")
     else
       Man.all
