@@ -63,6 +63,7 @@ class MansController < ApplicationController
   end
 
   def search
+    @mans = Man.search(params[:keyword])
   end
 
   private
