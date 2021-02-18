@@ -59,7 +59,7 @@
         <%= link_to 'likes', "/likes/user/#{@user.id}", class: "user-status-likes" %>
       </div>
       <div class="user-status">
-        <a href="#" class="user-status-comments">Comments</a>
+        <%= link_to 'Comments', "/comments/user/#{@user.id}", class: "user-status-comments" %>
       </div>
     </div>
   </div>
