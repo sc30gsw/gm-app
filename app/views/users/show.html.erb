@@ -41,7 +41,7 @@
     <% if current_user.id == @user.id %>
       <% if @user.intro.present? %>
         <div class="profile-edit-btn">
-          <%= link_to 'プロフィールを編集する',  edit_intro_path(@user.intro.id), class: "profile-btn" %>
+          <%= link_to 'プロフィールを編集する', edit_intro_path(@user.intro.id), class: "profile-btn" %>
         </div>
       <% end %>
     <% else %>
@@ -53,7 +53,7 @@
   <div class="user-mans-contents">
     <div class="user-mans-status">
       <div class="user-status">
-        <%= link_to 'Tweets', user_path(@user.id), class: "user-status-tweets" %>
+        <%= link_to 'Tweets', user_path(@user.id), class: "user-status-tweets-btn" %>
       </div>
       <div class="user-status">
         <%= link_to 'likes', "/likes/user/#{@user.id}", class: "user-status-likes" %>
@@ -65,16 +65,18 @@
   </div>
   <div class="user-list-mans-contents">
     <li class="item-list">
-      <div class="user-list-profile-content">
-        <%= link_to user_path(@user.id) do %>
-          <% if @user.intro.present? && @user.intro.image.attached? %>
-            <%= image_tag @user.intro.image, class: "list-avater", alt: "ユーザーアイコン" %>
-          <% else %>
-            <%= image_tag 'https://cdn2.aprico-media.com/production/imgs/images/000/008/511/original.jpg?1505866639', class: "list-avater", alt: 'ユーザーアイコン' %>
+      <% if @mans.present? %>
+        <div class="user-list-profile-content">
+          <%= link_to user_path(@user.id) do %>
+            <% if @user.intro.present? && @user.intro.image.attached? %>
+              <%= image_tag @user.intro.image, class: "list-avater", alt: "ユーザーアイコン" %>
+            <% else %>
+              <%= image_tag 'https://cdn2.aprico-media.com/production/imgs/images/000/008/511/original.jpg?1505866639', class: "list-avater", alt: 'ユーザーアイコン' %>
+            <% end %>
+            <span class="list-username"><%= @user.nickname %></span>
           <% end %>
-          <span class="list-username"><%= @user.nickname %></span>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
       <% @user.mans.each do |man| %>
         <div class="list-main-content">
           <div class="list-title-content">

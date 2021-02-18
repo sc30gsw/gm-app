@@ -2,8 +2,8 @@ class LikesController < ApplicationController
   before_action :set_man, only: [:create, :destroy]
 
   def index
-    @mans = current_user.liked_mans.joins(:likes).order('likes.created_at DESC')
     @user = User.find(params[:id])
+    @mans = @user.liked_mans.joins(:likes).order('likes.created_at DESC')
   end
 
   def create

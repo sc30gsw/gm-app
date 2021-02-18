@@ -1,8 +1,8 @@
 class CommentsController < ApplicationController
 
   def index
-    @mans = current_user.commented_mans.joins(:comments).order('comments.created_at DESC')
     @user = User.find(params[:id])
+    @mans = @user.commented_mans.joins(:comments).order('comments.created_at DESC')
   end
 
   def create
