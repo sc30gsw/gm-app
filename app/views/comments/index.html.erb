@@ -1,0 +1,120 @@
+<header class="header">
+  <%= render 'shared/header' %>
+</header>
+<div class="mypage-main">
+  <div class="user-main">
+    <div class="user-card">
+      <div class="user-main-icon">
+        <% if @user.intro.present? && @user.intro.image.attached? %>
+          <%= image_tag @user.intro.image, class: "card-user-icon", alt: "ユーザーアイコン" %>
+        <% else %>
+          <%= image_tag 'https://cdn2.aprico-media.com/production/imgs/images/000/008/511/original.jpg?1505866639', class: "card-user-icon", alt: 'ユーザーアイコン' %>
+        <% end %>
+      </div>
+      <div class="user-nickname">
+        <%= @user.nickname %>
+      </div>
+      <% if @user.intro.present?%>
+        <div class="user-profile">
+          <%= @user.intro.profile %>
+        </div>
+        <div class="user-website">
+          <a href="#"><%= @user.intro.website %></a>
+        </div>
+      <% end %>
+      <div class="user-follow-contents">
+        <div class="user-follow-counts">
+          <%= @user.followings.count %> Following
+        </div>
+        <div class="user-follower-counts">
+          <%= @user.followers.count %> Followers
+        </div>
+      </div>
+    </div>
+    <% unless @user.intro.present? %>
+      <% if current_user.id == @user.id %>
+        <div class="profile-edit-btn">
+          <%= link_to 'プロフィールを編集する', new_intro_path, class: "profile-btn" %>
+        </div>
+      <% end %>
+    <% end %>
+    <% if current_user.id == @user.id %>
+      <% if @user.intro.present? %>
+        <div class="profile-edit-btn">
+          <%= link_to 'プロフィールを編集する',  edit_intro_path(@user.intro.id), class: "profile-btn" %>
+        </div>
+      <% end %>
+    <% else %>
+      <div class="profile-edit-btn" id="follow-btn-userpage" >
+        <%= render 'follow', user: @user %>
+      </div>
+    <% end %>
+  </div>
+  <div class="user-mans-contents">
+    <div class="user-mans-status">
+      <div class="user-status">
+        <%= link_to 'Tweets', user_path(@user.id), class: "user-status-tweets" %>
+      </div>
+      <div class="user-status">
+        <%= link_to 'likes', "/likes/user/#{@user.id}", class: "user-status-likes" %>
+      </div>
+      <div class="user-status">
+        <%= link_to 'Comments', "/comments/user/#{@user.id}", class: "user-status-comments" %>
+      </div>
+    </div>
+  </div>
+  <div class="user-list-mans-contents">
+    <li class="item-list">
+      <% if @mans.present? %>
+        <div class="user-list-profile-content">
+          <%= link_to user_path(@user.id) do %>
+            <% if @user.intro.present? && @user.intro.image.attached? %>
+              <%= image_tag @user.intro.image, class: "list-avater", alt: "ユーザーアイコン" %>
+            <% else %>
+              <%= image_tag 'https://cdn2.aprico-media.com/production/imgs/images/000/008/511/original.jpg?1505866639', class: "list-avater", alt: 'ユーザーアイコン' %>
+            <% end %>
+            <span class="list-username"><%= @user.nickname %></span>
+          <% end %>
+        </div>
+      <% end %>
+      <% @mans.each do |man| %>
+        <div class="list-main-content">
+          <div class="list-title-content">
+            <p>
+              <%= link_to man_path(man.id) do %> 
+                <%= man.name %>
+              <% end %> 
+            </p>
+          </div>
+          <div class="list-cate-tag-content">
+            <div class="list-category">
+              <%= link_to "/mans/category/#{man.category_id}" do %>
+                <%= man.category.name %>
+              <% end %>
+            </div>
+            <div class="list-tag">
+              <i class="fas fa-tags list-tag-icon"></i><p><%= render_with_tags(man.tagbody) %></p>
+            </div>
+          </div>
+          <div class="list-detail-content">
+            <div class="list-detail">
+              <div class="list-like-comment">
+                <div class="list-like-count">
+                  <i class="far fa-heart list-like-icon"></i><%= man.likes.count %>
+                </div>
+                <div class="list-comment-count">
+                  <i class="far fa-comment list-commnet-icon"></i><%= man.comments.count %>
+                </div>
+              </div>
+              <div class="list-created">
+                <time datetime="<%= man.created_at %>">
+                  <%= time_ago_in_words(man.created_at) %>前
+                </time>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </li>
+  </div>
+</div>
