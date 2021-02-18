@@ -1,9 +1,10 @@
 class LikesController < ApplicationController
-  before_action :set_man
+  before_action :set_man, only: [:create, :destroy]
 
   def index
+    @mans = current_user.liked_mans.joins(:likes).order('likes.created_at DESC')
   end
-  
+
   def create
     @like = Like.new(user_id: current_user.id, man_id: params[:man_id])
     @like.save
