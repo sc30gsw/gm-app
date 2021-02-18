@@ -1,6 +1,6 @@
 class MansController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_man, only: [:show, :edit, :update, :destroy]
+  before_action :set_man, only: [:show, :edit, :update, :destroy, :like]
 
   def index
     @mans = Man.includes(:user).sort { |a, b| b.liked_users.count <=> a.liked_users.count }
@@ -64,6 +64,9 @@ class MansController < ApplicationController
 
   def search
     @mans = Man.search(params[:keyword])
+  end
+
+  def Like
   end
 
   private
