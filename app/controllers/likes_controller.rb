@@ -3,6 +3,7 @@ class LikesController < ApplicationController
 
   def index
     @mans = current_user.liked_mans.joins(:likes).order('likes.created_at DESC')
+    @user = User.find(params[:id])
   end
 
   def create
