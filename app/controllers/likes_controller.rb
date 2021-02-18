@@ -3,7 +3,7 @@ class LikesController < ApplicationController
 
   def index
     @user = User.find(params[:id])
-    @mans = @user.liked_mans.joins(:likes).order('likes.created_at DESC')
+    @mans = @user.liked_mans.order('likes.created_at DESC')
   end
 
   def create

@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
 
   def index
     @user = User.find(params[:id])
-    @mans = @user.commented_mans.joins(:comments).order('comments.created_at DESC')
+    @mans = @user.commented_mans.order('comments.created_at DESC')
   end
 
   def create
