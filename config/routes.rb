@@ -35,4 +35,6 @@ Rails.application.routes.draw do
   get '/likes/user/:id', to: "likes#index"
 
   get '/comments/user/:id', to: "comments#index"
+
+  get '/mans/like/:id', to: "mans#like"
 end
