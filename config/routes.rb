@@ -33,4 +33,6 @@ Rails.application.routes.draw do
   get '/mans/tag/:name', to: "mans#tag"
 
   get '/likes/user/:id', to: "likes#index"
+
+  get '/comments/user/:id', to: "comments#index"
 end

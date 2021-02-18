@@ -1,4 +1,8 @@
 class CommentsController < ApplicationController
+
+  def index
+  end
+  
   def create
     @comment = Comment.new(comment_params)
     @man = @comment.man
