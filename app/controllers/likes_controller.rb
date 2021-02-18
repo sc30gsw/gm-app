@@ -1,6 +1,9 @@
 class LikesController < ApplicationController
   before_action :set_man
 
+  def index
+  end
+  
   def create
     @like = Like.new(user_id: current_user.id, man_id: params[:man_id])
     @like.save
