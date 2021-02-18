@@ -13,6 +13,7 @@ class User < ApplicationRecord
   has_many :sns_credentials
   has_many :mans
   has_many :comments
+  has_many :commented_mans, through: :comments, source: :man
   has_many :likes, dependent: :destroy
   has_many :liked_mans, through: :likes, source: :man
   has_many :relationships, dependent: :destroy
