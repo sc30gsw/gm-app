@@ -1,56 +1,18 @@
 version: 2.1
-
 orbs:
   ruby: circleci/ruby@0.1.2 
   heroku: circleci/heroku@1.2.3
-
-  jobs:
-    build:
-      docker:
-        - image: circleci/ruby:2.6.5-stretch-node
-      executor: ruby/default
-      steps:
-        - checkout
-        - run: gem install bundler -v 2.1.4
-        - run:
-            name: Which bundler?
-            command: bundle -v
-        - ruby/bundle-install
-
-  test:
-    parallelism: 3
+jobs:
+  build:
     docker:
-      - image: circleci/ruby:2.6.5-node-browsers
-        environment:
-          DB_HOST: 127.0.0.1
-          RAILS_ENV: test
-          BUNDLER_VERSION: 2.1.4
-      - image: circleci/mysql:8.0
-        command: --default-authentication-plugin=mysql_native_password
-        environment:
-          MYSQL_ALLOW_EMPTY_PASSWORD: "true"
-          MYSQL_ROOT_HOST: "%"
-
+      - image: circleci/ruby:2.6.5-stretch-node
+    executor: ruby/default
     steps:
       - checkout
-      - ruby/install-deps
-      - run: yarn install
-      - run: mv config/database.yml.ci config/database.yml
+      - run: gem install bundler -v 2.1.4
       - run:
-          name: Wait for DB
-          command: dockerize -wait tcp://localhost:3306 -timeout 1m
-      - run: bundle exec rake db:create
-      - run: bundle exec rake db:schema:load
-      - run:
-          name: RuboCop
-          command: bundle exec rubocop
-      - run: bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --jobs=4 --retry=3
-      - run: mkdir ~/rspec
-      - run:
-          command: bundle exec rspec --format progress --format RspecJunitFormatter -o ~/rspec/rspec.xml
-          when: always
-      - store_test_results:
-          path: ~/rspec
+          name: Which bundler?
+          command: bundle -v
       - ruby/bundle-install
 
   deploy:
@@ -68,6 +30,7 @@ workflows:
   version: 2.1
   build-deploy:
     jobs:
+
       - build
       - deploy:
           requires:
