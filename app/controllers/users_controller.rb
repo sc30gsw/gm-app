@@ -1,10 +1,17 @@
 class UsersController < ApplicationController
+  before_action :set_user
+
   def show
-    @user = User.find(params[:id])
   end
 
   def follow
-    @follow_user = User.find(params[:id])
-    @users = @follow_user.followings.order('relationships.created_at DESC')
+    @users = @user.followings.order('relationships.created_at DESC')
   end
+
+  private
+
+  def set_user
+    @user = User.find(params[:id])
+  end
+  
 end
