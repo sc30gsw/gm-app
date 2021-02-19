@@ -422,6 +422,17 @@
   align-items: center;
 }
 
+.list-man-count {
+  font-size: 13px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.list-man-icon {
+  width: 13px;
+  margin-bottom: -2px;
+}
+
 .list-like-count {
   font-size: 13px;
   font-weight: bold;
@@ -442,6 +453,24 @@
 .list-comment-icon {
   width: 16px;
   margin-bottom: -3px;
+}
+
+.list-follow-count {
+  font-size: 13px;
+  margin-right: 10px;
+}
+
+.list-follow-count span {
+  font-weight: bold;
+}
+
+.list-follower-count {
+  font-size: 13px;
+  margin-right: 10px;
+}
+
+.list-follower-count span {
+  font-weight: bold;
 }
 
 .list-created-at {
@@ -622,8 +651,7 @@
     width: 70%;
     margin: 10px auto;
     padding: 5px 15px;
-    display: flex;
-    justify-content: space-between;
+    display: block;
     align-items: center;
     background-color: #fff;
     border: 1px solid grey;
@@ -633,6 +661,11 @@
   .main-search-box:hover {
     box-shadow: 2px 2px 2px rgba(0,0,0,0.4);
     cursor: pointer;
+  }
+
+  .main-search-box form {
+    display: flex;
+    justify-content: space-between;
   }
   
   .main-search-submit {

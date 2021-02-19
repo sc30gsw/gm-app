@@ -31,4 +31,14 @@ Rails.application.routes.draw do
   get '/timeline/:id', to: 'mans#timeline'
 
   get '/mans/tag/:name', to: "mans#tag"
+
+  get '/likes/user/:id', to: "likes#index"
+
+  get '/comments/user/:id', to: "comments#index"
+
+  get '/mans/like/:id', to: "mans#like"
+
+  get '/follows/user/:id', to: "users#follow"
+
+  get '/followers/user/:id', to: "users#follower"
 end

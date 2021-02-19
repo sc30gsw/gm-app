@@ -1,4 +1,11 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user!
+
+  def index
+    @user = User.find(params[:id])
+    @mans = @user.commented_mans.order('comments.created_at DESC')
+  end
+
   def create
     @comment = Comment.new(comment_params)
     @man = @comment.man

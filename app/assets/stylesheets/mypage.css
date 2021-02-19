@@ -34,6 +34,10 @@
   margin-top: 10px;
 }
 
+.card-user-icon:hover {
+  opacity: 0.7;
+}
+
 .user-nickname {
   height: 37.5px;
   width: 90%;
@@ -73,14 +77,24 @@
   justify-content: space-evenly;
 }
 
-.user-follow-counts:hover {
-  opacity: 0.7;
-  cursor: pointer;
+.user-follow-counts a {
+  text-decoration: none;
+  color: #000;
 }
 
-.user-follower-counts:hover {
+.user-follow-counts a:hover {
   opacity: 0.7;
-  cursor: pointer;
+  color: #000;
+}
+
+.user-follower-counts a {
+  text-decoration: none;
+  color: #000;
+}
+
+.user-follower-counts a:hover {
+  opacity: 0.7;
+  color: #000;
 }
 
 .profile-edit-btn {
@@ -147,6 +161,51 @@
   justify-content: space-around;
   padding: 20px 0;
   font-weight: bold;
+}
+
+.user-status-tweets {
+  padding: 5px 10px;
+  border-radius: 3px;
+}
+
+.user-status-tweets:active {
+  background-color: grey;
+}
+
+.user-status-tweets-btn {
+  background-color: grey;
+  padding: 5px 10px;
+  border-radius: 3px;
+}
+
+.user-status-likes {
+  padding: 5px 10px;
+  border-radius: 3px;
+}
+
+.user-status-likes:active {
+  background-color: grey;
+}
+
+.user-status-likes-btn {
+  background-color: grey;
+  padding: 5px 10px; 
+  border-radius: 3px;
+}
+
+.user-status-comments {
+  padding: 5px 10px;
+  border-radius: 3px;
+}
+
+.user-status-comments:active {
+  background-color: grey;
+}
+
+.user-status-comments-btn {
+  background-color: grey;
+  padding: 5px 10px;
+  border-radius: 3px;
 }
 
 .user-status a {

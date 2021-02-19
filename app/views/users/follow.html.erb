@@ -1,0 +1,41 @@
+<header class="header">
+  <%= render 'shared/header' %>
+</header>
+<div class="mypage-main">
+  <div class="user-main">
+    <%= render 'shared/user_card' %>
+    <% unless @user.intro.present? %>
+      <% if current_user.id == @user.id %>
+        <div class="profile-edit-btn">
+          <%= link_to 'プロフィールを編集する', new_intro_path, class: "profile-btn" %>
+        </div>
+      <% end %>
+    <% end %>
+    <% if current_user.id == @user.id %>
+      <% if @user.intro.present? %>
+        <div class="profile-edit-btn">
+          <%= link_to 'プロフィールを編集する', edit_intro_path(@user.intro.id), class: "profile-btn" %>
+        </div>
+      <% end %>
+    <% else %>
+      <div class="profile-edit-btn" id="follow-btn-userpage" >
+        <%= render 'follow', user: @user %>
+      </div>
+    <% end %>
+  </div>
+  <div class="user-mans-contents">
+    <div class="user-mans-status">
+      <div class="user-status">
+        <%= link_to 'Followings', "/follows/user/#{@user.id}", class: "user-status-tweets-btn" %>
+      </div>
+      <div class="user-status">
+        <%= link_to 'Followers', "/followers/user/#{@user.id}" ,class: "user-status-comments" %>
+      </div>
+    </div>
+  </div>
+  <div class="user-list-mans-contents">
+    <li class="item-list">
+      <%= render 'user' %>
+    </li>
+  </div>
+</div>
