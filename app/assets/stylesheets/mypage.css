@@ -34,6 +34,10 @@
   margin-top: 10px;
 }
 
+.card-user-icon:hover {
+  opacity: 0.7;
+}
+
 .user-nickname {
   height: 37.5px;
   width: 90%;
