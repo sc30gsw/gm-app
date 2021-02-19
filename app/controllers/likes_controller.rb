@@ -1,4 +1,5 @@
 class LikesController < ApplicationController
+  before_action :authenticate_user!, only: [:index]
   before_action :set_man, only: [:create, :destroy]
 
   def index
