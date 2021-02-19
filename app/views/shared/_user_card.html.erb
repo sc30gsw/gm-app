@@ -24,7 +24,9 @@
       <% end %>
     </div>
     <div class="user-follower-counts">
-      <b><%= @user.followers.count %></b> Followers
+      <%= link_to "/followers/user/#{@user.id}" do %>
+        <b><%= @user.followers.count %></b> Followers
+      <% end %>
     </div>
   </div>
 </div>
