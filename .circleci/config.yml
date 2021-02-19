@@ -66,16 +66,15 @@ orbs:
 
 workflows:
   version: 2.1
-  build_deploy:
+  build-deploy:
     jobs:
       - build
       - test:
-          requires:
-            - build
+        requires:
+          - build
       - deploy:
           requires:
-            - test
+            - build
           filters:
             branches:
               only: master
-
