@@ -66,7 +66,7 @@ class MansController < ApplicationController
     @mans = Man.search(params[:keyword])
   end
 
-  def Like
+  def like
   end
 
   private
