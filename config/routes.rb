@@ -39,4 +39,6 @@ Rails.application.routes.draw do
   get '/mans/like/:id', to: "mans#like"
 
   get '/follows/user/:id', to: "users#follow"
+
+  get '/followers/user/:id', to: "users#follower"
 end
