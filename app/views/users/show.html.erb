@@ -24,10 +24,12 @@
       <% end %>
       <div class="user-follow-contents">
         <div class="user-follow-counts">
-          <%= @user.followings.count %> Following
+          <%= link_to "/follows/user/#{@user.id}" do %>
+            <b><%= @user.followings.count %></b> Following
+          <% end %>
         </div>
         <div class="user-follower-counts">
-          <%= @user.followers.count %> Followers
+          <b><%= @user.followers.count %></b> Followers
         </div>
       </div>
     </div>
