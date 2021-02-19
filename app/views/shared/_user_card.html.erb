@@ -1,0 +1,30 @@
+<div class="user-card">
+  <div class="user-main-icon">
+    <% if @user.intro.present? && @user.intro.image.attached? %>
+      <%= image_tag @user.intro.image, class: "card-user-icon", alt: "ユーザーアイコン" %>
+    <% else %>
+      <%= image_tag 'https://cdn2.aprico-media.com/production/imgs/images/000/008/511/original.jpg?1505866639', class: "card-user-icon", alt: 'ユーザーアイコン' %>
+    <% end %>
+  </div>
+  <div class="user-nickname">
+    <%= @user.nickname %>
+  </div>
+  <% if @user.intro.present?%>
+    <div class="user-profile">
+      <%= @user.intro.profile %>
+    </div>
+    <div class="user-website">
+      <a href="#"><%= @user.intro.website %></a>
+    </div>
+  <% end %>
+  <div class="user-follow-contents">
+    <div class="user-follow-counts">
+      <%= link_to "/follows/user/#{@user.id}" do %>
+        <b><%= @user.followings.count %></b> Followings
+      <% end %>
+    </div>
+    <div class="user-follower-counts">
+      <b><%= @user.followers.count %></b> Followers
+    </div>
+  </div>
+</div>
