@@ -23,7 +23,7 @@
       </div>
       <div class="profile-edit-btn" id="follow-btn-userpage" >
         <% if @is_room == true %>
-          <%= link_to room_path(@room.id) do%>
+          <%= link_to room_path(@room_id) do%>
             <i class="far fa-envelope dm-icon"></i>メッセージ
           <% end %>
         <% else %>
