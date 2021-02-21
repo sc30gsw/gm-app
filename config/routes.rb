@@ -28,6 +28,10 @@ Rails.application.routes.draw do
 
   resources :notifications, only: [:index, :destroy]
 
+  resources :rooms, only: [:create, :show]
+
+  resources :messages, only: [:create, :destroy]
+
   get '/mans/category/:id', to: 'mans#category'
 
   get '/timeline/:id', to: 'mans#timeline'
