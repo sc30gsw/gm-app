@@ -1,0 +1,90 @@
+<header class="header">
+  <%= render 'shared/header' %>
+</header>
+<div class="mypage-main">
+  <div class="user-main">
+    <div class="user-card">
+      <div class="user-main-icon">
+        <%= link_to user_path(current_user.id) do %>
+          <% if current_user.intro.present? && current_user.intro.image.attached? %>
+            <%= image_tag current_user.intro.image, class: "card-user-icon", alt: "ユーザーアイコン" %>
+          <% else %>
+            <%= image_tag 'https://cdn2.aprico-media.com/production/imgs/images/000/008/511/original.jpg?1505866639', class: "card-user-icon", alt: 'ユーザーアイコン' %>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="user-nickname">
+        <%= current_user.nickname %>
+      </div>
+      <% if current_user.intro.present?%>
+        <div class="user-profile">
+          <%= current_user.intro.profile %>
+        </div>
+        <div class="user-website">
+          <a href="#"><%= current_user.intro.website %></a>
+        </div>
+      <% end %>
+      <div class="user-follow-contents">
+        <div class="user-follow-counts">
+          <%= link_to "/follows/user/#{current_user.id}" do %>
+            <b><%= current_user.followings.count %></b> Followings
+          <% end %>
+        </div>
+        <div class="user-follower-counts">
+          <%= link_to "/followers/user/#{current_user.id}" do %>
+            <b><%= current_user.followers.count %></b> Followers
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <% unless current_user.intro.present? %>
+      <div class="profile-edit-btn">
+        <%= link_to 'プロフィールを編集する', new_intro_path, class: "profile-btn" %>
+      </div>
+    <% end %>
+    <% if current_user.intro.present? %>
+      <div class="profile-edit-btn">
+        <%= link_to 'プロフィールを編集する', edit_intro_path(current_user.intro.id), class: "profile-btn" %>
+      </div>
+    <% end %>
+  </div>
+  <div class="user-mans-contents">
+    <div class="user-mans-status">
+      チャット一覧
+    </div>
+  </div>
+  <div class="user-list-chat-contents">
+    <li class="item-list">
+      <% @another_entries.each do |entry| %>
+        <div class="user-chat-list-profile-content">
+          <%= link_to user_path(entry.user) do %>
+            <% if entry.user.intro.present? && entry.user.intro.image.attached? %>
+              <%= image_tag entry.user.intro.image, class: "list-avater", alt: "ユーザーアイコン" %>
+            <% else %>
+              <%= image_tag 'https://cdn2.aprico-media.com/production/imgs/images/000/008/511/original.jpg?1505866639', class: "list-avater", alt: 'ユーザーアイコン' %>
+            <% end %>
+            <span class="list-chat-username"><%= entry.user.nickname %></span>
+          <% end %>
+        </div>
+        <div class="list-chat-main-content">
+          <div class="list-chat-content">
+            <p>
+              <%= link_to room_path(entry.room) do %>
+                <b><%= entry.user.nickname %></b>とのチャット
+              <% end %>
+            </p>
+          </div>
+          <div class="list-chat-detail-content">
+            <div class="list-chat-detail">
+              <div class="list-created">
+                <time datetime="<%= entry.created_at %>">
+                  <%= time_ago_in_words(entry.created_at) %>前
+                </time>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </li>
+  </div>
+</div>
