@@ -1,5 +1,6 @@
 class RoomsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_room, only: [:show, :destroy]
 
   def create
     room = Room.create
@@ -23,6 +24,12 @@ class RoomsController < ApplicationController
     else
       render action: :show
     end
+  end
+
+  private
+
+  def set_room
+    @room = Room.find(params[:id])
   end
 
 end
