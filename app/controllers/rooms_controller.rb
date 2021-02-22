@@ -3,10 +3,10 @@ class RoomsController < ApplicationController
   before_action :set_room, only: [:show, :destroy]
 
   def create
-    room = Room.create
-    current_entry = Entry.create(user_id: current_user.id, room_id: room.id)
-    another_entry = Entry.create(user_id: params[:entry][:user_id], room_id: room.id)
-    redirect_to room_path(room)
+    @room = Room.create
+    @current_entry = Entry.create(user_id: current_user.id, room_id: @room.id)
+    @another_entry = Entry.create(user_id: params[:entry][:user_id], room_id: @room.id)
+    redirect_to room_path(@room)
   end
 
   def show
@@ -19,8 +19,9 @@ class RoomsController < ApplicationController
   end
 
   def destroy
+    @entries = @room.entries.find_by('user_id != ?', current_user.id)
     if @room.destroy
-      redirect_to root_path
+      redirect_to user_path(@entries.user_id)
     else
       render action: :show
     end
