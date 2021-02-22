@@ -1,2 +1,89 @@
-<h1>Rooms#show</h1>
-<p>Find me in app/views/rooms/show.html.erb</p>
+<header class="header">
+  <%= render 'shared/header' %>
+</header>
+<div class="room-user-main">
+  <div class="room-user-card">
+    <div class="room-user-main-icon">
+      <%= link_to user_path(@entries.user_id) do %>
+        <% if @entries.user.intro.present? && @entries.user.intro.image.attached? %>
+          <%= image_tag @entries.user.intro.image, class: "card-user-icon", alt: "ユーザーアイコン" %>
+        <% else %>
+          <%= image_tag 'https://cdn2.aprico-media.com/production/imgs/images/000/008/511/original.jpg?1505866639', class: "card-user-icon", alt: 'ユーザーアイコン' %>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="room-user-nickname">
+      <%= @entries.user.nickname %>
+    </div>
+    <% if @entries.user.intro.present?%>
+      <div class="room-user-profile">
+        <%= @entries.user.intro.profile %>
+      </div>
+      <div class="room-user-website">
+        <a href="#"><%= @entries.user.intro.website %></a>
+      </div>
+    <% end %>
+    <div class="room-user-follow-contents">
+      <div class="room-user-follow-counts">
+        <%= link_to "/follows/user/#{@entries.user_id}" do %>
+          <b><%= @entries.user.followings.count %></b> Followings
+        <% end %>
+      </div>
+      <div class="room-user-follower-counts">
+        <%= link_to "/followers/user/#{@entries.user_id}" do %>
+          <b><%= @entries.user.followers.count %></b> Followers
+        <% end %>
+      </div>
+    </div>
+    <div class="room-user-created">
+      <i class="far fa-calendar-alt room-calender"></i>Joined <%= @entries.user.created_at.strftime('%Y / %m') %>
+      <div class="room-dropdown">
+        <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-caret-down"></i>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+          <%= link_to  room_path(@room.id), method: :delete, class: "dropdown-item room-delete-item" do %>
+            <i class="far fa-trash-alt room-trash"></i> チャットを終了する
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="room-message-list">
+  <li class="message-list">
+    <% @room.messages.each do |message| %>
+      <div class="room-list-profile-content">
+        <%= link_to user_path(message.user.id) do %>
+          <% if message.user.intro.present? && message.user.intro.image.attached? %>
+            <%= image_tag message.user.intro.image, class: "list-avater", alt: "ユーザーアイコン" %>
+          <% else %>
+            <%= image_tag 'https://cdn2.aprico-media.com/production/imgs/images/000/008/511/original.jpg?1505866639', class: "list-avater", alt: 'ユーザーアイコン' %>
+          <% end %>
+          <span class="room-list-username"><%= message.user.nickname %></span>
+        <% end %>
+      </div>
+      <div class="room-list-main-content">
+        <div class="room-list-content">
+          <span class="room-list-text">
+            <%= message.text %>
+          </span>
+        </div>
+      </div>
+      <div class="room-list-created">
+        <%= message.created_at.strftime('%H:%M') %>
+      </div>
+      <div class="message-delete-link">
+        <%= link_to message_path(message.id), method: :delete, class: "message-delete-btn" do %>
+        <% end %>
+      </div>
+    <% end %>
+  </li>
+</div>
+<footer class="room-footer">
+  <%= form_with model: @message, url: messages_path, method: :post, local: true do |f| %>
+    <%= f.text_field :text, class: "room-message-form" %>
+    <%= f.hidden_field :room_id, value: @room.id %>
+    <%= f.submit "\uF1D8", class: "room-message-btn" %>
+  <% end %>
+</footer>
