@@ -9,7 +9,6 @@ class RoomsController < ApplicationController
   end
 
   def show
-    @room = Room.find(params[:id])
     if Entry.where(user_id: current_user.id,room_id: @room.id).present?
       @message = Message.new
       @entries = @room.entries.find_by('user_id != ?', current_user.id)
@@ -19,5 +18,11 @@ class RoomsController < ApplicationController
   end
 
   def destroy
+    if @room.destroy
+      redirect_to root_path
+    else
+      render action: :show
+    end
   end
+
 end
