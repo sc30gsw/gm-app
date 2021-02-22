@@ -9,12 +9,18 @@
         <div class="profile-edit-btn">
           <%= link_to 'プロフィールを編集する', new_intro_path, class: "profile-btn" %>
         </div>
+        <div class="room-index-btn">
+          <%= link_to 'チャットルーム一覧を見る', rooms_path, class: "room-list-btn" %>
+        </div>
       <% end %>
     <% end %>
     <% if current_user.id == @user.id %>
       <% if @user.intro.present? %>
         <div class="profile-edit-btn">
           <%= link_to 'プロフィールを編集する', edit_intro_path(@user.intro.id), class: "profile-btn" %>
+        </div>
+        <div class="room-index-btn">
+          <%= link_to 'チャットルーム一覧を見る', rooms_path, class: "room-list-btn" %>
         </div>
       <% end %>
     <% else %>
