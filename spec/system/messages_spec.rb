@@ -58,3 +58,38 @@ RSpec.describe "メッセージ投稿機能", type: :system do
     end
   end
 end
+
+RSpec.describe "メッセージ削除機能", type: :system do
+  before do
+    @entry1 = FactoryBot.create(:entry)
+    @entry2 = FactoryBot.create(:entry)
+  end
+
+  it 'ログインしたユーザーはメッセージの削除ができ、削除に成功するとチャットルームに遷移する' do
+    # entry1でログインする
+    sign_in(@entry1.user)
+    # entry2のマイページに遷移する
+    visit user_path(@entry2.user)
+    # entry2のマイページにはチャットルームへ遷移するためのボタンがあることを確認する
+    expect(page).to have_selector('.dm-submit-btn')
+    # チャットルームに遷移するボタンを押す
+    find('.dm-submit-btn').click
+    # チャットルームへ遷移したことを確認する
+    expect(page).to have_selector('.room-user-card')
+    # 値をテキストフォームに入力する
+    post = 'test'
+    fill_in 'message_text', with: post
+    # 送信ボタンを押すと、Messageモデルのカウントが1上がることを確認する
+    expect do
+      find('.room-message-btn').click
+    end.to change { Message.count }.by(1)
+    # メッセージに「削除」ボタンがあることを確認する
+    find('.room-list-text').hover
+    # 削除ボタンを押すと、Messageモデルのカウントが1減ることを確認する
+    expect do
+      find('.message-delete-btn').click
+    end.to change { Message.count }.by(-1)
+    # メッセージを削除するとチャットルームに遷移することを確認する
+    expect(page).to have_selector('.room-user-card')
+  end
+end
