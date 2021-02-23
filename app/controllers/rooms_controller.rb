@@ -19,7 +19,7 @@ class RoomsController < ApplicationController
   end
 
   def show
-    if Entry.where(user_id: current_user.id,room_id: @room.id).present?
+    if Entry.where(user_id: current_user.id, room_id: @room.id).present?
       @message = Message.new
       @entries = @room.entries.find_by('user_id != ?', current_user.id)
     else
@@ -41,5 +41,4 @@ class RoomsController < ApplicationController
   def set_room
     @room = Room.find(params[:id])
   end
-
 end

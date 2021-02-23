@@ -1,5 +1,4 @@
 class MessagesController < ApplicationController
-
   def create
     @message = Message.new(message_params)
     @message.user_id = current_user.id
@@ -9,7 +8,7 @@ class MessagesController < ApplicationController
     else
       @room = @message.room
       @entries = @room.entries.find_by('user_id != ?', current_user.id)
-      render "rooms/show"
+      render 'rooms/show'
     end
   end
 
@@ -21,10 +20,10 @@ class MessagesController < ApplicationController
       @room = @message.room
       @messages = @room.messsages
       @entries = @room.entries.find_by('user_id != ?', current_user.id)
-      render "rooms/show"
+      render 'rooms/show'
     end
   end
-  
+
   private
 
   def message_params

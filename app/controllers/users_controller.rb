@@ -77,5 +77,4 @@ class UsersController < ApplicationController
   def set_another_entry
     @another_entry = Entry.where(user_id: @user.id)
   end
-
 end
