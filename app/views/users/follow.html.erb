@@ -31,7 +31,9 @@
             <%= fields_for @entry do |e| %>
               <%= e.hidden_field :user_id, value: @user.id %>
             <% end %>
-            <%= f.submit "\uf0e0" + "メッセージ", class: "dm-submit-btn" %>
+            <div class="chat-submit">
+              <i class="far fa-envelope dm-icon"></i><%= f.submit "メッセージ", class: "dm-submit-btn" %>
+            </div>
           <% end %>
         <% end %>
       </div>
