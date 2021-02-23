@@ -1,4 +1,4 @@
-<header class="header">
+<header class="room-header">
   <%= render 'shared/header' %>
 </header>
 <div class="room-user-main">
@@ -65,13 +65,13 @@
       </div>
       <div class="room-list-main-content">
         <div class="room-list-content">
-          <span class="room-list-text">
+          <p class="room-list-text">
             <%= message.text %>
-          </span>
+          </p>
         </div>
-      </div>
-      <div class="room-list-created">
-        <%= message.created_at.strftime('%H:%M') %>
+        <div class="room-list-created">
+          <%= message.created_at.strftime('%H:%M') %>
+        </div>
       </div>
       <div class="message-delete-link">
         <%= link_to message_path(message.id), method: :delete, class: "message-delete-btn" do %>
@@ -84,6 +84,6 @@
   <%= form_with model: @message, url: messages_path, method: :post, local: true do |f| %>
     <%= f.text_field :text, class: "room-message-form" %>
     <%= f.hidden_field :room_id, value: @room.id %>
-    <%= f.submit "\uF1D8", class: "room-message-btn" %>
+    <%= f.submit "送信" , class: "room-message-btn" %>
   <% end %>
 </footer>

@@ -1,3 +1,12 @@
+.room-header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100px;
+  background-color: #0f0f0;
+  border-bottom: 1px solid lightgray;
+}
+
 .room-user-main {
   margin: 10px auto 0;
   width: 97%;
@@ -87,4 +96,115 @@
 
 .room-calender {
   margin-right: 5px;
+}
+
+.room-message-list {
+  width: 97%;
+  height: calc(100vh - 100px - 300px - 50px);
+  border-top: 1px solid #ccc;
+  margin: 0 auto;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: scroll;
+}
+
+.message-list {
+  width: 100%;
+  list-style: none;
+  margin: 1px;
+  display: flex;
+  flex-direction: column;
+}
+
+.room-list-profile-content {
+  width: 80px;
+  box-sizing: border-box;
+  padding: 0 5px;
+}
+
+.room-list-profile-content a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.room-list-username {
+  font-size: 12px;
+  line-height: 13px;
+  margin-top: 2px;
+  word-break: break-all;
+  text-align: center;
+  color: #000;
+}
+
+.room-list-username:hover {
+  color: #000;
+}
+
+.room-list-main-content {
+  width: calc(100% - 80px);
+  display: flex;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+.room-list-content {
+  height: 36px;
+  width: 100%;
+  padding: 12px 3px 3px 0;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+}
+
+.room-list-text {
+  font-size: 16px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+} 
+
+.room-list-created {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+}
+
+.message-delete-link {
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.room-footer {
+  width: 100vw;
+  height: 70px;
+  display: flex;
+  align-items: center;
+}
+
+.room-footer form {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.room-message-form {
+  width: 80%;
+  padding: 3px;
+}
+
+.room-message-btn {
+  margin-left: 10px;
+  width: 10%;
+  padding: 5px;
+  background-color: #1877f2;
+  color: #fff;
+  border: 1px solid #fff;
+  border-radius: 3px;
+}
+
+.room-message-btn:hover {
+  opacity: 0.7;
 }
