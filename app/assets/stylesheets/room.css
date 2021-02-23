@@ -1,0 +1,90 @@
+.room-user-main {
+  margin: 10px auto 0;
+  width: 97%;
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+}
+
+.room-user-card {
+  height: 300px;
+  width: 100vw;
+  margin-top: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f0f0f0;
+}
+
+.room-user-nickname {
+  height: 37.5px;
+  width: 90%;
+  margin: 5px;
+  font-size: 15px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.room-user-profile {
+  word-break: break-all;
+  height: 37.5px;
+  width: 90%;
+  margin: 5px;
+  font-size: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.room-user-website {
+  height: 37.5px;
+  width: 90%;
+  margin: 5px;
+  font-size: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.room-user-follow-contents {
+  height: 37.5px;
+  width: 80%;
+  margin: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.room-user-follow-counts a {
+  margin-right: 5px;
+  text-decoration: none;
+  color: #000;
+}
+
+.room-user-follow-counts a:hover {
+  opacity: 0.7;
+  color: #000;
+}
+
+.room-user-follower-counts a {
+  margin-left: 5px;
+  text-decoration: none;
+  color: #000;
+}
+
+.room-user-follower-counts a:hover {
+  opacity: 0.7;
+  color: #000;
+}
+
+.room-user-created {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.room-calender {
+  margin-right: 5px;
+}
