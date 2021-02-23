@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "メッセージ投稿機能", type: :system do
+RSpec.describe 'メッセージ投稿機能', type: :system do
   before do
     @entry1 = FactoryBot.create(:entry)
     @entry2 = FactoryBot.create(:entry)
@@ -59,7 +59,7 @@ RSpec.describe "メッセージ投稿機能", type: :system do
   end
 end
 
-RSpec.describe "メッセージ削除機能", type: :system do
+RSpec.describe 'メッセージ削除機能', type: :system do
   before do
     @entry1 = FactoryBot.create(:entry)
     @entry2 = FactoryBot.create(:entry)
@@ -94,7 +94,7 @@ RSpec.describe "メッセージ削除機能", type: :system do
   end
 end
 
-RSpec.describe "チャットルームの削除機能", type: :system do
+RSpec.describe 'チャットルームの削除機能', type: :system do
   before do
     @entry1 = FactoryBot.create(:entry)
     @entry2 = FactoryBot.create(:entry)
