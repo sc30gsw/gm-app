@@ -22,6 +22,8 @@
 - has_many :followers, through: :reverse_of_relationsihps, source: :user
 - has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
 - has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
+- has_many :entries, dependent: :destroy
+- has_many :messages, dependent: :destroy
 
 ## sns_credentials テーブル
 
@@ -151,3 +153,39 @@
 
 - belongs_to :man
 - belongs_to :tag
+
+## rooms テーブル
+
+| Column | Type       | Options           |
+| ------ | ---------- | ----------------- |
+| user   | references | foreign_key: true |
+
+### Associations
+
+- has_many :entries, dependent: :destroy
+- has_many :messages, dependent: :destroy
+
+## entries テーブル
+
+| Column | Type       | Options           |
+| ------ | ---------- | ----------------- |
+| user   | references | foreign_key: true |
+| room   | references | foreign_key: true |
+
+### Associations
+
+- belongs_to :user
+- belongs_to :room
+
+## Messages テーブル
+
+| Column | Type       | Options           |
+| ------ | ---------- | ----------------- |
+| text   | text       | null: false       |
+| user   | references | foreign_key: true |
+| room   | references | foreign_key: true |
+
+### Associations
+
+- belongs_to :user
+- belongs_to :room
