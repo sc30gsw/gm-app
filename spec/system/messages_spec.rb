@@ -93,3 +93,43 @@ RSpec.describe "メッセージ削除機能", type: :system do
     expect(page).to have_selector('.room-user-card')
   end
 end
+
+RSpec.describe "チャットルームの削除機能", type: :system do
+  before do
+    @entry1 = FactoryBot.create(:entry)
+    @entry2 = FactoryBot.create(:entry)
+  end
+
+  it 'チャットルームを削除すると、関連するメッセージがすべて削除されていること' do
+    # entry1でログインする
+    sign_in(@entry1.user)
+    # entry2のマイページに遷移する
+    visit user_path(@entry2.user)
+    # entry2のマイページにはチャットルームへ遷移するためのボタンがあることを確認する
+    expect(page).to have_selector('.dm-submit-btn')
+    # チャットルームに遷移するボタンを押す
+    find('.dm-submit-btn').click
+    # チャットルームへ遷移したことを確認する
+    expect(page).to have_selector('.room-user-card')
+    # メッセージ情報を3つ追加する
+    post1 = 'test'
+    fill_in 'message_text', with: post1
+    find('.room-message-btn').click
+    post2 = 'test'
+    fill_in 'message_text', with: post2
+    find('.room-message-btn').click
+    post3 = 'test'
+    fill_in 'message_text', with: post3
+    find('.room-message-btn').click
+    # チャットルームのドロップダウンをクリックする
+    find('.room-dropdown').click
+    # 「チャットを終了する」ボタンがることを確認する
+    expect(page).to have_content('チャットを終了する')
+    # 「チャットを終了する」ボタンをクリックすることで、作成した5つのメッセージが削除されていることを確認する
+    expect do
+      find('.room-delete-item').click
+    end.to change { Message.count }.by(-3)
+    # entry2のマイページに遷移することを確認する
+    expect(current_path).to eq user_path(@entry2.user)
+  end
+end
