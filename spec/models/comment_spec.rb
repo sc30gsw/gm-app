@@ -18,6 +18,18 @@ RSpec.describe Comment, type: :model do
         @comment.valid?
         expect(@comment.errors.full_messages).to include('Textを入力してください')
       end
+
+      it 'userが紐付いていないと保尊できない' do
+        @comment.user = nil
+        @comment.valid?
+        expect(@comment.errors.full_messages).to include('Userを入力してください')
+      end
+
+      it 'manが紐付いていないと保尊できない' do
+        @comment.man = nil
+        @comment.valid?
+        expect(@comment.errors.full_messages).to include('Manを入力してください')
+      end
     end
   end
 end

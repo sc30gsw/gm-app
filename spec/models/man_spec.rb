@@ -58,6 +58,12 @@ RSpec.describe Man, type: :model do
         @man.valid?
         expect(@man.errors.full_messages).to include('経度を入力してください')
       end
+
+      it 'userが紐付いていないと保尊できない' do
+        @man.user = nil
+        @man.valid?
+        expect(@man.errors.full_messages).to include('Userを入力してください')
+      end
     end
   end
 end
