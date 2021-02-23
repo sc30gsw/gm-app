@@ -195,7 +195,7 @@
   padding: 3px;
 }
 
-.room-message-btn {
+.room-message-icon-btn {
   margin-left: 10px;
   width: 10%;
   padding: 5px;
@@ -205,6 +205,28 @@
   border-radius: 3px;
 }
 
-.room-message-btn:hover {
+.room-message-icon-btn i {
+  margin-right: 5px;
+}
+
+.room-message-btn {
+  background-color: #1877f2;
+  border: none;
+  outline: none;
+}
+
+.room-message-icon-btn:hover {
   opacity: 0.7;
+  cursor: pointer;
+}
+
+@media(max-width: 599px) {
+  .room-message-form {
+    width: 75%;
+    padding: 3px;
+  }
+
+  .room-message-icon-btn {
+    width: 17%;
+  }
 }
