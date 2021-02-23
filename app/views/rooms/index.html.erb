@@ -54,7 +54,7 @@
     </div>
   </div>
   <div class="user-list-mans-contents">
-    <li class="item-list">
+    <li class="room-list">
       <% @another_entries.each do |entry| %>
         <div class="user-list-profile-content">
           <%= link_to user_path(entry.user) do %>
@@ -66,22 +66,18 @@
             <span class="list-username"><%= entry.user.nickname %></span>
           <% end %>
         </div>
-        <div class="list-main-content">
-          <div class="list-title-content">
+        <div class="room-list-main-content">
+          <div class="room-list-title-content">
             <p>
               <%= link_to room_path(entry.room) do %>
                 <b><%= entry.user.nickname %></b>とのチャット
               <% end %>
             </p>
           </div>
-          <div class="list-detail-content">
-            <div class="list-detail">
-              <div class="list-created">
-                <time datetime="<%= entry.created_at %>">
-                  <%= time_ago_in_words(entry.created_at) %>前
-                </time>
-              </div>
-            </div>
+          <div class="room-list-created">
+            <time datetime="<%= entry.created_at %>">
+              <%= time_ago_in_words(entry.created_at) %>前
+            </time>
           </div>
         </div>
       <% end %>
