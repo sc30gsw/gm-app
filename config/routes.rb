@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'rooms/index'
+  get 'rooms/show'
   devise_for :users, controllers: {
     omniauth_callbacks: 'users/omniauth_callbacks',
     registrations: 'users/registrations'
@@ -25,6 +27,10 @@ Rails.application.routes.draw do
   resources :relationships, only: [:create, :destroy]
 
   resources :notifications, only: [:index, :destroy]
+
+  resources :rooms, only: [:index, :create, :show, :destroy]
+
+  resources :messages, only: [:create, :destroy]
 
   get '/mans/category/:id', to: 'mans#category'
 

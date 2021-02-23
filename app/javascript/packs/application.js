@@ -9,6 +9,7 @@ require("channels")
 require('jquery')
 require("./icon_preview")
 require("./map")
+require("./dm_delete")
 
 require('jquery')
 document.addEventListener("turbolinks:load", () => {

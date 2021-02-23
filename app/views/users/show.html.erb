@@ -4,23 +4,41 @@
 <div class="mypage-main">
   <div class="user-main">
     <%= render 'shared/user_card' %>
-    <% unless @user.intro.present? %>
+    <% if user_signed_in? %>
+      <% unless @user.intro.present? %>
+        <% if current_user.id == @user.id %>
+          <div class="profile-edit-btn">
+            <%= link_to 'プロフィールを編集する', new_intro_path, class: "profile-btn" %>
+            <%= link_to 'チャットルーム一覧を見る', rooms_path, class: "room-list-btn" %>
+          </div>
+        <% end %>
+      <% end %>
       <% if current_user.id == @user.id %>
-        <div class="profile-edit-btn">
-          <%= link_to 'プロフィールを編集する', new_intro_path, class: "profile-btn" %>
+        <% if @user.intro.present? %>
+          <div class="profile-edit-btn">
+            <%= link_to 'プロフィールを編集する', edit_intro_path(@user.intro.id), class: "profile-btn" %>
+            <%= link_to 'チャットルーム一覧を見る', rooms_path, class: "room-list-btn" %>
+          </div>
+        <% end %>
+      <% else %>
+        <div class="profile-edit-btn" id="follow-btn-userpage" >
+          <%= render 'follow', user: @user %>
+          <% if @is_room == true %>
+            <%= link_to room_path(@room_id), class: "dm-submit-btn" do%>
+              <i class="far fa-envelope dm-icon"></i>メッセージ
+            <% end %>
+          <% else %>
+            <%= form_with model: @room, url: rooms_path, method: :post, local: true do |f| %>
+              <%= fields_for @entry do |e| %>
+                <%= e.hidden_field :user_id, value: @user.id %>
+              <% end %>
+              <div class="chat-submit">
+                <i class="far fa-envelope dm-icon"></i><%= f.submit "メッセージ", class: "dm-submit-btn" %>
+              </div>
+            <% end %>
+          <% end %>
         </div>
       <% end %>
-    <% end %>
-    <% if current_user.id == @user.id %>
-      <% if @user.intro.present? %>
-        <div class="profile-edit-btn">
-          <%= link_to 'プロフィールを編集する', edit_intro_path(@user.intro.id), class: "profile-btn" %>
-        </div>
-      <% end %>
-    <% else %>
-      <div class="profile-edit-btn" id="follow-btn-userpage" >
-        <%= render 'follow', user: @user %>
-      </div>
     <% end %>
   </div>
   <div class="user-mans-contents">
