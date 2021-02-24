@@ -53,7 +53,7 @@
       </div>
     </div>
     <div class="show-body">
-      <p><%= @man.content %></p>
+      <p><%= markdown(@man.content).html_safe %></p>
       <%= image_tag @man.image, class: "show-doby-image", alt: "投稿画像" if @man.image.attached? %>
       <div id='map' class="show-map"></div>
         <script type="text/javascript">
