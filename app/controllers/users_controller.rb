@@ -28,7 +28,7 @@ class UsersController < ApplicationController
   end
 
   def follow
-    @users = @user.followings.order('relationships.created_at DESC').page(params[:page])
+    @users = @user.followings.order('relationships.created_at DESC').page(params[:page]).per(5)
 
     unless @user.id == current_user.id
       @current_entry.each do |cu|
@@ -48,7 +48,7 @@ class UsersController < ApplicationController
   end
 
   def follower
-    @users = @user.followers.order('relationships.created_at DESC').page(params[:page])
+    @users = @user.followers.order('relationships.created_at DESC').page(params[:page]).per(5)
 
     unless @user.id == current_user.id
       @current_entry.each do |cu|

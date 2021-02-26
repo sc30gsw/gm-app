@@ -49,7 +49,10 @@
       </div>
     </div>
   </div>
-  <div class="user-list-mans-contents">
+  <div class="user-list-mans-contents" id="item-pagenate">
     <%= render 'user' %>
+  </div>
+  <div class="mypage-pagenate-link">
+    <%= link_to_next_page @users, 'もっと見る', remote: true, class: 'mypage-more-link', id: 'more-link' %>
   </div>
 </div>
