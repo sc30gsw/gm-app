@@ -49,13 +49,13 @@ class MansController < ApplicationController
 
   def category
     @man = Man.find_by(category_id: params[:id])
-    @mans = Man.where(category_id: params[:id]).order('created_at DESC').page(params[:page])
+    @mans = Man.where(category_id: params[:id]).order('created_at DESC').page(params[:page]).per(15)
     @category = Category.find(params[:id])
   end
 
   def timeline
     @followings = current_user.followings
-    @mans = Man.where(user_id: @followings).or(Man.where(user_id: current_user.id)).order('created_at DESC').page(params[:page])
+    @mans = Man.where(user_id: @followings).or(Man.where(user_id: current_user.id)).order('created_at DESC').page(params[:page]).per(15)
   end
 
   def tag
