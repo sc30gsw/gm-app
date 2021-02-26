@@ -4,6 +4,7 @@ class MansController < ApplicationController
 
   def index
     @mans = Man.includes(:user).sort { |a, b| b.liked_users.count <=> a.liked_users.count }
+    @mans = Kaminari.paginate_array(@mans).page(params[:page])
   end
 
   def new
@@ -48,22 +49,22 @@ class MansController < ApplicationController
 
   def category
     @man = Man.find_by(category_id: params[:id])
-    @mans = Man.where(category_id: params[:id]).order('created_at DESC')
+    @mans = Man.where(category_id: params[:id]).order('created_at DESC').page(params[:page])
     @category = Category.find(params[:id])
   end
 
   def timeline
     @followings = current_user.followings
-    @mans = Man.where(user_id: @followings).or(Man.where(user_id: current_user.id)).order('created_at DESC')
+    @mans = Man.where(user_id: @followings).or(Man.where(user_id: current_user.id)).order('created_at DESC').page(params[:page])
   end
 
   def tag
     @tag = Tag.find_by(name: params[:name])
-    @mans = @tag.mans
+    @mans = @tag.mans.order('created_at DESC').page(params[:page])
   end
 
   def search
-    @mans = Man.search(params[:keyword])
+    @mans = Man.search(params[:keyword]).order('created_at DESC').page(params[:page])
   end
 
   def like

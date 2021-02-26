@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
 
   def index
     @user = User.find(params[:id])
-    @mans = @user.commented_mans.order('comments.created_at DESC')
+    @mans = @user.commented_mans.order('comments.created_at DESC').page(params[:page])
 
     @current_entry = Entry.where(user_id: current_user.id)
     @another_entry = Entry.where(user_id: @user.id)
