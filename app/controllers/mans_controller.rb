@@ -4,7 +4,7 @@ class MansController < ApplicationController
 
   def index
     @mans = Man.includes(:user).sort { |a, b| b.liked_users.count <=> a.liked_users.count }
-    @mans = Kaminari.paginate_array(@mans).page(params[:page])
+    @mans = Kaminari.paginate_array(@mans).page(params[:page]).per(15)
   end
 
   def new
