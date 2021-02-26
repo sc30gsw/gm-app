@@ -6,55 +6,10 @@
     <div class="item-list-nav">
       <h4>LIKEしたユーザー</h4>
     </div>
-    <div class="item-lists-box">
-  <% @man.liked_users.order('likes.created_at DESC').each do |user| %>
-    <li class="item-list">
-      <%= link_to user_path(user.id) do %>
-        <div class="list-profile-content">
-          <% if user.intro.present? && user.intro.image.attached? %>
-            <%= image_tag user.intro.image, class: "list-avater", alt: "ユーザーアイコン" %>
-          <% else %>
-            <%= image_tag 'https://cdn2.aprico-media.com/production/imgs/images/000/008/511/original.jpg?1505866639', class: "list-avater", alt: 'ユーザーアイコン' %>
-          <% end %>
-          <span class="list-username"><%= user.nickname %><span>
-        </div>
-      <% end %>
-      <div class="list-main-content">
-        <div class="list-title-content">
-          <% if user.intro.present? %>
-            <p>
-              <%= link_to user_path(user.id) do %> 
-                <%= user.intro.profile %>
-              <% end %> 
-            </p>
-          <% else %>
-            <P>
-              ユーザープロフィール
-            </p>
-          <% end %>
-        </div>
-        <div class="list-cate-tag-content">
-          
-        </div>
-        <div class="list-detail-content">
-          <div class="list-detail">
-            <div class="list-like-comment">
-              <div class="list-like-count">
-                <i class="far fa-heart list-like-icon"></i><%= user.likes.count %>
-              </div>
-              <div class="list-comment-count">
-                <i class="far fa-comment list-commnet-icon"></i><%= user.comments.count %>
-              </div>
-            </div>
-            <div class="list-created">
-              <%= user.created_at.to_s(:datetime_jp) %>
-            </div>
-          </div>
-        </div>
-      </div>
-    </li>
-  <% end %>
-</div>
+    <div id="item-pagenate">
+      <%= render 'shared/like_mans' %>
+    </div>
+    <%= link_to_next_page @mans, 'もっと見る', remote: true, class: 'more-link', id: 'more-link' %>
   </div>
   <div class="top-right-contents">
     <%= render 'shared/weather' %>
