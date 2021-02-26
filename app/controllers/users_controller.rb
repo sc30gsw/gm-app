@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   before_action :set_another_entry, except: [:show]
 
   def show
+    @mans = @user.mans.order('created_at DESC').page(params[:page]).per(5)
     if user_signed_in?
       @current_entry = Entry.where(user_id: current_user.id)
       @another_entry = Entry.where(user_id: @user.id)
@@ -27,7 +28,7 @@ class UsersController < ApplicationController
   end
 
   def follow
-    @users = @user.followings.order('relationships.created_at DESC')
+    @users = @user.followings.order('relationships.created_at DESC').page(params[:page]).per(5)
 
     unless @user.id == current_user.id
       @current_entry.each do |cu|
@@ -47,7 +48,7 @@ class UsersController < ApplicationController
   end
 
   def follower
-    @users = @user.followers.order('relationships.created_at DESC')
+    @users = @user.followers.order('relationships.created_at DESC').page(params[:page]).per(5)
 
     unless @user.id == current_user.id
       @current_entry.each do |cu|

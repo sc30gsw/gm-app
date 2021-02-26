@@ -4,7 +4,7 @@ class LikesController < ApplicationController
 
   def index
     @user = User.find(params[:id])
-    @mans = @user.liked_mans.order('likes.created_at DESC')
+    @mans = @user.liked_mans.order('likes.created_at DESC').page(params[:page]).per(5)
 
     @current_entry = Entry.where(user_id: current_user.id)
     @another_entry = Entry.where(user_id: @user.id)

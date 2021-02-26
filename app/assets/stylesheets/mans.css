@@ -478,6 +478,16 @@
   margin: 0 10px;
 }
 
+.more-link {
+  font-size: 15px;
+  color: #4a4a4a;
+  margin: 10px 20px;
+}
+
+.more-link:hover {
+  color: #4a4a4a;
+}
+
 .top-right-contents {
   width: 400px;
   margin: 10px 20px 10px 0;

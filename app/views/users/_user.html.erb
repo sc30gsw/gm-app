@@ -1,48 +1,50 @@
 <% @users.each do |user| %>
-  <div class="user-list-profile-content">
-    <%= link_to user_path(user.id) do %>
-      <% if user.intro.present? && user.intro.image.attached? %>
-        <%= image_tag user.intro.image, class: "list-avater", alt: "ユーザーアイコン" %>
-      <% else %>
-        <%= image_tag 'https://cdn2.aprico-media.com/production/imgs/images/000/008/511/original.jpg?1505866639', class: "list-avater", alt: 'ユーザーアイコン' %>
-      <% end %>
-      <span class="list-username"><%= user.nickname %></span>
-    <% end %>
-  </div>
-  <div class="list-main-content">
-    <div class="list-title-content">
-      <% if user.intro.present? %>
-        <p>
-          <%= link_to user_path(user.id) do %> 
-            <%= user.intro.profile %>
-          <% end %> 
-        </p>
-      <% else %>
-        <P>
-          ユーザープロフィール
-        </p>
+  <li class="item-list">
+    <div class="user-list-profile-content">
+      <%= link_to user_path(user.id) do %>
+        <% if user.intro.present? && user.intro.image.attached? %>
+          <%= image_tag user.intro.image, class: "list-avater", alt: "ユーザーアイコン" %>
+        <% else %>
+          <%= image_tag 'https://cdn2.aprico-media.com/production/imgs/images/000/008/511/original.jpg?1505866639', class: "list-avater", alt: 'ユーザーアイコン' %>
+        <% end %>
+        <span class="list-username"><%= user.nickname %></span>
       <% end %>
     </div>
-    <div class="list-detail-content">
-      <div class="list-detail">
-        <div class="list-like-comment">
-          <div class="list-man-count">
-            <i class="far fa-user list-man-icon"></i><%= user.mans.count %>
-          </div>
-          <div class="list-like-count">
-            <i class="far fa-heart list-like-icon"></i><%= user.likes.count %>
-          </div>
-          <div class="list-comment-count">
-            <i class="far fa-comment list-commnet-icon"></i><%= user.comments.count %>
-          </div>
-          <div class="list-follow-count">
-            <span><%= user.followings.count %></span>Followings
-          </div>
-          <div class="list-follower-count">
-            <span><%= user.followers.count %></span>Followers
+    <div class="list-main-content">
+      <div class="list-title-content">
+        <% if user.intro.present? %>
+          <p>
+            <%= link_to user_path(user.id) do %> 
+              <%= user.intro.profile %>
+            <% end %> 
+          </p>
+        <% else %>
+          <P>
+            ユーザープロフィール
+          </p>
+        <% end %>
+      </div>
+      <div class="list-detail-content">
+        <div class="list-detail">
+          <div class="list-like-comment">
+            <div class="list-man-count">
+              <i class="far fa-user list-man-icon"></i><%= user.mans.count %>
+            </div>
+            <div class="list-like-count">
+              <i class="far fa-heart list-like-icon"></i><%= user.likes.count %>
+            </div>
+            <div class="list-comment-count">
+              <i class="far fa-comment list-commnet-icon"></i><%= user.comments.count %>
+            </div>
+            <div class="list-follow-count">
+              <span><%= user.followings.count %></span>Followings
+            </div>
+            <div class="list-follower-count">
+              <span><%= user.followers.count %></span>Followers
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </li>
 <% end %>

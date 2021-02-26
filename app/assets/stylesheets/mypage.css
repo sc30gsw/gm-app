@@ -107,12 +107,6 @@
 }
 
 .profile-edit-btn a {
-  background-color: #1877f2;
-  border: 1px solid #1877f2;
-  padding: 10px 5px;
-  border-radius: 20px;
-  margin-top: 10px;
-  font-weight: bold;
   color: #fff;
   text-decoration: none;
 }
@@ -121,6 +115,34 @@
   color: #fff;
   text-decoration: none;
   opacity: 0.7;
+}
+
+.profile-btn {
+  background-color: red;
+  border: 1px solid red;
+  padding: 10px 5px;
+  border-radius: 20px;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.room-list-btn {
+  background-color: #1877f2;
+  border: 1px solid #1877f2;
+  padding: 10px 5px;
+  border-radius: 20px;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.dm-submit-btn {
+  background-color: #1877f2;
+  border: none;
+  outline: none;
+  padding: 10px 5px;
+  border-radius: 20px;
+  margin-top: 10px;
+  font-weight: bold;
 }
 
 .chat-submit {
@@ -136,12 +158,6 @@
 .chat-submit:hover {
   opacity: 0.7;
   cursor: pointer;
-}
-
-.dm-submit-btn {
-  background-color: #1877f2;
-  border: none;
-  outline: none;
 }
 
 .profile-btn {
@@ -288,6 +304,22 @@
   flex-direction: column;
   align-items: center;
 }
+
+.mypage-pagenate-link {
+  width: 97%;
+  background-color: #fff;
+}
+
+.mypage-more-link {
+  font-size: 15px;
+  color: #4a4a4a;
+  margin: 10px 20px;
+}
+
+.mypage-more-link:hover {
+  color: #4a4a4a;
+}
+
 
 @media(max-width: 599px) {
   .user-main {
