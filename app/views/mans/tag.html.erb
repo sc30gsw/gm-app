@@ -18,7 +18,10 @@
     <div class="item-list-nav">
       <h4># <%= @tag.name %> </h4>
     </div>
-    <%= render 'shared/mans' %>
+    <div id="item-pagenate">
+      <%= render 'shared/mans' %>
+    </div>
+    <%= link_to_next_page @mans, 'もっと見る', remote: true, class: 'more-link', id: 'more-link' %>
   </div>
   <div class="top-right-contents">
     <%= render 'shared/weather' %>

@@ -60,11 +60,11 @@ class MansController < ApplicationController
 
   def tag
     @tag = Tag.find_by(name: params[:name])
-    @mans = @tag.mans.order('created_at DESC').page(params[:page])
+    @mans = @tag.mans.order('created_at DESC').page(params[:page]).per(15)
   end
 
   def search
-    @mans = Man.search(params[:keyword]).order('created_at DESC').page(params[:page])
+    @mans = Man.search(params[:keyword]).order('created_at DESC').page(params[:page]).per(15)
   end
 
   def like
