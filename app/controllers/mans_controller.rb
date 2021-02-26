@@ -68,7 +68,7 @@ class MansController < ApplicationController
   end
 
   def like
-   @mans = @man.liked_users.order('likes.created_at DESC').page(params[:page]).per(15)
+    @mans = @man.liked_users.order('likes.created_at DESC').page(params[:page]).per(15)
   end
 
   private
