@@ -135,6 +135,16 @@
   font-weight: bold;
 }
 
+.dm-submit-btn {
+  background-color: #1877f2;
+  border: none;
+  outline: none;
+  padding: 10px 5px;
+  border-radius: 20px;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
 .chat-submit {
   background-color: #1877f2;
   border: 1px solid #1877f2;
@@ -148,12 +158,6 @@
 .chat-submit:hover {
   opacity: 0.7;
   cursor: pointer;
-}
-
-.dm-submit-btn {
-  background-color: #1877f2;
-  border: none;
-  outline: none;
 }
 
 .profile-btn {
