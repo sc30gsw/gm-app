@@ -23,6 +23,8 @@ class Man < ApplicationRecord
     validates :longitude
   end
 
+  paginates_per 10
+
   after_create do
     man = Man.find_by(id: id)
     tags = tagbody.scan(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/)

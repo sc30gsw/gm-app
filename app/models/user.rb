@@ -25,6 +25,8 @@ class User < ApplicationRecord
   has_many :entries, dependent: :destroy
   has_many :messages, dependent: :destroy
 
+  paginates_per 10
+
   def self.guest
     find_or_create_by!(email: 'guest@example.com', nickname: 'guest') do |user|
       user.password = ENV['USER_PASSWORD']
