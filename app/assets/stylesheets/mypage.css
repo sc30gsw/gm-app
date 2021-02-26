@@ -301,6 +301,22 @@
   align-items: center;
 }
 
+.mypage-pagenate-link {
+  width: 97%;
+  background-color: #fff;
+}
+
+.mypage-more-link {
+  font-size: 15px;
+  color: #4a4a4a;
+  margin: 10px 20px;
+}
+
+.mypage-more-link:hover {
+  color: #4a4a4a;
+}
+
+
 @media(max-width: 599px) {
   .user-main {
     display: flex;

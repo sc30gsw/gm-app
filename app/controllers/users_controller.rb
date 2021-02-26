@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   before_action :set_another_entry, except: [:show]
 
   def show
+    @mans = @user.mans.order('created_at DESC').page(params[:page]).per(5)
     if user_signed_in?
       @current_entry = Entry.where(user_id: current_user.id)
       @another_entry = Entry.where(user_id: @user.id)
