@@ -148,7 +148,6 @@
 .chat-submit {
   background-color: #1877f2;
   border: 1px solid #1877f2;
-  padding: 10px 5px;
   border-radius: 20px;
   margin-top: 10px;
   font-weight: bold;
@@ -158,6 +157,16 @@
 .chat-submit:hover {
   opacity: 0.7;
   cursor: pointer;
+}
+
+.analytics-btn {
+  background-color: #1877f2;
+  border: 1px solid #1877f2;
+  padding: 10px 5px;
+  border-radius: 20px;
+  margin-top: 10px;
+  font-weight: bold;
+  color: #fff;
 }
 
 .profile-btn {
@@ -171,8 +180,6 @@
 
 .profile-btn:hover {
   text-decoration: none;
-  color: red;
-  background-color: rgb(255, 190, 190);
   opacity: 0.7;
 }
 
@@ -188,8 +195,6 @@
 
 .room-list-btn:hover {
   text-decoration: none;
-  color: grey;
-  background-color: rgb(230, 228, 228);
   opacity: 0.7;
 }
 
@@ -339,6 +344,27 @@
 
   .room-list-btn {
     margin-right: 10px;
+    font-size: 10px;
+    padding: 10px 5px;
+  }
+
+  .dm-submit-btn {
+    font-size: 10px;
+  }
+
+  .chat-submit {
+    font-size: 10px;
+  }
+
+  .userpage-follow-btn {
+    font-size: 10px;
+  }
+
+  .userpage-followed-btn {
+    font-size: 10px;
+  }
+  
+  .analytics-btn {
     font-size: 10px;
     padding: 10px 3px;
   }

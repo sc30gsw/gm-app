@@ -8,6 +8,7 @@
       <% if current_user.id == @user.id %>
         <div class="profile-edit-btn">
           <%= link_to 'プロフィールを編集する', new_intro_path, class: "profile-btn" %>
+          <%= link_to "#{current_user.nickname}'sアナリティクス", "/actives/user/#{current_user.id}", class: "analytics-btn" %>
           <%= link_to 'チャットルーム一覧を見る', rooms_path, class: "room-list-btn" %>
         </div>
       <% end %>
@@ -16,14 +17,16 @@
       <% if @user.intro.present? %>
         <div class="profile-edit-btn">
           <%= link_to 'プロフィールを編集する', edit_intro_path(@user.intro.id), class: "profile-btn" %>
+          <%= link_to "#{current_user.nickname}'sアナリティクス", "/actives/user/#{current_user.id}", class: "analytics-btn" %>
           <%= link_to 'チャットルーム一覧を見る', rooms_path, class: "room-list-btn" %>
         </div>
       <% end %>
     <% else %>
       <div class="profile-edit-btn" id="follow-btn-userpage" >
         <%= render 'follow', user: @user %>
+        <%= link_to "#{@user.nickname}'sアナリティクス", "/actives/user/#{@user.id}", class: "analytics-btn" %>
         <% if @is_room == true %>
-          <%= link_to room_path(@room_id) do%>
+          <%= link_to room_path(@room_id), class: "dm-submit-btn" do%>
             <i class="far fa-envelope dm-icon"></i>メッセージ
           <% end %>
         <% else %>

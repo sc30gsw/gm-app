@@ -67,6 +67,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def active
+    @status_mans = @user.mans.where(created_at: 6.days.ago.beginning_of_day..Time.zone.now.end_of_day)
+    @all_mans = @user.mans
+  end
+
   private
 
   def set_user
