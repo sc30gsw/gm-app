@@ -59,7 +59,7 @@
           <% if @user.mans.exists?(['created_at LIKE ?', "%#{(Date.today - 6 + x)}%"]) %>
             <div class="weekly-count-day">
               <span><%= (Date.today - 6 + x).strftime('%a') %></span>
-              <span><%= (Date.today - 6 + x).strftime('%a') %></span>
+              <span><%= (Date.today - 6 + x).strftime('%e') %></span>
             </div>
           <% else %>
             <div class="weekly-count-day-off">
