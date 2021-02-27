@@ -40,11 +40,13 @@
     <% unless current_user.intro.present? %>
       <div class="profile-edit-btn">
         <%= link_to 'プロフィールを編集する', new_intro_path, class: "profile-btn" %>
+        <%= link_to "#{current_user.nickname}'sアナリティクス", "/actives/user/#{current_user.id}", class: "analytics-btn" %>
       </div>
     <% end %>
     <% if current_user.intro.present? %>
       <div class="profile-edit-btn">
         <%= link_to 'プロフィールを編集する', edit_intro_path(current_user.intro.id), class: "profile-btn" %>
+        <%= link_to "#{current_user.nickname}'sアナリティクス", "/actives/user/#{current_user.id}", class: "analytics-btn" %>
       </div>
     <% end %>
   </div>
