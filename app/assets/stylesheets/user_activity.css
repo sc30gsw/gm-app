@@ -1,0 +1,70 @@
+.user-analytics {
+  background-color: #364549;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+}
+
+.activity {
+  color: #ebd247;
+  margin: 20px;
+  font-weight: bold;
+}
+
+.weekly-count {
+  display: flex;
+  font-size: 14px;
+}
+
+.weekly-count-day {
+  height: 45px;
+  width: 45px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 3px;
+  background-color: #ebd247;
+  color: #000;
+}
+
+.weekly-count-day-off {
+  height: 45px;
+  width: 45px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 3px;
+  background-color: #fff;
+  color: #000;
+}
+
+.status {
+  color: #ebd247;
+  margin: 20px;
+  font-weight: bold;
+}
+
+.status-count {
+  display: flex;
+  font-size: 13px;
+}
+
+.status-count-block {
+  height: 45px;
+  width: 45px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 3px;
+}
+
+.status-count-block p {
+  color: #8BDF4C;
+}
