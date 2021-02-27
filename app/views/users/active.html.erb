@@ -73,54 +73,54 @@
       <div class='status-count'>
         <div class='status-count-block'>
           <span>戦国</span>
-          <p><%= "#{@status_mans.where(category_id: 10).count * 100 / @status_mans.count}%" %></p>
+          <p><%= "#{@status_mans.where(category_id: 10).count * 100 / @status_mans.count rescue 0 }%" %></p>
         </div>
         <div class='status-count-block'>
           <span>江戸</span>
-          <p><%= "#{@status_mans.where(category_id: 11).count * 100 / @status_mans.count}%" %></p>
+          <p><%= "#{@status_mans.where(category_id: 11).count * 100 / @status_mans.count rescue 0 }%" %></p>
         </div>
         <div class='status-count-block'>
           <span>幕末</span>
-          <p><%= "#{@status_mans.where(category_id: 13).count * 100 / @status_mans.count}%" %></p>
+          <p><%= "#{@status_mans.where(category_id: 13).count * 100 / @status_mans.count rescue 0 }%" %></p>
         </div>
         <div class='status-count-block'>
           <span>欧州</span>
-          <p><%= "#{@status_mans.where(category_id: 16).count * 100 / @status_mans.count}%" %></p>
+          <p><%= "#{@status_mans.where(category_id: 16).count * 100 / @status_mans.count rescue 0 }%" %></p>
         </div>
         <div class='status-count-block'>
           <span>北米</span>
-          <p><%= "#{@status_mans.where(category_id: 17).count * 100 / @status_mans.count}%" %></p>
+          <p><%= "#{@status_mans.where(category_id: 17).count * 100 / @status_mans.count rescue 0 }%" %></p>
         </div>
         <div class='status-count-block'>
           <span>中国</span>
-          <p><%= "#{@status_mans.where(category_id: 19).count * 100 / @status_mans.count}%" %></p>
+          <p><%= "#{@status_mans.where(category_id: 19).count * 100 / @status_mans.count rescue 0 }%" %></p>
         </div>
       </div>
       <span class="status">Total</span>
       <div class='status-count'>
         <div class='status-count-block'>
           <span>戦国</span>
-          <p><%= "#{@all_mans.where(category_id: 10).count * 100 / @all_mans.count}%" %></p>
+          <p><%= "#{@all_mans.where(category_id: 10).count * 100 / @all_mans.count rescue 0 }%" %></p>
         </div>
         <div class='status-count-block'>
           <span>江戸</span>
-          <p><%= "#{@all_mans.where(category_id: 11).count * 100 / @all_mans.count}%" %></p>
+          <p><%= "#{@all_mans.where(category_id: 11).count * 100 / @all_mans.count rescue 0 }%" %></p>
         </div>
         <div class='status-count-block'>
           <span>幕末</span>
-          <p><%= "#{@all_mans.where(category_id: 13).count * 100 / @all_mans.count}%" %></p>
+          <p><%= "#{@all_mans.where(category_id: 13).count * 100 / @all_mans.count rescue 0 }%" %></p>
         </div>
         <div class='status-count-block'>
           <span>欧州</span>
-          <p><%= "#{@all_mans.where(category_id: 16).count * 100 / @all_mans.count}%" %></p>
+          <p><%= "#{@all_mans.where(category_id: 16).count * 100 / @all_mans.count rescue 0 }%" %></p>
         </div>
         <div class='status-count-block'>
           <span>北米</span>
-          <p><%= "#{@all_mans.where(category_id: 17).count * 100 / @all_mans.count}%" %></p>
+          <p><%= "#{@all_mans.where(category_id: 17).count * 100 / @all_mans.count rescue 0 }%" %></p>
         </div>
         <div class='status-count-block'>
           <span>中国</span>
-          <p><%= "#{@all_mans.where(category_id: 19).count * 100 / @all_mans.count}%" %></p>
+          <p><%= "#{@all_mans.where(category_id: 19).count * 100 / @all_mans.count rescue 0 }%" %></p>
         </div>
       </div>
     </div>
