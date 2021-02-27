@@ -18,7 +18,7 @@
         <% if @user.intro.present? %>
           <div class="profile-edit-btn">
             <%= link_to 'プロフィールを編集する', edit_intro_path(@user.intro.id), class: "profile-btn" %>
-            <%= link_to "#{@current_user.nickname}'sアナリティクス", "/actives/user/#{current_user.id}", class: "analytics-btn" %>
+            <%= link_to "#{current_user.nickname}'sアナリティクス", "/actives/user/#{current_user.id}", class: "analytics-btn" %>
             <%= link_to 'チャットルーム一覧を見る', rooms_path, class: "room-list-btn" %>
           </div>
         <% end %>
