@@ -28,9 +28,7 @@
               <input type="button" value="&#xf002;" class="fas header-search-icon map-search-btn" onclick="codeAddress()" >
             </div>
             <div class="map-opt">
-              <%= f.label :latitude, "緯度" %>
               <%= f.hidden_field :latitude,:value =>"緯度", id: :latitude %>
-              <%= f.label :longitude, "経度" %>
               <%= f.hidden_field :longitude,:value =>"経度", id: :longitude %>
             </div>
           </div>
