@@ -10,6 +10,7 @@ require('jquery')
 require("./icon_preview")
 require("./map")
 require("./dm_delete")
+require("./man_image")
 
 require('jquery')
 document.addEventListener("turbolinks:load", () => {

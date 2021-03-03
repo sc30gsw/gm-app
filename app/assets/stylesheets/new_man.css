@@ -128,6 +128,28 @@
   margin-top: 5px;
 }
 
+.man-image-list {
+  display: flex;
+  overflow: scroll;
+}
+
+.image-element {
+  width: 100%;
+  text-align: center;
+}
+
+.image-element input {
+  height: 50px;
+  font-size: 12px;
+  margin: 0 auto;
+}
+
+.man-preview {
+  height: 200px;
+  width: 250px;
+  margin: 10px auto;
+}
+
 .new-content-input {
   height: 100%;
   width: 100%;
@@ -249,5 +271,10 @@
   .map {
     width: 350px;
     height: 350px;
+  }
+
+  .man-preview {
+    height: 100px;
+    width: 150px;
   }
 }

@@ -74,7 +74,7 @@ class MansController < ApplicationController
   private
 
   def man_params
-    params.require(:man).permit(:name, :content, :tagbody, :category_id, :address, :latitude, :longitude, :image).merge(user_id: current_user.id)
+    params.require(:man).permit(:name, :content, :tagbody, :category_id, :address, :latitude, :longitude, images: []).merge(user_id: current_user.id)
   end
 
   def set_man
