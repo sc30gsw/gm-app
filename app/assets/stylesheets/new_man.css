@@ -130,12 +130,24 @@
 
 .man-image-list {
   display: flex;
+  overflow: scroll;
+}
+
+.image-element {
+  width: 100%;
+  text-align: center;
+}
+
+.image-element input {
+  height: 50px;
+  font-size: 12px;
+  margin: 0 auto;
 }
 
 .man-preview {
   height: 200px;
   width: 250px;
-  margin: 10px 0;
+  margin: 10px auto;
 }
 
 .new-content-input {
