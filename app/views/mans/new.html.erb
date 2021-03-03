@@ -75,7 +75,9 @@
       </div>
       <div class="new-four-box">
         <span>画像</span>
-        <%= f.file_field :images %>
+        <%= f.file_field :images, name: 'man[images][]', id: 'man_images' %>
+      </div>
+      <div id='man-image-list' class="man-image-list">
       </div>
       <div class="new-input-area">
         <%= f.text_area :content, class: "new-content-input", placeholder: "テキストを入力", maxlength: 1000 %>
