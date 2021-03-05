@@ -55,7 +55,7 @@
     <div class="show-body">
       <p><%= markdown(@man.content).html_safe %></p>
       <div class="show-images">
-        <%= @man.images.each do |image| %>
+        <% @man.images.each do |image| %>
           <%= image_tag image, class: "show-doby-image", alt: "投稿画像" %>
         <% end %>
       </div>
