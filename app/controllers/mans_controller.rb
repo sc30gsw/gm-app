@@ -15,7 +15,6 @@ class MansController < ApplicationController
     @man = Man.new(man_params)
     if @man.valid?
       @man.save
-      redirect_to root_path
     else
       render :new
     end
