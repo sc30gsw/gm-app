@@ -39,9 +39,7 @@ class MansController < ApplicationController
   end
 
   def destroy
-    if @man.destroy
-      redirect_to root_path
-    else
+    unless @man.destroy
       render :show
     end
   end
